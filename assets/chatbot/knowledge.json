@@ -1,0 +1,927 @@
+{
+  "version": "1.0.0",
+  "bot": {
+    "name": "うのっちナビ",
+    "description": "うのっちの活動・作品・技術・教育について案内するポートフォリオチャットボットです。",
+    "avatar": "/images/davi.jpeg",
+    "disclaimer": "登録された公開情報をもとに回答します。うのっち本人のリアルタイム発言ではありません。"
+  },
+  "intents": [
+    {
+      "id": "profile-overview",
+      "title": "うのっちは何をしている人？",
+      "priority": 100,
+      "keywords": [
+        "うのっち",
+        "プロフィール",
+        "自己紹介",
+        "何者",
+        "どんな人",
+        "活動内容",
+        "クリエイター",
+        "講師"
+      ],
+      "questions": [
+        "うのっちは何をしている人ですか？",
+        "簡単に自己紹介してください",
+        "どんな活動をしていますか？",
+        "普段は何をしている人ですか？"
+      ],
+      "facts": [
+        "教育現場でデジタル教材開発と3D制作に関わる講師・クリエイターである",
+        "VTuberとして活動している",
+        "Blender、Roblox、Unityなどを扱っている",
+        "ゲーム、3D制作、ロボット、自作デバイス、V文化論について発信している",
+        "難しそうなものを、最初の一歩へ変えることを活動の軸にしている"
+      ],
+      "answers": [
+        {
+          "id": "profile-overview-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "うのっちは、教育現場でデジタル教材開発や3D制作に関わりながら、VTuberとして制作と学びを発信している講師・クリエイターです。Unity、Blender、Robloxなどを使い、難しそうな技術へ踏み出す入口をつくっています。"
+        },
+        {
+          "id": "profile-overview-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "うのっちは、ゲームや3D制作を「自分にもできそう」に変えるVTuber兼クリエイターです。UnityやBlenderを使った制作だけでなく、子どもたちにデジタルものづくりを教える仕事にも携わっています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "プロフィールを見る",
+          "url": "#about",
+          "type": "internal",
+          "resolveExistingAnchor": true
+        }
+      ],
+      "suggestions": [
+        "VTuberとしての活動歴は？",
+        "うのっちの強みは？",
+        "代表作品を見せて"
+      ]
+    },
+    {
+      "id": "vtuber-history",
+      "title": "VTuberとしての活動歴は？",
+      "priority": 95,
+      "keywords": [
+        "VTuber",
+        "活動歴",
+        "何年",
+        "いつから",
+        "配信",
+        "動画",
+        "発信",
+        "アバター",
+        "V文化"
+      ],
+      "questions": [
+        "VTuberとして何年活動していますか？",
+        "VTuber活動はいつからですか？",
+        "どんなVTuber活動をしていますか？",
+        "配信以外には何を発信していますか？"
+      ],
+      "facts": [
+        "2020年からVTuberとして活動している",
+        "制作過程と学びの実践を発信している",
+        "Blenderの短尺解説、ゲーム制作、自作デバイスの実験、V文化論などを扱っている",
+        "アバターを現実の可能性を拡張する器として捉えている",
+        "YouTube、TikTok、note、Xなど複数の場所で発信している"
+      ],
+      "answers": [
+        {
+          "id": "vtuber-history-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "うのっちは2020年からVTuberとして活動しています。配信や動画だけでなく、Blender、ゲーム制作、自作デバイス、教育現場での実践、アバター文化についても発信しています。"
+        },
+        {
+          "id": "vtuber-history-creator-01",
+          "tone": "creator",
+          "length": "medium",
+          "text": "VTuberという姿を、配信だけでなく制作・教育・文化をつなぐための表現手段として使ってきました。作品を見せるだけでなく、作る途中や学び方も含めて発信しています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "YouTubeを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA",
+          "type": "external"
+        },
+        {
+          "label": "V文化論を読む",
+          "url": "https://note.com/sanpeita",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "うのっちの強みは？",
+        "どんな動画を作っていますか？",
+        "V文化論ってなに？"
+      ]
+    },
+    {
+      "id": "core-strengths",
+      "title": "うのっちの強みは？",
+      "priority": 100,
+      "keywords": [
+        "強み",
+        "得意",
+        "魅力",
+        "特徴",
+        "持ち味",
+        "個性",
+        "教育",
+        "説明",
+        "初心者",
+        "継続",
+        "企画力"
+      ],
+      "questions": [
+        "うのっちの強みを教えてください",
+        "ほかのVTuberとの違いは何ですか？",
+        "得意なことは何ですか？",
+        "どんな価値を提供できますか？"
+      ],
+      "facts": [
+        "初見の人が止まりやすい場所を観察することを重視している",
+        "難しい仕組みを、小さく試せる形へ変えることを得意としている",
+        "制作して終わりではなく、反応を見て改善を続けている",
+        "教育、制作、VTuber活動を横断している",
+        "見ている人が自分もやってみたいと思える入口をつくることを目指している"
+      ],
+      "answers": [
+        {
+          "id": "core-strengths-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "うのっちの強みは、難しい技術を一方的に説明するのではなく、初めて触れる人が止まりそうな場所を見つけ、小さく試せる入口へ変えることです。制作・教育・発信をつなぎ、反応を見ながら改善を続けられます。"
+        },
+        {
+          "id": "core-strengths-audition-01",
+          "tone": "professional",
+          "length": "medium",
+          "text": "技術、教育、VTuber活動を横断しながら、企画を実際の作品や発信へ落とし込めることが強みです。初心者の視点を失わず、周囲の反応を観察して、次の一歩が軽くなる形へ継続的に改善できます。"
+        }
+      ],
+      "links": [
+        {
+          "label": "活動の考え方を見る",
+          "url": "#what-i-bring",
+          "type": "internal",
+          "resolveExistingAnchor": true
+        }
+      ],
+      "suggestions": [
+        "チームに加わると何ができる？",
+        "教育活動について教えて",
+        "代表作品を見せて"
+      ]
+    },
+    {
+      "id": "team-contribution",
+      "title": "チームに加わると何ができる？",
+      "priority": 100,
+      "keywords": [
+        "チーム",
+        "加入",
+        "貢献",
+        "役割",
+        "グループ",
+        "事務所",
+        "コラボ",
+        "企画",
+        "サポート",
+        "まとめ役"
+      ],
+      "questions": [
+        "チームに加わると何ができますか？",
+        "グループ活動ではどんな役割ができますか？",
+        "ほかのメンバーにどう貢献できますか？",
+        "事務所に入った場合の強みは？"
+      ],
+      "facts": [
+        "教育現場で相手の理解度を観察しながら支援している",
+        "Unity、Blender、Roblox、Minecraft、3Dプリントなど複数領域を扱える",
+        "アイデアを試作品や教材、動画として形にできる",
+        "初めて触れる人が参加しやすい入口を設計できる",
+        "制作後の反応を次の改善へつなげている"
+      ],
+      "answers": [
+        {
+          "id": "team-contribution-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "チームでは、企画を考えるだけでなく、UnityやBlenderなどを使って試作品や動画へ落とし込めます。また、教育現場で培った観察力を生かし、メンバーや視聴者が参加しやすい入口を整え、企画を継続的に改善できます。"
+        },
+        {
+          "id": "team-contribution-audition-01",
+          "tone": "professional",
+          "length": "medium",
+          "text": "制作技術と教育経験の両面からチームに貢献できます。企画の試作、技術面の支援、初心者にも届く説明、反応を踏まえた改善までを一つの流れとして進められるため、メンバーの挑戦を形にする役割を担えます。"
+        }
+      ],
+      "links": [
+        {
+          "label": "制作実績を見る",
+          "url": "#projects",
+          "type": "internal",
+          "resolveExistingAnchor": true
+        },
+        {
+          "label": "GitHubを見る",
+          "url": "https://github.com/sanpeita",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "Unityでは何をしていますか？",
+        "うのっちの強みは？",
+        "代表作品と実績を教えて"
+      ]
+    },
+    {
+      "id": "representative-works",
+      "title": "代表作品と実績を教えて",
+      "priority": 95,
+      "keywords": [
+        "代表作",
+        "作品",
+        "実績",
+        "受賞",
+        "動画",
+        "toio",
+        "Unity",
+        "Blender",
+        "Roblox",
+        "Beytoio",
+        "コンテスト"
+      ],
+      "questions": [
+        "代表作品を見せてください",
+        "どんな作品を作っていますか？",
+        "受賞歴はありますか？",
+        "おすすめの動画はどれですか？"
+      ],
+      "facts": [
+        "toioとUnityを組み合わせた作品を制作している",
+        "BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した",
+        "toioで自作ツインスティックを作りMinecraftを操作する作品を公開している",
+        "Blender初心者向けの短尺シリーズを制作している",
+        "Roblox Studioでゲーム文化を制作と学びへつなぐ作品を公開している",
+        "Unityゲーム、Fortniteクリエイター島、clusterワールドなども公開している"
+      ],
+      "answers": [
+        {
+          "id": "representative-works-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "代表的な活動には、toioとUnityを組み合わせた作品、初心者向けの「Blenderできそう」シリーズ、Roblox Studioを使ったゲーム制作があります。「Beytoio」はtoioとUnityの作品動画コンテストで審査員特別賞を受賞しました。"
+        },
+        {
+          "id": "representative-works-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "まず見てほしいのは、toioを自作ツインスティックにしてMinecraftを動かす作品です。ほかにも、Blenderの最初の一歩を軽くする短尺動画や、Robloxでゲームを作り直す企画など、遊びと学びをつなぐ作品を公開しています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "代表作を見る",
+          "url": "#works",
+          "type": "internal",
+          "resolveExistingAnchor": true
+        },
+        {
+          "label": "unityroomを見る",
+          "url": "https://unityroom.com/users/bapfjey9s3kr14itud7h",
+          "type": "external"
+        },
+        {
+          "label": "YouTubeを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "toioの実績を教えて",
+        "Blenderでは何をしていますか？",
+        "Unityでは何を作っていますか？"
+      ]
+    },
+    {
+      "id": "unity-experience",
+      "title": "Unityでは何をしている？",
+      "priority": 90,
+      "keywords": [
+        "Unity",
+        "ゲーム開発",
+        "ゲーム制作",
+        "教材",
+        "unityroom",
+        "toio",
+        "プログラミング",
+        "作品",
+        "開発経験"
+      ],
+      "questions": [
+        "Unityでは何をしていますか？",
+        "Unityの経験を教えてください",
+        "どんなゲームを作っていますか？",
+        "Unityを仕事でも使っていますか？",
+        "Unityの作品はありますか？"
+      ],
+      "facts": [
+        "Unityを使ったゲーム制作とデジタル教材開発に関わっている",
+        "toioとUnityを組み合わせた作品を制作している",
+        "Unityゲームをunityroomなどで公開している",
+        "ゲームを作るだけでなく、初めて学ぶ人の入口を設計している",
+        "思いつきを試作し、公開し、反応を次の改善へつなげている"
+      ],
+      "answers": [
+        {
+          "id": "unity-experience-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "うのっちは、Unityを使ったゲーム制作とデジタル教材開発に携わっています。ゲーム作品の公開に加え、toioとの連携や、初めてUnityに触れる人が進みやすい教材設計にも取り組んでいます。"
+        },
+        {
+          "id": "unity-experience-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "Unityでは、ゲームを作るだけでなく「どうしたら初めての人も作れそうと思えるか」まで考えています。toioを使った遊びや公開ゲームなど、触って分かる作品づくりが中心です。"
+        }
+      ],
+      "links": [
+        {
+          "label": "unityroomを見る",
+          "url": "https://unityroom.com/users/bapfjey9s3kr14itud7h",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "教材開発について教えて",
+        "toioでは何を作っていますか？",
+        "代表作品を見せて"
+      ]
+    },
+    {
+      "id": "digital-education",
+      "title": "教材開発・デジタル教育について",
+      "priority": 95,
+      "keywords": [
+        "教育",
+        "講師",
+        "教材",
+        "教材開発",
+        "子ども",
+        "教える",
+        "授業",
+        "初心者",
+        "デジタル教育",
+        "学習"
+      ],
+      "questions": [
+        "教育の仕事について教えてください",
+        "子どもに教えた経験はありますか？",
+        "教材開発では何をしていますか？",
+        "講師としての経験を教えてください",
+        "初心者への説明は得意ですか？"
+      ],
+      "facts": [
+        "教育現場でデジタル教材開発と3D制作に関わっている",
+        "初めて触れる人が止まりやすい場所を観察している",
+        "すべてを一度に教えず、小さく試せる入口を作っている",
+        "教材や作品への反応を、次の改善へつなげている",
+        "Unity、Blender、Robloxなどのデジタル制作を扱っている"
+      ],
+      "answers": [
+        {
+          "id": "digital-education-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "教育現場では、UnityやBlenderなどを使ったデジタル教材開発と制作支援に携わっています。初めて触れる人がどこで止まりやすいかを観察し、小さく試せる手順へ変えることを大切にしています。"
+        },
+        {
+          "id": "digital-education-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "うのっちが教えるときに大事にしているのは、全部覚えてもらうことより、最初のひとつを動かしてもらうことです。「無理そう」がひとつ減る教材や声かけを考えています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "Blender教材を見る",
+          "url": "https://www.youtube.com/@TheSANPEITA/shorts",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "Blenderでは何をしていますか？",
+        "初心者への教え方の特徴は？",
+        "チームに加わると何ができる？"
+      ]
+    },
+    {
+      "id": "blender-3dcg",
+      "title": "Blender・3DCGについて",
+      "priority": 90,
+      "keywords": [
+        "Blender",
+        "3DCG",
+        "3D",
+        "モデリング",
+        "初心者",
+        "ショート",
+        "Blenderできそう",
+        "アバター",
+        "VRoid",
+        "Shade"
+      ],
+      "questions": [
+        "Blenderでは何をしていますか？",
+        "3DCGは作れますか？",
+        "Blenderの経験を教えてください",
+        "Blenderできそうシリーズとは何ですか？",
+        "3Dモデルを作っていますか？"
+      ],
+      "facts": [
+        "Blender初心者向けの短尺動画と教材を制作している",
+        "ひとつの操作に絞り、初見の恐怖を減らす構成を採用している",
+        "教育現場での反応を次の教材改善へつなげている",
+        "VRoid、Blender、Unity、VTuber活動をつなげてきた",
+        "過去にはShadeを使った3DCG制作も行っている"
+      ],
+      "answers": [
+        {
+          "id": "blender-3dcg-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "Blenderでは、3D制作に加えて、初心者向けの短尺動画と教材を作っています。「最初は複製ひとつだけ」のように操作を絞り、初めて開いたときの難しさを減らすことを重視しています。"
+        },
+        {
+          "id": "blender-3dcg-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "Blenderは機能が多くて、最初の画面だけでも強そうですよね。そこで「今日はひとつ動けば勝ち」という感覚で始められる“Blenderできそう”シリーズを作っています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "Blenderできそうを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA/shorts",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "初心者への教え方の特徴は？",
+        "アバターについてどう考えていますか？",
+        "代表作品を見せて"
+      ]
+    },
+    {
+      "id": "roblox-minecraft",
+      "title": "Roblox・Minecraftについて",
+      "priority": 85,
+      "keywords": [
+        "Roblox",
+        "Minecraft",
+        "マイクラ",
+        "Roblox Studio",
+        "ゲーム",
+        "Backrooms",
+        "Fortnite",
+        "ワールド",
+        "制作",
+        "ゲーム文化"
+      ],
+      "questions": [
+        "Robloxでは何を作っていますか？",
+        "Minecraftを使った活動はありますか？",
+        "Roblox Studioは使えますか？",
+        "ゲームを教材として使っていますか？",
+        "Minecraftでは何をしていますか？"
+      ],
+      "facts": [
+        "Roblox Studioを使ったゲーム制作と試作を行っている",
+        "遊んだゲームの仕組みを観察し、制作と学びへつなげている",
+        "爆発Backroomsをゲーム化する短尺作品を公開している",
+        "toioと自作ツインスティックを使いMinecraftを操作する作品を制作した",
+        "Fortniteクリエイター島やclusterワールドなどの公開制作も行っている"
+      ],
+      "answers": [
+        {
+          "id": "roblox-minecraft-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "Roblox Studioでは、遊んだゲームの仕組みを観察し、自分で作り直す制作を行っています。Minecraftでは、自作デバイスやtoioと組み合わせるなど、既存の遊び方を新しい制作体験へ広げています。"
+        },
+        {
+          "id": "roblox-minecraft-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "ゲームは遊ぶだけでも楽しいですが、「これってどう動いているんだろう？」から制作へ進めるのがRobloxやMinecraftの面白さです。遊びの中で見つけた仕組みを、実際の作品へ変えています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "Roblox作品を見る",
+          "url": "#works",
+          "type": "internal",
+          "resolveExistingAnchor": true
+        }
+      ],
+      "suggestions": [
+        "ゲームを教育にどう使っていますか？",
+        "toioでは何を作っていますか？",
+        "どんな動画を発信していますか？"
+      ]
+    },
+    {
+      "id": "toio-devices",
+      "title": "toio・自作デバイスについて",
+      "priority": 90,
+      "keywords": [
+        "toio",
+        "ロボット",
+        "デバイス",
+        "自作",
+        "ツインスティック",
+        "Minecraft",
+        "Unity",
+        "Beytoio",
+        "受賞",
+        "電子工作"
+      ],
+      "questions": [
+        "toioでは何を作っていますか？",
+        "ロボットを使った作品はありますか？",
+        "自作デバイスについて教えてください",
+        "ツインスティックの作品とは何ですか？",
+        "Beytoioについて教えてください"
+      ],
+      "facts": [
+        "toioを入力装置やゲームの駒として再解釈している",
+        "toio、Unity、ゲームを組み合わせた作品を制作している",
+        "自作ツインスティックでMinecraftを操作する作品を公開している",
+        "BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した",
+        "物理的なデバイスと画面上の遊びをつなぐ企画を行っている"
+      ],
+      "answers": [
+        {
+          "id": "toio-devices-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "toioを単なるロボットとして使うのではなく、ゲームの駒や入力装置として再解釈した作品を制作しています。自作ツインスティックでMinecraftを操作する作品や、Unityと連携したBeytoioなどがあります。"
+        },
+        {
+          "id": "toio-devices-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "画面の中だけで遊ぶのではなく、机の上のtoioや自作コントローラーまでゲームの一部にしています。触った瞬間に仕組みが伝わる、ちょっと変わった遊びを作るのが得意です。"
+        }
+      ],
+      "links": [
+        {
+          "label": "ツインスティック作品を見る",
+          "url": "#works",
+          "type": "internal",
+          "resolveExistingAnchor": true
+        }
+      ],
+      "suggestions": [
+        "代表作品と実績を教えて",
+        "Unityでは何をしていますか？",
+        "チームに加わると何ができる？"
+      ]
+    },
+    {
+      "id": "streaming-video",
+      "title": "配信・動画では何を発信している？",
+      "priority": 85,
+      "keywords": [
+        "配信",
+        "動画",
+        "YouTube",
+        "TikTok",
+        "Shorts",
+        "ショート",
+        "ライブ",
+        "発信",
+        "コンテンツ",
+        "制作過程",
+        "SNS"
+      ],
+      "questions": [
+        "どんな動画を発信していますか？",
+        "配信では何をしていますか？",
+        "YouTubeでは何が見られますか？",
+        "TikTokではどんな活動をしていますか？",
+        "制作の様子も発信していますか？"
+      ],
+      "facts": [
+        "YouTube、TikTok、note、Xなど複数の場所で発信している",
+        "Blender初心者向けの短尺動画を制作している",
+        "Unity、Roblox、Minecraft、toio、自作デバイスなどの制作を扱っている",
+        "完成した作品だけでなく、制作過程や学びも発信している",
+        "ゲーム、教育、技術、VTuber文化を横断している"
+      ],
+      "answers": [
+        {
+          "id": "streaming-video-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "YouTubeやTikTokでは、Blender、Unity、Roblox、toio、自作デバイスなどの制作を発信しています。完成作品だけでなく、試作や学びの途中も含め、見た人が次に試せる形で紹介しています。"
+        },
+        {
+          "id": "streaming-video-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "ゲーム配信だけでなく、Blenderをひとつ動かしてみたり、変わったコントローラーを作ったり、ゲームの仕組みを再現したりしています。見て終わりではなく、自分も少し作ってみたくなる発信を目指しています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "YouTubeを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "Blenderでは何をしていますか？",
+        "代表作品を見せて",
+        "V文化論ってなに？"
+      ]
+    },
+    {
+      "id": "v-culture",
+      "title": "V文化論ってなに？",
+      "priority": 95,
+      "keywords": [
+        "V文化論",
+        "VTuber文化",
+        "アバター",
+        "姿を変える",
+        "アイデンティティ",
+        "自己表現",
+        "現実",
+        "可能性",
+        "TED",
+        "世界共創計画",
+        "思想"
+      ],
+      "questions": [
+        "V文化論ってなに？",
+        "V文化論について教えてください",
+        "アバターについてどう考えていますか？",
+        "姿を変えることにはどんな意味がありますか？",
+        "なぜVTuberとして活動しているのですか？",
+        "TED世界共創計画とは何ですか？"
+      ],
+      "facts": [
+        "アバターは現実から逃げるためだけのものではないと考えている",
+        "アバターは現実の可能性を拡張する器になれると考えている",
+        "姿を変えることで、新しい行動や自己表現に踏み出せる可能性を扱っている",
+        "VTuberの近さや関係性を、感情だけでなく設計として考えている",
+        "V文化についての考えをnoteや短尺動画で記録している",
+        "姿を変えることで人は新しい自分になれる、というテーマを活動の中核に置いている"
+      ],
+      "answers": [
+        {
+          "id": "v-culture-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "うのっちのV文化論は、アバターを現実から逃げるための姿ではなく、現実の可能性を広げるための器として考えるものです。姿を変えることで、新しい表現や行動へ踏み出せる可能性を記録しています。"
+        },
+        {
+          "id": "v-culture-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "姿が変わると、普段の自分では少し難しかったことに挑戦できる場合があります。うのっちは、VTuberやアバターを「別人になるため」ではなく、新しい自分を試すための入口として考えています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "V文化論を読む",
+          "url": "https://note.com/sanpeita",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "なぜVTuberとして活動しているの？",
+        "VTuberとしての強みは？",
+        "うのっちは何をしている人？"
+      ]
+    },
+    {
+      "id": "events-awards",
+      "title": "イベント・受賞実績について",
+      "priority": 95,
+      "keywords": [
+        "イベント",
+        "受賞",
+        "実績",
+        "コンテスト",
+        "ワンダーメイクフェス",
+        "ワンダーメイクフェス5",
+        "toio",
+        "Beytoio",
+        "審査員特別賞",
+        "日本科学未来館",
+        "ブース"
+      ],
+      "questions": [
+        "イベントに参加した実績はありますか？",
+        "受賞歴を教えてください",
+        "ワンダーメイクフェスについて教えてください",
+        "ワンダーメイクフェス5の動画はありますか？",
+        "Beytoioの受賞について教えてください"
+      ],
+      "facts": [
+        "ワンダーメイクフェス5のtoioブースに関わった活動記録が公開されている",
+        "ワンダーメイクフェス5のtoioブースレポート動画で、子どもたちと活動する様子を確認できる",
+        "紹介動画はYouTubeで公開されている",
+        "指定位置は動画の1分41秒付近である",
+        "BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した",
+        "toio、Unity、教育、ものづくりを横断する活動を行っている"
+      ],
+      "answers": [
+        {
+          "id": "events-awards-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "ワンダーメイクフェス5では、toioブースで子どもたちと活動する様子がブースレポート映像に記録されています。また、Unityとtoioを組み合わせた「Beytoio」は、作品動画コンテストで審査員特別賞を受賞しました。"
+        },
+        {
+          "id": "events-awards-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "イベントで子どもたちとtoioを楽しむ活動から、自分でtoioとUnityの作品を作るところまで続いています。ワンダーメイクフェス5の映像と、Beytoioの受賞実績から、その流れを見ることができます。"
+        }
+      ],
+      "links": [
+        {
+          "label": "ワンダーメイクフェス5の映像を見る",
+          "url": "https://www.youtube.com/watch?v=ZgVxVa9wKUo&t=101s",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "toioでは何を作っていますか？",
+        "代表作品と実績を教えて",
+        "教育の仕事について教えて"
+      ]
+    },
+    {
+      "id": "digital-fabrication",
+      "title": "3Dプリント・デジファブについて",
+      "priority": 80,
+      "keywords": [
+        "3Dプリント",
+        "3Dプリンター",
+        "デジファブ",
+        "デジタルファブリケーション",
+        "造形",
+        "FDM",
+        "光造形",
+        "モデリング",
+        "試作",
+        "プロトタイプ",
+        "自作デバイス"
+      ],
+      "questions": [
+        "3Dプリントはできますか？",
+        "デジファブでは何をしていますか？",
+        "3Dプリンターを使った経験はありますか？",
+        "立体物も作れますか？",
+        "プロトタイプ制作はできますか？"
+      ],
+      "facts": [
+        "3Dモデリングと3Dプリントを組み合わせた試作を行っている",
+        "自作デバイスや作品に合わせたケースや部品を制作している",
+        "FDM方式と光造形方式の3Dプリンターを扱っている",
+        "造形物を完成品だけでなく、教材や試作品として活用している",
+        "デジタルデータを実際に触れられる物へ変える制作を行っている",
+        "教育現場における3D制作やデジファブにも関わっている"
+      ],
+      "answers": [
+        {
+          "id": "digital-fabrication-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "3Dモデリングから3Dプリントまでを使い、作品部品、自作デバイスのケース、教材、試作品などを制作しています。画面上のアイデアを、実際に触れて試せる形へ変えることを重視しています。"
+        },
+        {
+          "id": "digital-fabrication-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "画面の中で作った形が、数時間後には手に持てる物になるのが3Dプリントの面白さです。コントローラーのケースや作品パーツなど、「まず形にして試す」ために活用しています。"
+        }
+      ],
+      "links": [
+        {
+          "label": "自作デバイス作品を見る",
+          "url": "#works",
+          "type": "internal",
+          "resolveExistingAnchor": true
+        }
+      ],
+      "suggestions": [
+        "自作デバイスについて教えて",
+        "Blenderでは何をしていますか？",
+        "チームに加わると何ができる？"
+      ]
+    },
+    {
+      "id": "contact-socials",
+      "title": "連絡先・活動場所について",
+      "priority": 85,
+      "keywords": [
+        "連絡先",
+        "問い合わせ",
+        "コンタクト",
+        "SNS",
+        "YouTube",
+        "TikTok",
+        "X",
+        "note",
+        "GitHub",
+        "Qiita",
+        "フォロー",
+        "仕事依頼"
+      ],
+      "questions": [
+        "うのっちに連絡するには？",
+        "活動しているSNSを教えてください",
+        "YouTubeチャンネルはどこですか？",
+        "Xのアカウントを教えてください",
+        "noteはありますか？",
+        "GitHubは公開していますか？"
+      ],
+      "facts": [
+        "YouTubeでShorts、制作、配信を公開している",
+        "TikTokで短尺動画とライブを行っている",
+        "Xで日々の制作ログを発信している",
+        "noteでV文化論と活動記録を公開している",
+        "GitHubでコードとプロジェクトを公開している",
+        "Qiitaで技術記事を公開している",
+        "ポートフォリオ下部に各活動先へのリンクが掲載されている"
+      ],
+      "answers": [
+        {
+          "id": "contact-socials-standard-01",
+          "tone": "standard",
+          "length": "medium",
+          "text": "動画や配信はYouTubeとTikTok、日々の制作ログはX、V文化論や活動記録はnoteで公開しています。コードや技術面を見たい場合はGitHubとQiitaもご覧ください。"
+        },
+        {
+          "id": "contact-socials-friendly-01",
+          "tone": "friendly",
+          "length": "medium",
+          "text": "作品を動画で見たいならYouTube、普段の制作を追うならX、じっくり考え方を読むならnoteがおすすめです。技術やコードはGitHubとQiitaで確認できます。"
+        }
+      ],
+      "links": [
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@TheSANPEITA",
+          "type": "external"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/unoksanpt",
+          "type": "external"
+        },
+        {
+          "label": "note",
+          "url": "https://note.com/sanpeita",
+          "type": "external"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sanpeita",
+          "type": "external"
+        },
+        {
+          "label": "Qiita",
+          "url": "https://qiita.com/sanpeita",
+          "type": "external"
+        }
+      ],
+      "suggestions": [
+        "代表作品を見せて",
+        "V文化論ってなに？",
+        "どんな動画を発信していますか？"
+      ]
+    }
+  ],
+  "fallbacks": {
+    "unknown": [
+      "その質問については、まだうまくご案内できないようです。VTuber活動、Unity、教育、3DCG、toio、代表作品について聞いてみてください！",
+      "まだその質問に対応する情報が登録されていません。おすすめの質問から選んでもらえるとうれしいです！"
+    ],
+    "empty": "質問を入力するか、おすすめの項目を選んでください。"
+  }
+}

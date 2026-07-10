@@ -20,6 +20,9 @@
   <link rel="canonical" href="https://sanpeita.github.io/">
   <link rel="icon" href="images/davi.jpeg">
   <link rel="stylesheet" href="styles.css">
+  <script src="assets/chatbot/fuse.min.js" defer></script>
+  <script src="assets/chatbot/search-core.js" defer></script>
+  <script src="assets/chatbot/chatbot.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
@@ -73,7 +76,7 @@
       </div>
     </section>
 
-    <section class="intro section">
+    <section class="intro section" id="about">
       <div class="shell intro-grid">
         <div>
           <p class="eyebrow">ABOUT</p>
@@ -250,7 +253,7 @@
       </div>
     </section>
 
-    <section class="section statement-section">
+    <section class="section statement-section" id="what-i-bring">
       <div class="shell statement-card">
         <p class="eyebrow">WHAT I BRING</p>
         <blockquote>見ている人が、<br><span>「自分もやってみたい」</span>と<br>思える入口をつくる。</blockquote>
@@ -290,6 +293,70 @@
       </div>
     </aside>
   </main>
+
+  <aside
+    class="un-nav-widget"
+    data-unotchi-nav
+    data-knowledge-url="assets/chatbot/knowledge.json"
+    aria-label="うのっちナビ"
+  >
+    <button
+      class="un-nav-launcher"
+      type="button"
+      data-un-nav-launcher
+      aria-controls="unotchi-nav-panel"
+      aria-expanded="false"
+      aria-label="うのっちナビを開く"
+    >
+      <span class="un-nav-avatar-wrap un-nav-avatar-launcher">
+        <img class="un-nav-avatar" src="images/davi.jpeg" alt="うのっちナビ">
+        <span class="un-nav-avatar-fallback" aria-hidden="true">UNO</span>
+      </span>
+      <span class="un-nav-launcher-label">うのっちナビ</span>
+    </button>
+
+    <section
+      class="un-nav-panel"
+      id="unotchi-nav-panel"
+      data-un-nav-panel
+      aria-labelledby="unotchi-nav-title"
+      hidden
+    >
+      <header class="un-nav-header">
+        <div class="un-nav-header-identity">
+          <span class="un-nav-avatar-wrap un-nav-avatar-header">
+            <img class="un-nav-avatar" src="images/davi.jpeg" alt="うのっちナビ">
+            <span class="un-nav-avatar-fallback" aria-hidden="true">UNO</span>
+          </span>
+          <span>
+            <strong id="unotchi-nav-title">うのっちナビ</strong>
+            <small>PORTFOLIO GUIDE</small>
+          </span>
+        </div>
+        <button class="un-nav-close" type="button" data-un-nav-close aria-label="うのっちナビを閉じる">×</button>
+      </header>
+
+      <div class="un-nav-log" data-un-nav-log role="log" aria-live="polite" aria-relevant="additions text">
+        <p class="un-nav-loading">うのっちナビを読み込んでいます…</p>
+      </div>
+
+      <form class="un-nav-form" data-un-nav-form>
+        <label class="un-nav-visually-hidden" for="unotchi-nav-input">うのっちについて質問する</label>
+        <input
+          id="unotchi-nav-input"
+          data-un-nav-input
+          type="text"
+          inputmode="text"
+          autocomplete="off"
+          maxlength="160"
+          placeholder="気になることを入力"
+          required
+        >
+        <button type="submit" data-un-nav-submit>送信</button>
+      </form>
+      <p class="un-nav-disclaimer">登録された公開情報をもとに回答します。うのっち本人のリアルタイム発言ではありません。</p>
+    </section>
+  </aside>
 
   <footer>
     <div class="shell footer-inner">
