@@ -21,4 +21,11 @@
 - `styles.css` — デザインとレスポンシブ表示
 - `images/` — 画像資産とSNS共有画像
 
+## 保存対象の旧資産
+
+- `images/kabe_viper_white.png`
+  - かつてShadeでモデリングしたバイパー2をもとに制作した壁紙。
+  - うのっちの制作の原点にあたるため、明示的な許可なしに削除しない。
+  - 現在のサイトでは、ページ下部の `ARCHIVE / CREATOR ORIGIN` 欄に使用する。
+
 GitHub Pagesは `master` ブランチのルートを公開対象として運用します。
