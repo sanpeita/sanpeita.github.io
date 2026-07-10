@@ -21,6 +21,14 @@
 - `styles.css` — デザインとレスポンシブ表示
 - `images/` — 画像資産とSNS共有画像
 
+## トップ画像
+
+- `images/unotchi-official-standing.png`
+  - うのっちの公式立ち絵の原寸PNG。
+  - 画像自体は切り取らず、トップページ側でバストアップ表示に調整する。
+- ファンアート画像は削除せず、`images/davi.jpeg` をヘッダーとフッターのアイコンとして引き続き使用する。
+- `images/デイヴィデフォルメイラスト.jpeg` も元のファンアート資産として保持する。
+
 ## 保存対象の旧資産
 
 - `images/kabe_viper_white.png`
