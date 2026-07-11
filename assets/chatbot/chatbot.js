@@ -1,262 +1,53 @@
 (function () {
   "use strict";
 
-  const INITIAL_QUESTIONS = [
-    "うのっちは何をしている人？",
-    "VTuberとしての強みは？",
-    "Unityでは何をしている？",
-    "代表作品を見せて",
-    "チームに加わると何ができる？"
-  ];
-
-  function createElement(tagName, className, text) {
-    const element = document.createElement(tagName);
-    if (className) element.className = className;
-    if (text !== undefined) element.textContent = text;
-    return element;
-  }
-
-  function installAvatarFallback(image) {
-    const fallback = image.parentElement?.querySelector(".un-nav-avatar-fallback");
-    if (!fallback) return;
-    const showFallback = () => {
-      image.hidden = true;
-      fallback.classList.add("is-visible");
-    };
-    image.addEventListener("error", showFallback, { once: true });
-    if (image.complete && image.naturalWidth === 0) showFallback();
-  }
-
-  function createAvatar(avatarPath, sizeClass) {
-    const wrapper = createElement("span", `un-nav-avatar-wrap ${sizeClass || ""}`.trim());
-    const image = createElement("img", "un-nav-avatar");
-    image.src = avatarPath;
-    image.alt = "うのっちナビ";
-    const fallback = createElement("span", "un-nav-avatar-fallback", "UNO");
-    fallback.setAttribute("aria-hidden", "true");
-    wrapper.append(image, fallback);
-    installAvatarFallback(image);
-    return wrapper;
-  }
-
+  function el(tag, className, text) { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; }
   function initializeWidget() {
-    const widget = document.querySelector("[data-unotchi-nav]");
-    if (!widget) return;
-
+    const widget = document.querySelector("[data-unotchi-nav]"); if (!widget) return;
     const launcher = widget.querySelector("[data-un-nav-launcher]");
     const panel = widget.querySelector("[data-un-nav-panel]");
-    const closeButton = widget.querySelector("[data-un-nav-close]");
-    const messageLog = widget.querySelector("[data-un-nav-log]");
+    const close = widget.querySelector("[data-un-nav-close]");
+    const content = widget.querySelector("[data-un-nav-content]");
     const form = widget.querySelector("[data-un-nav-form]");
     const input = widget.querySelector("[data-un-nav-input]");
-    const submitButton = widget.querySelector("[data-un-nav-submit]");
-    const knowledgeUrl = widget.dataset.knowledgeUrl;
+    const submit = widget.querySelector("[data-un-nav-submit]");
+    const mode = widget.querySelector("[data-un-nav-mode]");
+    const tourApi = window.UnotchiNavTour;
     const searchApi = window.UnotchiNavSearch;
-    const lastAnswers = new Map();
+    const state = { panel: "closed", view: "loading", currentIntentId: null, tourId: null, tourIndex: null, previousAnswerIds: new Map() };
+    let knowledge = null; let engine = null;
 
-    let knowledge = null;
-    let searchEngine = null;
-
-    widget.querySelectorAll(".un-nav-avatar").forEach(installAvatarFallback);
-
-    function setReadyState(isReady) {
-      input.disabled = !isReady;
-      submitButton.disabled = !isReady;
-      input.placeholder = isReady ? "気になることを入力" : "読み込み中…";
-    }
-
-    function scrollToLatest() {
-      requestAnimationFrame(() => {
-        messageLog.scrollTop = messageLog.scrollHeight;
-      });
-    }
-
-    function createQuestionButton(question, variant = "suggestion") {
-      const button = createElement("button", `un-nav-question un-nav-question-${variant}`, question);
-      button.type = "button";
-      button.addEventListener("click", () => submitQuestion(question));
-      return button;
-    }
-
-    function createWelcomeCard() {
-      const card = createElement("section", "un-nav-card un-nav-welcome");
-      const identity = createElement("div", "un-nav-card-identity");
-      identity.append(
-        createAvatar(knowledge.bot.avatar, "un-nav-avatar-small"),
-        createElement("strong", "", knowledge.bot.name)
-      );
-      const greeting = createElement(
-        "p",
-        "un-nav-answer-text",
-        "こんにちは！ うのっちのVTuber活動、制作、教育、技術についてご案内します。気になることを聞いてみてください。"
-      );
-      const heading = createElement("p", "un-nav-section-label", "おすすめの質問");
-      const questions = createElement("div", "un-nav-question-list");
-      INITIAL_QUESTIONS.forEach((question) => questions.append(createQuestionButton(question, "initial")));
-      card.append(identity, greeting, heading, questions);
-      return card;
-    }
-
-    function renderWelcome() {
-      messageLog.replaceChildren(createWelcomeCard());
-      scrollToLatest();
-    }
-
-    function createUserMessage(question) {
-      const message = createElement("p", "un-nav-user-message", question);
-      message.setAttribute("aria-label", `質問: ${question}`);
-      return message;
-    }
-
-    function createRelatedLinks(links) {
-      const section = createElement("div", "un-nav-answer-section");
-      section.append(createElement("p", "un-nav-section-label", "関連作品・記事"));
-      const list = createElement("div", "un-nav-link-list");
-
-      links.forEach((link) => {
-        const anchor = createElement("a", "un-nav-related-link", link.label);
-        anchor.href = link.url;
-        if (link.type === "external") {
-          anchor.target = "_blank";
-          anchor.rel = "noopener noreferrer";
-          anchor.append(createElement("span", "un-nav-external-mark", "↗"));
-        } else {
-          anchor.addEventListener("click", closePanel);
-        }
-        list.append(anchor);
-      });
-
-      section.append(list);
-      return section;
-    }
-
-    function createSuggestions(suggestions) {
-      const section = createElement("div", "un-nav-answer-section");
-      section.append(createElement("p", "un-nav-section-label", "次におすすめ"));
-      const list = createElement("div", "un-nav-question-list");
-      suggestions.forEach((question) => list.append(createQuestionButton(question)));
-      section.append(list);
-      return section;
-    }
-
-    function createAnswerCard(text, intent) {
-      const card = createElement("article", "un-nav-card un-nav-answer-card");
-      const identity = createElement("div", "un-nav-card-identity");
-      identity.append(
-        createAvatar(knowledge.bot.avatar, "un-nav-avatar-small"),
-        createElement("strong", "", knowledge.bot.name)
-      );
-      card.append(identity, createElement("p", "un-nav-answer-text", text));
-
-      const links = Array.isArray(intent?.links) ? intent.links.filter((link) => link.url) : [];
-      const suggestions = Array.isArray(intent?.suggestions) ? intent.suggestions : [];
-      if (links.length || suggestions.length) {
-        card.append(createElement("hr", "un-nav-divider"));
-      }
-      if (links.length) card.append(createRelatedLinks(links));
-      if (suggestions.length) card.append(createSuggestions(suggestions));
-      return card;
-    }
-
-    function pickFallback() {
-      const fallbacks = knowledge?.fallbacks?.unknown || [
-        "まだその質問に対応する情報が登録されていません。おすすめの質問から選んでみてください。"
-      ];
-      return fallbacks[Math.floor(Math.random() * fallbacks.length)];
-    }
-
-    function submitQuestion(rawQuestion) {
-      if (!searchEngine || !knowledge) return;
-      const question = String(rawQuestion || "").trim();
-      if (!question) {
-        input.setCustomValidity(knowledge.fallbacks?.empty || "質問を入力してください。");
-        input.reportValidity();
-        return;
-      }
-
-      input.setCustomValidity("");
-      input.value = "";
-      const result = searchEngine.search(question);
-      messageLog.append(createUserMessage(question));
-
-      if (!result) {
-        messageLog.append(createAnswerCard(pickFallback(), null));
-      } else {
-        const previousAnswerId = lastAnswers.get(result.intent.id);
-        const answer = searchApi.chooseAnswer(result.intent, previousAnswerId);
-        if (answer) lastAnswers.set(result.intent.id, answer.id);
-        messageLog.append(createAnswerCard(answer?.text || pickFallback(), result.intent));
-      }
-      scrollToLatest();
-    }
-
-    function openPanel() {
-      panel.hidden = false;
-      launcher.setAttribute("aria-expanded", "true");
-      widget.classList.add("is-open");
-      input.focus({ preventScroll: true });
-    }
-
-    function closePanel() {
-      panel.hidden = true;
-      launcher.setAttribute("aria-expanded", "false");
-      widget.classList.remove("is-open");
-      launcher.focus({ preventScroll: true });
-    }
-
-    launcher.addEventListener("click", () => {
-      if (panel.hidden) openPanel();
-      else closePanel();
-    });
-    closeButton.addEventListener("click", closePanel);
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      submitQuestion(input.value);
-    });
-    input.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" && !event.isComposing) {
-        event.preventDefault();
-        submitQuestion(input.value);
-      }
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !panel.hidden) closePanel();
-    });
-
+    function avatar() { const image = el("img", "un-nav-avatar"); image.src = knowledge.bot.avatar; image.alt = "うのっちナビ"; return image; }
+    function button(text, className, handler) { const node = el("button", className, text); node.type = "button"; node.addEventListener("click", handler); return node; }
+    function setReadyState(ready) { input.disabled = !ready; submit.disabled = !ready; input.placeholder = ready ? "気になることを入力" : "読み込み中…"; }
+    function setModeLabel(label) { mode.textContent = label; }
+    function resetViewScroll() { content.scrollTop = 0; }
+    function shell(eyebrow, title) { const card = el("article", "un-nav-card is-entering"); card.append(el("p", "un-nav-card-eyebrow", eyebrow), el("h3", "un-nav-card-title", title)); return card; }
+    function safeLinks(links) { return (Array.isArray(links) ? links : []).filter((link) => link && link.url).slice(0, 3); }
+    function relatedLinks(links) { const section = el("section", "un-nav-answer-section"); section.append(el("p", "un-nav-section-label", "関連作品・記事")); const list = el("div", "un-nav-link-list"); safeLinks(links).forEach((link) => { const a = el("a", "un-nav-related-link", link.label); a.href = link.url; if (link.type === "external") { a.target = "_blank"; a.rel = "noopener noreferrer"; a.append(el("span", "un-nav-external-mark", "↗")); } else a.addEventListener("click", closePanel); list.append(a); }); section.append(list); return section; }
+    function intentButtons(ids, variant = "initial") { const list = el("div", "un-nav-question-list"); ids.slice(0, 4).forEach((id) => { const intent = knowledge.intents.find((item) => item.id === id); if (intent) list.append(button(intent.title, `un-nav-question un-nav-question-${variant}`, () => showAnswer(id))); }); return list; }
+    function suggestions(items) { const section = el("section", "un-nav-answer-section"); section.append(el("p", "un-nav-section-label", "次におすすめ")); const list = el("div", "un-nav-question-list"); (items || []).slice(0, 3).forEach((question) => list.append(button(question, "un-nav-question", () => submitQuestion(question)))); section.append(list); return section; }
+    function answerFor(intent, tourMode) { if (!intent) return null; if (tourMode) return intent.answers?.[0] || null; const previous = state.previousAnswerIds.get(intent.id); const answer = searchApi.chooseAnswer(intent, previous); if (answer) state.previousAnswerIds.set(intent.id, answer.id); return answer; }
+    function answerCard(intent, answer, options = {}) { const card = shell(options.eyebrow || "PORTFOLIO GUIDE", intent?.title || "ご案内"); const body = el("p", "un-nav-answer-text", answer?.text || knowledge.fallbacks.unknown[0]); card.append(body); if (options.note) card.append(el("p", "un-nav-tour-note", options.note)); const links = safeLinks(intent?.links); const suggestionsList = intent?.suggestions || []; if (links.length) card.append(relatedLinks(links)); if (suggestionsList.length) card.append(suggestions(suggestionsList)); return card; }
+    function createWelcomeCard() { const welcome = knowledge.welcome; const card = shell("PORTFOLIO GUIDE", "うのっちナビへようこそ"); card.append(el("p", "un-nav-answer-text", welcome.message)); card.append(button(welcome.primaryAction.label, "un-nav-primary-action", () => startTour(welcome.primaryAction.tourId))); card.append(el("p", "un-nav-section-label", "気になるテーマ"), intentButtons(welcome.intentIds)); return card; }
+    function createTourCard(tour, index) { const step = tourApi.getTourStep(tour, index); const intent = knowledge.intents.find((item) => item.id === step.intentId); const card = shell(`おすすめツアー ${index + 1} / ${tour.steps.length}`, step.heading); const hidden = el("span", "un-nav-visually-hidden", `おすすめツアー ${index + 1} / ${tour.steps.length}`); card.querySelector(".un-nav-card-eyebrow").append(hidden); card.append(answerFor(intent, true) ? el("p", "un-nav-answer-text", answerFor(intent, true).text) : el("p", "un-nav-answer-text", "ご案内を準備できませんでした。")); if (step.note) card.append(el("p", "un-nav-tour-note", step.note)); if (safeLinks(intent.links).length) card.append(relatedLinks(intent.links)); card.append(tourControls(tour, index)); return card; }
+    function tourControls(tour, index) { const wrap = el("div", "un-nav-tour-controls"); const prev = button("ひとつ前に戻る", "un-nav-tour-back", () => moveTour(-1)); prev.disabled = tourApi.getPreviousIndex(index) === null; const next = button(index === tour.steps.length - 1 ? "ツアーを完了" : "次を見る", "un-nav-tour-next", () => moveTour(1)); const exit = button("ツアーを終了", "un-nav-tour-exit", completeTour); wrap.append(prev, next, exit); return wrap; }
+    function completeCard() { const card = shell("おすすめツアー 完了", "ここまでのご案内は以上です"); card.append(el("p", "un-nav-answer-text", "作品・教育・V文化論がつながる活動です。気になるテーマをもう少し見てみてください。")); const actions = el("div", "un-nav-actions"); actions.append(button("最初から見る", "un-nav-tour-restart", () => startTour("recommended")), button("別のテーマを見る", "un-nav-tour-browse", showWelcome)); card.append(actions); return card; }
+    function fallbackCard() { const card = shell("PORTFOLIO GUIDE", "まだうまくご案内できないようです"); card.append(el("p", "un-nav-answer-text", knowledge.fallbacks.unknown[0]), el("p", "un-nav-section-label", "おすすめのテーマ"), intentButtons(knowledge.welcome.intentIds, "fallback")); return card; }
+    function errorCard() { const card = shell("PORTFOLIO GUIDE", "読み込めませんでした"); card.append(el("p", "un-nav-answer-text", "うのっちナビを読み込めませんでした。ページを再読み込みしてください。")); return card; }
+    function renderCurrentView() { let card; if (state.view === "welcome") { setModeLabel("PORTFOLIO GUIDE"); card = createWelcomeCard(); } else if (state.view === "answer") { setModeLabel("PORTFOLIO GUIDE"); const intent = knowledge.intents.find((item) => item.id === state.currentIntentId); card = answerCard(intent, answerFor(intent, false)); } else if (state.view === "tour") { setModeLabel("おすすめツアー"); card = createTourCard(tourApi.getTourById(knowledge.tours, state.tourId), state.tourIndex); } else if (state.view === "tour-complete") { setModeLabel("おすすめツアー"); card = completeCard(); } else if (state.view === "error") { setModeLabel("PORTFOLIO GUIDE"); card = errorCard(); } else return; content.replaceChildren(card); resetViewScroll(); }
+    function showWelcome() { state.view = "welcome"; state.currentIntentId = null; state.tourId = null; state.tourIndex = null; renderCurrentView(); }
+    function showAnswer(id) { state.view = "answer"; state.currentIntentId = id; state.tourId = null; state.tourIndex = null; renderCurrentView(); }
+    function startTour(id) { const tour = tourApi.getTourById(knowledge.tours, id); if (!tour) return; state.view = "tour"; state.tourId = id; state.tourIndex = 0; state.currentIntentId = null; renderCurrentView(); }
+    function moveTour(direction) { const tour = tourApi.getTourById(knowledge.tours, state.tourId); if (!tour) return; const next = direction < 0 ? tourApi.getPreviousIndex(state.tourIndex) : tourApi.getNextIndex(tour, state.tourIndex); if (next === null) { completeTour(); return; } state.tourIndex = next; renderCurrentView(); }
+    function completeTour() { state.view = "tour-complete"; state.tourId = null; state.tourIndex = null; renderCurrentView(); }
+    function submitQuestion(raw) { const question = String(raw || "").trim(); if (!question) { input.setCustomValidity(knowledge.fallbacks.empty); input.reportValidity(); return; } input.setCustomValidity(""); input.value = ""; const result = engine.search(question); if (result) showAnswer(result.intent.id); else { state.view = "answer"; state.currentIntentId = null; state.tourId = null; state.tourIndex = null; content.replaceChildren(fallbackCard()); resetViewScroll(); } }
+    function openPanel() { state.panel = "open"; panel.hidden = false; launcher.setAttribute("aria-expanded", "true"); widget.classList.add("is-open"); input.focus({ preventScroll: true }); }
+    function closePanel() { state.panel = "closed"; panel.hidden = true; launcher.setAttribute("aria-expanded", "false"); widget.classList.remove("is-open"); requestAnimationFrame(() => launcher.focus({ preventScroll: true })); }
+    launcher.addEventListener("click", () => panel.hidden ? openPanel() : closePanel()); close.addEventListener("click", closePanel); form.addEventListener("submit", (event) => { event.preventDefault(); submitQuestion(input.value); }); document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !panel.hidden) closePanel(); });
     setReadyState(false);
-
-    if (!searchApi || typeof window.Fuse !== "function") {
-      messageLog.textContent = "うのっちナビを読み込めませんでした。ページを再読み込みしてください。";
-      return;
-    }
-
-    fetch(knowledgeUrl, { credentials: "same-origin" })
-      .then((response) => {
-        if (!response.ok) throw new Error(`knowledge.json: ${response.status}`);
-        return response.json();
-      })
-      .then((data) => {
-        knowledge = data;
-        searchEngine = searchApi.createSearchEngine(window.Fuse, data.intents);
-        setReadyState(true);
-        renderWelcome();
-
-        // Read-only inspection surface for local acceptance tests.
-        window.UnotchiNav = Object.freeze({
-          version: data.version,
-          intentCount: data.intents.length,
-          findIntent: (query) => searchEngine.search(query)?.intent.id || null
-        });
-      })
-      .catch((error) => {
-        console.error("うのっちナビの初期化に失敗しました。", error);
-        messageLog.textContent = "うのっちナビを読み込めませんでした。ページを再読み込みしてください。";
-      });
+    if (!searchApi || !tourApi || typeof window.Fuse !== "function") { state.view = "error"; content.replaceChildren(errorCard()); return; }
+    fetch(widget.dataset.knowledgeUrl, { credentials: "same-origin" }).then((response) => { if (!response.ok) throw new Error(`knowledge.json: ${response.status}`); return response.json(); }).then((data) => { const validation = tourApi.validateTours(data.tours, data.intents); if (!validation.ok) throw new Error(validation.error); knowledge = data; engine = searchApi.createSearchEngine(window.Fuse, data.intents); setReadyState(true); showWelcome(); window.UnotchiNav = Object.freeze({ version: data.version, intentCount: data.intents.length, findIntent: (query) => engine.search(query)?.intent.id || null }); }).catch((error) => { console.error("うのっちナビの初期化に失敗しました。", error); state.view = "error"; setReadyState(false); content.replaceChildren(errorCard()); });
   }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializeWidget, { once: true });
-  } else {
-    initializeWidget();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initializeWidget, { once: true }); else initializeWidget();
 })();

@@ -30,7 +30,7 @@ const acceptedQuestions = new Map([
 ]);
 
 test("knowledge contains 15 unique intents", () => {
-  assert.equal(knowledge.version, "1.0.0");
+  assert.equal(knowledge.version, "1.1.0");
   assert.equal(knowledge.intents.length, 15);
   assert.equal(new Set(knowledge.intents.map((intent) => intent.id)).size, 15);
 });
@@ -76,6 +76,8 @@ test("knowledge links are non-empty and internal anchors exist", () => {
       }
     }
   }
+  for (const intentId of knowledge.welcome.intentIds) assert.ok(knowledge.intents.some((intent) => intent.id === intentId));
+  for (const tour of knowledge.tours) for (const step of tour.steps) assert.ok(knowledge.intents.some((intent) => intent.id === step.intentId));
 });
 
 test("event copy avoids disallowed identity wording", () => {

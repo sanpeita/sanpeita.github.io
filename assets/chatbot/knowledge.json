@@ -1,11 +1,31 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "bot": {
     "name": "うのっちナビ",
     "description": "うのっちの活動・作品・技術・教育について案内するポートフォリオチャットボットです。",
     "avatar": "/images/davi.jpeg",
     "disclaimer": "登録された公開情報をもとに回答します。うのっち本人のリアルタイム発言ではありません。"
   },
+  "welcome": {
+    "message": "こんにちは。うのっちの活動を、作品・教育・V文化論のつながりからご案内します。初めての方は、おすすめツアーからどうぞ。",
+    "primaryAction": { "type": "tour", "tourId": "recommended", "label": "おすすめツアーをはじめる" },
+    "intentIds": ["profile-overview", "representative-works", "v-culture", "digital-education"]
+  },
+  "tours": [
+    {
+      "id": "recommended",
+      "title": "うのっちを知るおすすめツアー",
+      "steps": [
+        { "intentId": "profile-overview", "heading": "まず、うのっちについて" },
+        { "intentId": "vtuber-history", "heading": "VTuberを表現の器に" },
+        { "intentId": "representative-works", "heading": "遊びと技術を作品に", "note": "Unity、Blender、Roblox、Minecraft、toioまで、遊びと技術を横断して作品にしています。" },
+        { "intentId": "digital-education", "heading": "難しそうを、学べそうに" },
+        { "intentId": "digital-fabrication", "heading": "画面の中から、手で触れるものへ" },
+        { "intentId": "v-culture", "heading": "活動をつなぐV文化論", "note": "TED世界共創計画にもつながる、アバターと関係性についての考え方です。" },
+        { "intentId": "events-awards", "heading": "教育・toio・実績が交わる場所" }
+      ]
+    }
+  ],
   "intents": [
     {
       "id": "profile-overview",

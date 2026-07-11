@@ -23,6 +23,7 @@
 - `assets/chatbot/knowledge.json` — うのっちナビの事実・回答・関連リンク・おすすめ質問
 - `assets/chatbot/chatbot.js` — 右下ウィジェットの表示と操作
 - `assets/chatbot/search-core.js` — Fuse.js検索と回答選択
+- `assets/chatbot/tour-core.js` — おすすめツアーの検証と前後遷移
 - `assets/chatbot/fuse.min.js` — 同梱しているFuse.js 7.1.0（Apache-2.0。ライセンスは同ディレクトリ内）
 
 ## トップ画像
@@ -42,9 +43,9 @@
 
 GitHub Pagesは `master` ブランチのルートを公開対象として運用します。
 
-## うのっちナビ 1.0
+## うのっちナビ 1.1
 
-右下のファンアートアイコンから開く、ブラウザ完結型のポートフォリオ案内です。外部AI APIやサーバーは使わず、`assets/chatbot/knowledge.json` の15カテゴリをFuse.jsで検索します。
+右下のファンアートアイコンから開く、ブラウザ完結型のポートフォリオ案内です。外部AI APIやサーバーは使わず、`assets/chatbot/knowledge.json` の15カテゴリをFuse.jsで検索し、welcome画面から7stepのおすすめツアーも案内します。
 
 ### 知識を追加・更新する
 
@@ -54,24 +55,13 @@ GitHub Pagesは `master` ブランチのルートを公開対象として運用�
 4. `keywords` と `questions` に自然な検索語を追加する
 5. `links` は実在URLまたはページ内の実在アンカーだけを使う
 6. `suggestions` は、次に案内したい既存intentへ自然につながる質問文にする
-7. JSON構文、15カテゴリの検索、範囲外質問のフォールバックを確認してから公開する
+7. `welcome.intentIds` は初見向けの4カテゴリ、`tours[].steps` は既存intentへの参照として管理する
+8. JSON構文、15カテゴリの検索、範囲外質問、ツアー境界を確認してから公開する
 
 回答文はサイト閲覧時に生成しません。複数の登録済み回答がある場合だけ、直前と同じ回答を避けながら選びます。
 
 ローカルの検索受け入れテストは、リポジトリ直下で次を実行します。
 
 ```powershell
-node --test tests/chatbot-search.test.cjs
+node --test tests/*.test.cjs
 ```
-
-### Version 1.1候補: おすすめツアー
-
-1.0公開後の候補として、既存intentを順番に案内する「おすすめツアー」を予定しています。
-
-- ゲーム制作を知る
-- toioを見る
-- Blenderを見る
-- VTuber活動を見る
-- 教育活動を見る
-
-ツアー順序も将来 `knowledge.json` で管理し、「次へ」「前へ」「終了」と途中離脱を備える想定です。1.0では実装せず、現在の安定したintent IDとsuggestionsを再利用できる構成に留めています。
