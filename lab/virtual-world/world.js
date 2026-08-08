@@ -16,9 +16,9 @@ const exhibitLinks = document.querySelector("#exhibit-links");
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x091426);
-scene.fog = new THREE.Fog(0x091426, 12, 31);
+scene.fog = new THREE.Fog(0x091426, 18, 145);
 
-const camera = new THREE.PerspectiveCamera(67, window.innerWidth / window.innerHeight, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(67, window.innerWidth / window.innerHeight, 0.1, 160);
 camera.rotation.order = "YXZ";
 camera.position.set(0, 1.7, 8.2);
 
@@ -30,6 +30,16 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 const clock = new THREE.Clock();
 const keyState = new Set();
 const interactionRange = 4.1;
+const PLAYER_RADIUS = 1.2;
+const WORLD_BOUNDS = { minX: -11.5, maxX: 11.5, minZ: -105, maxZ: 9.3 };
+const colliders = [];
+
+const DOOR_HALF = 2.5;
+const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x101e33, roughness: 0.78, metalness: 0.2 });
+const wallMaterial = new THREE.MeshStandardMaterial({ color: 0x132943, roughness: 0.86, metalness: 0.08 });
+const lintelMaterial = new THREE.MeshStandardMaterial({ color: 0x203c5c, roughness: 0.7, metalness: 0.15 });
+const boardMaterial = new THREE.MeshStandardMaterial({ color: 0x1b3050, roughness: 0.45, metalness: 0.3, side: THREE.DoubleSide });
+const frameMaterial = new THREE.MeshStandardMaterial({ color: 0x4ea6d8, roughness: 0.4, metalness: 0.35 });
 let yaw = 0;
 let pitch = -0.05;
 let nearestExhibit = null;
@@ -73,6 +83,90 @@ const exhibits = {
       { label: "OfflineFlap ↗", href: "https://github.com/sanpeita/OfflineFlap" },
       { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" }
     ]
+  },
+  "profile-about": {
+    type: "02 / PROFILE ROOM",
+    title: "自己紹介：教育 × 制作 × VTuber",
+    description: "うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年からVTuberとして制作過程と学びの実践を発信しています。難しい仕組みをすべて説明するのではなく、最初の「無理そう」をひとつ減らすことを大切にしています。",
+    links: [
+      { label: "noteでV文化論を読む ↗", href: "https://note.com/sanpeita" },
+      { label: "YouTubeを見る ↗", href: "https://www.youtube.com/@TheSANPEITA" }
+    ]
+  },
+  "profile-bring": {
+    type: "02 / PROFILE ROOM",
+    title: "What I Bring：入口をつくる",
+    description: "「観察する」初見が止まる場所を見つける。「小さく作る」伝わる形まで試して見せる。「続けて直す」反応を見て、次の一歩を軽くする。全部覚えなくて大丈夫、まずはひとつ見えれば十分です。",
+    links: [
+      { label: "ポートフォリオの自己紹介へ", href: "../../#about" },
+      { label: "代表作を見る ↗", href: "../../#works" }
+    ]
+  },
+  "works-movies": {
+    type: "03 / WORKS ROOM",
+    title: "まず見てほしい、代表作4本",
+    description: "短い時間で、教育・ゲーム・デバイス・思想の4つの強みが分かる代表作です。toioで自作ツインスティック、Blenderの「複製1個」、RobloxでのBackrooms再現、そしてV文化論のフィールド設計。",
+    links: [
+      { label: "toio自作ツインスティック ↗", href: "https://www.youtube.com/watch?v=YogaOVAiXTU" },
+      { label: "Blender「複製1個」↗", href: "https://www.youtube.com/watch?v=wpBQTzA3uyg" },
+      { label: "爆発Backroomsをゲーム化 ↗", href: "https://www.youtube.com/watch?v=Hn6c8Ln2A0w" },
+      { label: "近づく前にフィールドを合わせる ↗", href: "https://www.youtube.com/watch?v=Jg-ROUK7HN0" }
+    ]
+  },
+  "works-projects": {
+    type: "03 / WORKS ROOM",
+    title: "公開作品から、次の試作へ",
+    description: "動画として見せること、実機で試すこと、次の人が触れられる形にすること。Blenderできそうシリーズ、toioTacticalField、ゲームと空間の公開制作を中心に、今も小さく続けています。",
+    links: [
+      { label: "Blenderできそうシリーズ ↗", href: "https://www.youtube.com/@TheSANPEITA/shorts" },
+      { label: "unityroomの作品 ↗", href: "https://unityroom.com/users/bapfjey9s3kr14itud7h" },
+      { label: "ProtoPedia ↗", href: "https://protopedia.net/prototyper/sanpeita" }
+    ]
+  },
+  "games-casual": {
+    type: "04 / GAMES & EXPERIMENTS",
+    title: "通信なしで遊べる、カジュアルゲーム",
+    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、コードと記録をGitHubで公開しています。",
+    links: [
+      { label: "Hole-IO ↗", href: "https://github.com/sanpeita/Hole-IO-Casual-Game" },
+      { label: "dodge & gather ↗", href: "https://github.com/sanpeita/dodge-and-gather" },
+      { label: "OfflineFlap ↗", href: "https://github.com/sanpeita/OfflineFlap" },
+      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" }
+    ]
+  },
+  "games-experiments": {
+    type: "04 / GAMES & EXPERIMENTS",
+    title: "実験的プロジェクト",
+    description: "この展示室そのものが、Web上で「遊んで分かる」を試す実験です。Phase 0から少しずつ会場を育てています。他にもゲームと空間の公開制作を、GitHubとunityroomで積み上げています。",
+    links: [
+      { label: "この展示室のコード ↗", href: "https://github.com/sanpeita/sanpeita.github.io/tree/master/lab/virtual-world" },
+      { label: "GitHub ↗", href: "https://github.com/sanpeita" },
+      { label: "unityroom ↗", href: "https://unityroom.com/users/bapfjey9s3kr14itud7h" }
+    ]
+  },
+  "exit-souvenirs": {
+    type: "05 / EXIT · OMIYAGE",
+    title: "おみやげコーナー：活動を持ち帰る",
+    description: "今日の展示はいかがでしたか。気になった活動は、それぞれの場所から持ち帰れます。動画、思想、制作ログ。見たい距離から、気になる入口を選んでください。",
+    links: [
+      { label: "YouTube ↗", href: "https://www.youtube.com/@TheSANPEITA" },
+      { label: "note ↗", href: "https://note.com/sanpeita" },
+      { label: "X ↗", href: "https://x.com/unoksanpt" },
+      { label: "TikTok ↗", href: "https://www.tiktok.com/@unotchi" },
+      { label: "GitHub ↗", href: "https://github.com/sanpeita" },
+      { label: "Qiita ↗", href: "https://qiita.com/sanpeita" }
+    ]
+  },
+  "exit-portfolios": {
+    type: "05 / EXIT · OMIYAGE",
+    title: "外部サービス上の公開実績",
+    description: "あちこちに積み上がった作品と記録の棚です。ProtoPedia、3D Data Japan、cluster、Fortniteクリエイター島などからも遊べます。",
+    links: [
+      { label: "ProtoPedia ↗", href: "https://protopedia.net/prototyper/sanpeita" },
+      { label: "3D Data Japan ↗", href: "https://3d-data.skhonpo.com/collections/unotchi_sanpeita" },
+      { label: "cluster ↗", href: "https://cluster.mu/u/sanpeita" },
+      { label: "Fortnite ↗", href: "https://www.fortnite.com/@unotchi/8265-0398-2062?lang=ja" }
+    ]
   }
 };
 
@@ -89,10 +183,46 @@ function addLights() {
   scene.add(ambient);
 }
 
+function addMeshCollider(mesh) {
+  const geometry = mesh.geometry;
+  geometry.computeBoundingBox();
+  const box = geometry.boundingBox;
+  colliders.push({
+    minX: mesh.position.x + box.min.x,
+    maxX: mesh.position.x + box.max.x,
+    minZ: mesh.position.z + box.min.z,
+    maxZ: mesh.position.z + box.max.z
+  });
+}
+
+function hWall(x1, x2, z) {
+  const mesh = new THREE.Mesh(new THREE.BoxGeometry(x2 - x1, 7, 0.35), wallMaterial);
+  mesh.position.set((x1 + x2) / 2, 3.5, z);
+  scene.add(mesh);
+  addMeshCollider(mesh);
+  return mesh;
+}
+
+function vWall(z1, z2, x) {
+  const mesh = new THREE.Mesh(new THREE.BoxGeometry(0.35, 7, z2 - z1), wallMaterial);
+  mesh.position.set(x, 3.5, (z1 + z2) / 2);
+  scene.add(mesh);
+  addMeshCollider(mesh);
+  return mesh;
+}
+
+function hWallWithDoor(x1, x2, z) {
+  if (x1 < -DOOR_HALF) hWall(x1, -DOOR_HALF, z);
+  if (DOOR_HALF < x2) hWall(DOOR_HALF, x2, z);
+  const lintel = new THREE.Mesh(new THREE.BoxGeometry(DOOR_HALF * 2, 4.2, 0.35), lintelMaterial);
+  lintel.position.set(0, 4.9, z);
+  scene.add(lintel);
+}
+
 function addRoom() {
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(22, 22),
-    new THREE.MeshStandardMaterial({ color: 0x101e33, roughness: 0.78, metalness: 0.2 })
+    floorMaterial
   );
   floor.rotation.x = -Math.PI / 2;
   scene.add(floor);
@@ -101,18 +231,17 @@ function addRoom() {
   grid.position.y = 0.006;
   scene.add(grid);
 
-  const wallMaterial = new THREE.MeshStandardMaterial({ color: 0x132943, roughness: 0.86, metalness: 0.08 });
-  const backWall = new THREE.Mesh(new THREE.BoxGeometry(22, 7, 0.35), wallMaterial);
-  backWall.position.set(0, 3.5, -10.8);
-  scene.add(backWall);
+  hWallWithDoor(-11, 11, -10.8);
 
   const leftWall = new THREE.Mesh(new THREE.BoxGeometry(0.35, 7, 22), wallMaterial);
   leftWall.position.set(-10.8, 3.5, 0);
   scene.add(leftWall);
+  addMeshCollider(leftWall);
 
   const rightWall = leftWall.clone();
   rightWall.position.x = 10.8;
   scene.add(rightWall);
+  addMeshCollider(rightWall);
 
   const trimMaterial = new THREE.MeshBasicMaterial({ color: 0x4ea6d8 });
   const trim = new THREE.Mesh(new THREE.BoxGeometry(18, 0.05, 0.05), trimMaterial);
@@ -122,6 +251,159 @@ function addRoom() {
   const titleLight = new THREE.PointLight(0xa4ebd4, 3.4, 9, 2);
   titleLight.position.set(0, 3.4, -8.7);
   scene.add(titleLight);
+}
+
+function makeLabel(text, options = {}) {
+  const { fontSize = 30, width = 640, height = 128, color = "#e9f5ff", accent = 0x4ea6d8 } = options;
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "rgba(7, 16, 31, 0.84)";
+  ctx.fillRect(0, 0, width, height);
+  const accentHex = "#" + accent.toString(16).padStart(6, "0");
+  ctx.fillStyle = accentHex;
+  ctx.fillRect(0, 0, width, 6);
+  ctx.fillStyle = color;
+  ctx.font = `700 ${fontSize}px "BIZ UDPGothic", "Hiragino Sans", sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(text, width / 2, height / 2);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
+  const sprite = new THREE.Sprite(material);
+  sprite.scale.set(width / 256, height / 256, 1);
+  return sprite;
+}
+
+function addFloorArrow(z, dir) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 128;
+  canvas.height = 128;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, 128, 128);
+  ctx.fillStyle = "rgba(128, 209, 255, 0.9)";
+  ctx.beginPath();
+  const tipY = dir < 0 ? 14 : 114;
+  const baseY = dir < 0 ? 114 : 14;
+  ctx.moveTo(14, baseY);
+  ctx.lineTo(64, tipY);
+  ctx.lineTo(114, baseY);
+  ctx.closePath();
+  ctx.fill();
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, depthWrite: false });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 2.6), material);
+  mesh.rotation.x = -Math.PI / 2;
+  mesh.position.set(0, 0.014, z);
+  scene.add(mesh);
+}
+
+function addWallPanel({ x, z, facing, width = 3.4, height = 2.1, label }) {
+  const group = new THREE.Group();
+  const board = new THREE.Mesh(new THREE.PlaneGeometry(width, height), boardMaterial);
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(width + 0.16, height + 0.16, 0.08), frameMaterial);
+  board.position.z = 0.04;
+  group.add(frame, board);
+  group.position.set(x, 2.6, z);
+  group.rotation.y = facing;
+  scene.add(group);
+  if (label) {
+    const tag = makeLabel(label, { width: 520, height: 100, fontSize: 24 });
+    tag.position.set(x, 3.95, z);
+    scene.add(tag);
+  }
+  return { position: group.position };
+}
+
+function buildCorridor(z1, z2, nextLabel) {
+  const depth = z2 - z1;
+  const center = (z1 + z2) / 2;
+
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(6, depth), floorMaterial);
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.z = center;
+  scene.add(floor);
+
+  const grid = new THREE.GridHelper(6, 6, 0x2f668a, 0x1c3852);
+  grid.scale.set(1, 1, depth / 6);
+  grid.position.y = 0.006;
+  grid.position.z = center;
+  scene.add(grid);
+
+  vWall(z1, z2, -3);
+  vWall(z1, z2, 3);
+
+  addFloorArrow(center, -1);
+
+  const sign = makeLabel("→ " + nextLabel, { width: 560, height: 120, fontSize: 26 });
+  sign.position.set(-2.4, 2.3, center);
+  scene.add(sign);
+}
+
+function buildRoom({ z1, z2, title, accent, backDoor = true }) {
+  const depth = z2 - z1;
+  const center = (z1 + z2) / 2;
+
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(22, depth), floorMaterial);
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.z = center;
+  scene.add(floor);
+
+  const grid = new THREE.GridHelper(22, 22, 0x2f668a, 0x1c3852);
+  grid.scale.set(1, 1, depth / 22);
+  grid.position.y = 0.006;
+  grid.position.z = center;
+  scene.add(grid);
+
+  vWall(z1, z2, -10.8);
+  vWall(z1, z2, 10.8);
+
+  hWallWithDoor(-11, 11, z1);
+  if (backDoor) hWallWithDoor(-11, 11, z2);
+  else hWall(-11, 11, z2);
+
+  const light = new THREE.PointLight(accent, 4.2, 18, 2);
+  light.position.set(0, 3.8, center);
+  scene.add(light);
+
+  const sign = makeLabel(title, { width: 680, height: 126, fontSize: 32, accent });
+  sign.position.set(0, 5.35, z1 - 0.25);
+  scene.add(sign);
+}
+
+function buildPhase1() {
+  buildCorridor(-11, -17, "02 PROFILE ROOM");
+  buildRoom({ z1: -17, z2: -33, title: "02 PROFILE ROOM", accent: 0x8fd3b6 });
+  exhibitObjects.push({ id: "profile-about", position: addWallPanel({ x: -10.2, z: -24, facing: Math.PI / 2, label: "自己紹介" }).position });
+  exhibitObjects.push({ id: "profile-bring", position: addWallPanel({ x: 10.2, z: -26, facing: -Math.PI / 2, label: "What I Bring" }).position });
+
+  buildCorridor(-33, -39, "03 WORKS ROOM");
+  buildRoom({ z1: -39, z2: -55, title: "03 WORKS ROOM", accent: 0x79c7f2 });
+  exhibitObjects.push({ id: "works-movies", position: addWallPanel({ x: -3.2, z: -53.6, facing: 0, label: "代表作4本" }).position });
+  exhibitObjects.push({ id: "works-projects", position: addWallPanel({ x: 3.2, z: -53.6, facing: 0, label: "主要プロジェクト" }).position });
+
+  buildCorridor(-55, -61, "04 GAMES & EXPERIMENTS");
+  buildRoom({ z1: -61, z2: -77, title: "04 GAMES & EXPERIMENTS", accent: 0xffd166 });
+  exhibitObjects.push({ id: "games-casual", position: addWallPanel({ x: -3.2, z: -75.6, facing: 0, label: "カジュアルゲーム" }).position });
+  exhibitObjects.push({ id: "games-experiments", position: addWallPanel({ x: 3.2, z: -75.6, facing: 0, label: "実験的プロジェクト" }).position });
+
+  buildCorridor(-77, -83, "05 EXIT · OMIYAGE");
+  buildRoom({ z1: -83, z2: -99, title: "05 EXIT · OMIYAGE", accent: 0xc96a4a });
+  exhibitObjects.push({ id: "exit-souvenirs", position: addWallPanel({ x: -3.2, z: -97.6, facing: 0, label: "おみやげコーナー" }).position });
+  exhibitObjects.push({ id: "exit-portfolios", position: addWallPanel({ x: 3.2, z: -97.6, facing: 0, label: "外部サービス実績" }).position });
+
+  hWall(-11, 11, -99);
+
+  const farewell = makeLabel("FIN · ありがとうございました", { width: 760, height: 170, fontSize: 34, accent: 0xffd166 });
+  farewell.position.set(0, 5.1, -98.6);
+  scene.add(farewell);
+
+  const entranceSign = makeLabel("01 ENTRANCE HALL", { width: 640, height: 120, fontSize: 30, accent: 0x79c7f2 });
+  entranceSign.position.set(0, 5.4, -10.5);
+  scene.add(entranceSign);
 }
 
 function addPedestal(position, color, feature) {
@@ -219,6 +501,7 @@ const exhibitObjects = [
 
 addLights();
 addRoom();
+buildPhase1();
 
 function setStatus(message) {
   status.textContent = message;
@@ -282,6 +565,18 @@ function updatePointerLockState() {
   }
 }
 
+function isBlocked(x, z) {
+  for (const collider of colliders) {
+    if (
+      x > collider.minX - PLAYER_RADIUS && x < collider.maxX + PLAYER_RADIUS &&
+      z > collider.minZ - PLAYER_RADIUS && z < collider.maxZ + PLAYER_RADIUS
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function move(delta) {
   if (document.pointerLockElement !== canvas || !panel.hidden) return;
 
@@ -294,13 +589,25 @@ function move(delta) {
   const speed = keyState.has("ShiftLeft") || keyState.has("ShiftRight") ? 5.4 : 3.2;
   const distance = speed * delta;
 
-  if (keyState.has("KeyW")) camera.position.addScaledVector(forward, distance);
-  if (keyState.has("KeyS")) camera.position.addScaledVector(forward, -distance);
-  if (keyState.has("KeyD")) camera.position.addScaledVector(right, distance);
-  if (keyState.has("KeyA")) camera.position.addScaledVector(right, -distance);
+  const inputX = (keyState.has("KeyD") ? 1 : 0) - (keyState.has("KeyA") ? 1 : 0);
+  const inputZ = (keyState.has("KeyS") ? 1 : 0) - (keyState.has("KeyW") ? 1 : 0);
+  const targetX = camera.position.x + right.x * inputX * distance + forward.x * inputZ * distance;
+  const targetZ = camera.position.z + right.z * inputX * distance + forward.z * inputZ * distance;
 
-  camera.position.x = THREE.MathUtils.clamp(camera.position.x, -9.3, 9.3);
-  camera.position.z = THREE.MathUtils.clamp(camera.position.z, -9.2, 9.3);
+  if (!isBlocked(targetX, targetZ)) {
+    camera.position.x = targetX;
+    camera.position.z = targetZ;
+  } else {
+    let resultX = camera.position.x;
+    let resultZ = camera.position.z;
+    if (!isBlocked(targetX, camera.position.z)) resultX = targetX;
+    if (!isBlocked(camera.position.x, targetZ)) resultZ = targetZ;
+    camera.position.x = resultX;
+    camera.position.z = resultZ;
+  }
+
+  camera.position.x = THREE.MathUtils.clamp(camera.position.x, WORLD_BOUNDS.minX, WORLD_BOUNDS.maxX);
+  camera.position.z = THREE.MathUtils.clamp(camera.position.z, WORLD_BOUNDS.minZ, WORLD_BOUNDS.maxZ);
 }
 
 function updateNearestExhibit() {
@@ -326,11 +633,14 @@ function updateNearestExhibit() {
 }
 
 function animateExhibits(elapsed) {
-  exhibitObjects.forEach(({ id, animation }, index) => {
-    animation.halo.rotation.z = elapsed * (0.28 + index * 0.05);
-    animation.visual.rotation.y = elapsed * (0.45 + index * 0.08);
-    animation.visual.position.y = 2.45 + Math.sin(elapsed * 1.1 + index) * 0.13;
+  let floatingIndex = 0;
+  exhibitObjects.forEach(({ id, animation }) => {
+    if (!animation) return;
+    animation.halo.rotation.z = elapsed * (0.28 + floatingIndex * 0.05);
+    animation.visual.rotation.y = elapsed * (0.45 + floatingIndex * 0.08);
+    animation.visual.position.y = 2.45 + Math.sin(elapsed * 1.1 + floatingIndex) * 0.13;
     if (id === "toio") animation.visual.rotation.x = Math.sin(elapsed * 0.8) * 0.15;
+    floatingIndex += 1;
   });
 }
 
