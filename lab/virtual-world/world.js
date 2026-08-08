@@ -590,7 +590,7 @@ function move(delta) {
   const distance = speed * delta;
 
   const inputX = (keyState.has("KeyD") ? 1 : 0) - (keyState.has("KeyA") ? 1 : 0);
-  const inputZ = (keyState.has("KeyS") ? 1 : 0) - (keyState.has("KeyW") ? 1 : 0);
+  const inputZ = (keyState.has("KeyW") ? 1 : 0) - (keyState.has("KeyS") ? 1 : 0);
   const targetX = camera.position.x + right.x * inputX * distance + forward.x * inputZ * distance;
   const targetZ = camera.position.z + right.z * inputX * distance + forward.z * inputZ * distance;
 
