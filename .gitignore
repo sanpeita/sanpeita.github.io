@@ -1,0 +1,2 @@
+# Local browser-validation artifacts. They are reproducible and must not be published.
+.playwright-cli/

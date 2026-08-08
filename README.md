@@ -25,6 +25,11 @@
 - `assets/chatbot/search-core.js` — Fuse.js検索と回答選択
 - `assets/chatbot/tour-core.js` — おすすめツアーの検証と前後遷移
 - `assets/chatbot/fuse.min.js` — 同梱しているFuse.js 7.1.0（Apache-2.0。ライセンスは同ディレクトリ内）
+- `lab/virtual-world/` — Three.jsで作る、独立した歩ける展示室のPhase 0実験
+
+## 実験ページ
+
+`/lab/virtual-world/` は、トップページから控えめに案内する独立ページです。WASD移動、マウス視点、展示物への接近と説明パネル、公開作品・GitHubへのリンクまでを最小範囲とし、トップページの導線や既存のうのっちナビを置き換えません。
 
 ## トップ画像
 

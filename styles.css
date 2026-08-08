@@ -514,6 +514,38 @@ h2 {
 .evidence-links a:hover,
 .evidence-links a:focus-visible { border-color: var(--navy); }
 
+.lab-note {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 28px;
+  margin-top: 14px;
+  padding: 20px 24px;
+  border: 1px dashed rgba(31, 79, 116, 0.24);
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.62);
+}
+
+.lab-note > div { display: grid; gap: 4px; }
+.lab-note small { color: var(--navy); font-size: 9px; font-weight: 800; letter-spacing: 0.14em; }
+.lab-note strong { font-family: var(--serif); font-size: 19px; }
+.lab-note p { margin: 0; color: var(--muted); font-size: 13px; }
+
+.lab-note-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 2px;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lab-note-link:hover,
+.lab-note-link:focus-visible { color: var(--navy-dark); text-decoration: underline; text-underline-offset: 4px; }
+
 .statement-section { background: var(--navy); }
 
 .statement-card { color: white; text-align: center; }
@@ -956,6 +988,7 @@ footer p { margin: 0; color: var(--muted); font-size: 10px; }
   .section-heading { grid-template-columns: 1fr; gap: 16px; }
   .evidence-band { grid-template-columns: 1fr; gap: 18px; }
   .evidence-links { justify-content: flex-start; }
+  .lab-note { grid-template-columns: 1fr; align-items: start; }
 }
 
 @media (max-width: 700px) {

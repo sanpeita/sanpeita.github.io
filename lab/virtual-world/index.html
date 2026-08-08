@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11192a">
+  <meta name="description" content="うのっちの公開作品を歩いて巡る、WebポートフォリオのPhase 0実験展示室。">
+  <meta name="robots" content="noindex,follow">
+  <title>Virtual World Lab | うのっち ポートフォリオ</title>
+  <link rel="canonical" href="https://sanpeita.github.io/lab/virtual-world/">
+  <link rel="icon" href="../../images/davi.jpeg">
+  <link rel="stylesheet" href="world.css">
+</head>
+<body>
+  <a class="skip-link" href="#world-directory">展示一覧へ移動</a>
+  <canvas id="world" aria-label="うのっちのバーチャル展示室"></canvas>
+
+  <div class="world-ui">
+    <header class="world-header">
+      <a class="back-link" href="../../">← ポートフォリオへ戻る</a>
+      <p>VIRTUAL WORLD LAB <span>PHASE 0</span></p>
+    </header>
+
+    <main class="world-main">
+      <section class="welcome-card" id="welcome-card" aria-labelledby="world-title">
+        <p class="eyebrow">EXPERIMENTAL EXHIBITION</p>
+        <h1 id="world-title">歩いて見る、<br><span>うのっちの展示会場。</span></h1>
+        <p>これはcluster級を目指す前の、小さなWeb実験です。会場を歩き、作品に近づくと説明と公開リンクを開けます。</p>
+        <button class="enter-button" id="enter-world" type="button">会場に入る</button>
+        <p class="controls"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移動　<kbd>マウス</kbd> 視点　<kbd>E</kbd> 展示を見る</p>
+      </section>
+
+      <section class="world-directory" id="world-directory" aria-labelledby="directory-title">
+        <div class="directory-heading">
+          <p class="eyebrow">EXHIBIT DIRECTORY</p>
+          <h2 id="directory-title">展示を直接開く</h2>
+        </div>
+        <div class="directory-actions">
+          <button type="button" data-exhibit-open="blender">Blenderできそう</button>
+          <button type="button" data-exhibit-open="toio">toioTacticalField</button>
+          <button type="button" data-exhibit-open="github">GitHub作品</button>
+        </div>
+      </section>
+
+      <div class="reticle" aria-hidden="true"><span></span></div>
+
+      <section class="interaction-prompt" id="interaction-prompt" hidden aria-live="polite">
+        <p id="prompt-title"></p>
+        <button id="open-nearest" type="button">展示を見る <kbd>E</kbd></button>
+      </section>
+
+      <p class="world-status" id="world-status" role="status">「会場に入る」を押すと、マウス視点を開始します。</p>
+    </main>
+  </div>
+
+  <section class="exhibit-panel" id="exhibit-panel" hidden role="dialog" aria-modal="true" aria-labelledby="exhibit-title">
+    <div class="panel-backdrop" data-close-exhibit></div>
+    <div class="panel-card">
+      <button class="close-button" id="close-exhibit" type="button" aria-label="展示説明を閉じる">×</button>
+      <p class="eyebrow" id="exhibit-type"></p>
+      <h2 id="exhibit-title"></h2>
+      <p id="exhibit-description"></p>
+      <div class="panel-links" id="exhibit-links"></div>
+    </div>
+  </section>
+
+  <noscript>
+    <div class="noscript-message">この展示室はJavaScriptを使います。JavaScriptを有効にしてから開き直してください。</div>
+  </noscript>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="world.js"></script>
+</body>
+</html>
