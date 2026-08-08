@@ -19,6 +19,10 @@ const recentUrls = [
   "https://www.youtube.com/watch?v=LZgxWzS0UVY",
   "https://www.youtube.com/watch?v=A-OFtZaHR0o"
 ];
+const casualGameUrls = [
+  "https://sanpeita.github.io/gomoku/",
+  "https://sanpeita.github.io/Crowd-Runner/"
+];
 
 test("2020 YouTube origin copy is aligned across index, knowledge, and world", () => {
   for (const [name, source] of [["index", index], ["knowledge", knowledgeText], ["world", worldJs]]) {
@@ -31,6 +35,20 @@ test("the four recent video URLs are aligned across index, knowledge, and world"
     assert.ok(index.includes(url), `index: ${url}`);
     assert.ok(knowledgeText.includes(url), `knowledge: ${url}`);
     assert.ok(worldJs.includes(url), `world: ${url}`);
+  }
+});
+
+test("the two playable casual games are aligned across the portfolio and virtual world pedestal", () => {
+  const casualExhibitStart = worldJs.indexOf('"games-casual": {');
+  const casualExhibitEnd = worldJs.indexOf('"games-experiments": {', casualExhibitStart);
+  const casualExhibit = worldJs.slice(casualExhibitStart, casualExhibitEnd);
+
+  assert.ok(casualExhibitStart >= 0);
+  assert.ok(casualExhibitEnd > casualExhibitStart);
+  assert.ok(casualExhibit.includes("通信なしで遊べる、カジュアルゲーム6本"));
+  for (const url of casualGameUrls) {
+    assert.ok(index.includes(url), `index: ${url}`);
+    assert.ok(casualExhibit.includes(url), `games-casual: ${url}`);
   }
 });
 

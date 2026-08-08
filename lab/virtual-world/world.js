@@ -104,13 +104,15 @@ const exhibits = {
   },
   games: {
     type: "AI STUDIO / OFFLINE GAMES",
-    title: "通信なしで遊べる、カジュアルゲーム4本",
-    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、コードと記録をGitHubで公開しています。",
+    title: "通信なしで遊べる、カジュアルゲーム6本",
+    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、プレイページとコード・記録を公開しています。",
     links: [
       { label: "Hole-IO ↗", href: "https://github.com/sanpeita/Hole-IO-Casual-Game" },
       { label: "dodge & gather ↗", href: "https://github.com/sanpeita/dodge-and-gather" },
       { label: "OfflineFlap ↗", href: "https://github.com/sanpeita/OfflineFlap" },
-      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" }
+      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" },
+      { label: "五目並べ ↗", href: "https://sanpeita.github.io/gomoku/" },
+      { label: "Crowd Runner ↗", href: "https://sanpeita.github.io/Crowd-Runner/" }
     ]
   },
   "profile-about": {
@@ -165,13 +167,15 @@ const exhibits = {
   },
   "games-casual": {
     type: "04 / GAMES & EXPERIMENTS",
-    title: "通信なしで遊べる、カジュアルゲーム",
-    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、コードと記録をGitHubで公開しています。",
+    title: "通信なしで遊べる、カジュアルゲーム6本",
+    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、プレイページとコード・記録を公開しています。",
     links: [
       { label: "Hole-IO ↗", href: "https://github.com/sanpeita/Hole-IO-Casual-Game" },
       { label: "dodge & gather ↗", href: "https://github.com/sanpeita/dodge-and-gather" },
       { label: "OfflineFlap ↗", href: "https://github.com/sanpeita/OfflineFlap" },
-      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" }
+      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" },
+      { label: "五目並べ ↗", href: "https://sanpeita.github.io/gomoku/" },
+      { label: "Crowd Runner ↗", href: "https://sanpeita.github.io/Crowd-Runner/" }
     ]
   },
   "games-experiments": {
