@@ -5,6 +5,7 @@ const assert = require("node:assert/strict");
 
 const root = path.resolve(__dirname, "..");
 const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const styles = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 const worldHtml = fs.readFileSync(path.join(root, "lab/virtual-world/index.html"), "utf8");
 const worldJs = fs.readFileSync(path.join(root, "lab/virtual-world/world.js"), "utf8");
 const worldCss = fs.readFileSync(path.join(root, "lab/virtual-world/world.css"), "utf8");
@@ -44,4 +45,21 @@ test("knowledge contract and world fallbacks remain explicit", () => {
   assert.ok(worldJs.includes("prefers-reduced-motion: reduce"));
   assert.ok(worldCss.includes("right: clamp(18px, 3vw, 42px)"));
   assert.ok(worldCss.includes("body:not(.directory-first) .world-directory { right: auto;"));
+});
+
+test("top navigation and hero expose the virtual world without replacing existing CTAs", () => {
+  assert.match(index, /<nav aria-label="メインナビゲーション">\s*<a href="lab\/virtual-world\/">展示室<\/a>/);
+  assert.match(
+    index,
+    /<div class="hero-actions">\s*<a class="button button-primary" href="#works">代表作を見る<\/a>\s*<a class="button button-world" href="lab\/virtual-world\/">バーチャル展示室へ<\/a>\s*<a class="button button-secondary" href="https:\/\/www\.youtube\.com\/@TheSANPEITA"/
+  );
+  assert.ok(index.includes('<p class="hero-world-note">5室を歩く。90秒ガイドや展示一覧からも見られます。</p>'));
+});
+
+test("hero CTAs stay on one line and stack at 700px or below", () => {
+  assert.match(styles, /\.button\s*\{[^}]*white-space:\s*nowrap;/s);
+  assert.match(
+    styles,
+    /@media \(max-width: 700px\) \{[\s\S]*?\.hero-actions \{[^}]*flex-direction:\s*column;[^}]*align-items:\s*stretch;[^}]*\}[\s\S]*?\.hero-actions \.button \{[^}]*width:\s*100%;[^}]*\}/
+  );
 });
