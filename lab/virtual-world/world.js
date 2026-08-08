@@ -62,6 +62,17 @@ const exhibits = {
       { label: "GitHubを見る ↗", href: "https://github.com/sanpeita" },
       { label: "代表動画を見る ↗", href: "https://www.youtube.com/@TheSANPEITA" }
     ]
+  },
+  games: {
+    type: "AI STUDIO / OFFLINE GAMES",
+    title: "通信なしで遊べる、カジュアルゲーム4本",
+    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、コードと記録をGitHubで公開しています。",
+    links: [
+      { label: "Hole-IO ↗", href: "https://github.com/sanpeita/Hole-IO-Casual-Game" },
+      { label: "dodge & gather ↗", href: "https://github.com/sanpeita/dodge-and-gather" },
+      { label: "OfflineFlap ↗", href: "https://github.com/sanpeita/OfflineFlap" },
+      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" }
+    ]
   }
 };
 
@@ -174,14 +185,36 @@ function makeGithubObject() {
   return new THREE.Mesh(new THREE.OctahedronGeometry(0.9, 1), material);
 }
 
+function makeGamesObject() {
+  const group = new THREE.Group();
+  const colors = [0x7dcaff, 0x9de8ca, 0xffdd87, 0xc96a4a];
+  const cubeGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+  const positions = [
+    [-0.31, -0.31, 0],
+    [0.31, -0.31, 0.05],
+    [-0.31, 0.31, -0.05],
+    [0.31, 0.31, 0.02]
+  ];
+  positions.forEach(([x, y, z], index) => {
+    const material = new THREE.MeshStandardMaterial({ color: colors[index], metalness: 0.5, roughness: 0.3, emissive: colors[index], emissiveIntensity: 0.18 });
+    const cube = new THREE.Mesh(cubeGeometry, material);
+    cube.position.set(x, y, z);
+    cube.rotation.set(y * 0.6, x * -0.5, index * 0.24);
+    group.add(cube);
+  });
+  return group;
+}
+
 const blenderObject = addPedestal(new THREE.Vector3(-5.0, 0, -3.1), 0x7dcaff, makeBlenderObject);
 const toioObject = addPedestal(new THREE.Vector3(0, 0, -6.3), 0x9de8ca, makeToioObject);
 const githubObject = addPedestal(new THREE.Vector3(5.0, 0, -3.1), 0xffdd87, makeGithubObject);
+const gamesObject = addPedestal(new THREE.Vector3(-2.6, 0, -7.6), 0xc96a4a, makeGamesObject);
 
 const exhibitObjects = [
   { id: "blender", position: blenderObject.group.position, animation: blenderObject },
   { id: "toio", position: toioObject.group.position, animation: toioObject },
-  { id: "github", position: githubObject.group.position, animation: githubObject }
+  { id: "github", position: githubObject.group.position, animation: githubObject },
+  { id: "games", position: gamesObject.group.position, animation: gamesObject }
 ];
 
 addLights();
