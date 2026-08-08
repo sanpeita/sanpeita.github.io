@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, "..");
 const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const worldHtml = fs.readFileSync(path.join(root, "lab/virtual-world/index.html"), "utf8");
 const worldJs = fs.readFileSync(path.join(root, "lab/virtual-world/world.js"), "utf8");
+const worldCss = fs.readFileSync(path.join(root, "lab/virtual-world/world.css"), "utf8");
 const knowledgeText = fs.readFileSync(path.join(root, "assets/chatbot/knowledge.json"), "utf8");
 const knowledge = JSON.parse(knowledgeText);
 
@@ -41,4 +42,6 @@ test("knowledge contract and world fallbacks remain explicit", () => {
   assert.ok(worldHtml.includes("JavaScriptなしでも利用できます"));
   assert.ok(worldJs.includes('const guideIds = ["profile-about", "works-movies", "works-latest", "games-experiments", "exit-souvenirs"]'));
   assert.ok(worldJs.includes("prefers-reduced-motion: reduce"));
+  assert.ok(worldCss.includes("right: clamp(18px, 3vw, 42px)"));
+  assert.ok(worldCss.includes("body:not(.directory-first) .world-directory { right: auto;"));
 });

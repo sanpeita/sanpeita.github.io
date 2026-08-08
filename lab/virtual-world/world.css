@@ -167,7 +167,8 @@ kbd {
 .world-directory {
   position: absolute;
   bottom: clamp(18px, 4vh, 42px);
-  left: clamp(18px, 3vw, 42px);
+  right: clamp(18px, 3vw, 42px);
+  left: auto;
   width: min(450px, calc(100vw - 36px));
   padding: 15px 18px;
   border: 1px solid var(--line);
@@ -178,7 +179,7 @@ kbd {
 
 body:not(.webgl-ready) .world-ui { position: relative; min-height: 100vh; }
 body:not(.webgl-ready) .world-main { min-height: 820px; }
-body:not(.webgl-ready) .world-directory { position: relative; bottom: auto; left: auto; width: min(760px, calc(100% - 32px)); margin: 420px auto 32px; }
+body:not(.webgl-ready) .world-directory { position: relative; right: auto; bottom: auto; left: auto; width: min(760px, calc(100% - 32px)); margin: 420px auto 32px; }
 body.webgl-ready.directory-first { overflow-y: auto; }
 body.directory-first #world { position: fixed; }
 body.directory-first .world-ui { position: relative; min-height: 100vh; display: block; }
@@ -339,7 +340,7 @@ body.is-exploring .reticle { opacity: 1; }
   .world-header { padding: 14px 16px; }
   .world-header p { font-size: 8px; }
   body:not(.directory-first) .welcome-card { top: 22px; left: 18px; }
-  body:not(.directory-first) .world-directory { bottom: 16px; left: 18px; max-height: 42vh; overflow: auto; }
+  body:not(.directory-first) .world-directory { right: auto; bottom: 16px; left: 18px; max-height: 42vh; overflow: auto; }
   .world-status { display: none; }
   .controls { line-height: 2; }
 }
