@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#11192a">
-  <meta name="description" content="うのっちの公開作品を歩いて巡る、WebポートフォリオのPhase 0実験展示室。">
+  <meta name="description" content="うのっちの公開作品を5室で巡る、独立したWebバーチャル展示室。">
   <meta name="robots" content="noindex,follow">
   <title>Virtual World Lab | うのっち ポートフォリオ</title>
   <link rel="canonical" href="https://sanpeita.github.io/lab/virtual-world/">
@@ -17,65 +17,60 @@
 
   <div class="world-ui">
     <header class="world-header">
-      <a class="back-link" href="../../">← ポートフォリオへ戻る</a>
-      <p>VIRTUAL WORLD LAB <span>PHASE 0</span></p>
+      <a class="back-link" href="../../">← 文字ポートフォリオへ戻る</a>
+      <p>VIRTUAL WORLD LAB <span>PHASE 0–3</span></p>
     </header>
 
     <main class="world-main">
       <section class="welcome-card" id="welcome-card" aria-labelledby="world-title">
-        <p class="eyebrow">EXPERIMENTAL EXHIBITION</p>
-        <h1 id="world-title">歩いて見る、<br><span>うのっちの展示会場。</span></h1>
-        <p>これはcluster級を目指す前の、小さなWeb実験です。会場を歩き、作品に近づくと説明と公開リンクを開けます。</p>
-        <button class="enter-button" id="enter-world" type="button">会場に入る</button>
-        <p class="controls"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移動　<kbd>マウス</kbd> 視点　<kbd>E</kbd> 展示を見る</p>
+        <p class="eyebrow">INDEPENDENT WEB EXHIBITION</p>
+        <h1 id="world-title">5室で出会う、<br><span>うのっちの制作。</span></h1>
+        <p>歩かなくても見られます。90秒ガイド、自由歩行、文字ポートフォリオの3つから選んでください。</p>
+        <div class="start-actions">
+          <button class="enter-button" id="start-guide" type="button">90秒ガイド</button>
+          <button class="enter-button secondary" id="enter-world" type="button">自由に歩く</button>
+          <a class="enter-button secondary" href="../../">文字ポートフォリオへ戻る</a>
+        </div>
+        <p class="controls"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移動　<kbd>E</kbd> 展示　<kbd>G</kbd> ガイド　<kbd>B</kbd> 戻る</p>
+        <p class="support-message" id="support-message">WebGLを利用できない場合も、下の展示一覧と実リンクはそのまま利用できます。</p>
       </section>
 
-      <section class="world-directory" id="world-directory" aria-labelledby="directory-title">
-        <div class="directory-heading">
-          <p class="eyebrow">EXHIBIT DIRECTORY</p>
-          <h2 id="directory-title">展示を直接開く</h2>
-        </div>
-        <div class="directory-actions">
-          <button type="button" data-exhibit-open="blender">Blenderできそう</button>
-          <button type="button" data-exhibit-open="toio">toioTacticalField</button>
-          <button type="button" data-exhibit-open="github">GitHub作品</button>
-          <button type="button" data-exhibit-open="games">カジュアルゲーム</button>
-        </div>
+      <section class="world-directory" id="world-directory" tabindex="-1" aria-labelledby="directory-title">
+        <div class="directory-heading"><p class="eyebrow">EXHIBIT DIRECTORY</p><h2 id="directory-title">展示一覧</h2></div>
+        <p>各展示の説明、または作品の公開先を直接開けます。</p>
+        <ul class="directory-list">
+          <li><a href="?exhibit=profile-about" data-exhibit-open="profile-about">PROFILE</a><a href="../../#about">自己紹介へ</a></li>
+          <li><a href="?exhibit=works-movies" data-exhibit-open="works-movies">SELECTED WORKS</a><a href="../../#works">代表作4本へ</a></li>
+          <li><a href="?exhibit=works-latest" data-exhibit-open="works-latest">RECENT BUILDS</a><a href="https://www.youtube.com/watch?v=VJ69-nhBhOU" target="_blank" rel="noopener noreferrer">最新作へ ↗</a></li>
+          <li><a href="?exhibit=games-experiments" data-exhibit-open="games-experiments">GAMES &amp; EXPERIMENTS</a><a href="https://unityroom.com/users/bapfjey9s3kr14itud7h" target="_blank" rel="noopener noreferrer">unityroomへ ↗</a></li>
+          <li><a href="?exhibit=exit-souvenirs" data-exhibit-open="exit-souvenirs">EXIT · OMIYAGE</a><a href="https://www.youtube.com/@TheSANPEITA" target="_blank" rel="noopener noreferrer">YouTubeへ ↗</a></li>
+        </ul>
       </section>
 
       <div class="reticle" aria-hidden="true"><span></span></div>
-
-      <section class="interaction-prompt" id="interaction-prompt" hidden aria-live="polite">
-        <p id="prompt-title"></p>
-        <button id="open-nearest" type="button">展示を見る <kbd>E</kbd></button>
-      </section>
-
-      <p class="world-status" id="world-status" role="status">「会場に入る」を押すと、マウス視点を開始します。</p>
+      <section class="interaction-prompt" id="interaction-prompt" hidden aria-live="polite"><p id="prompt-title"></p><button id="open-nearest" type="button">展示を見る <kbd>E</kbd></button></section>
+      <p class="world-status" id="world-status" role="status">表示方法を選ぶか、展示一覧から直接開いてください。</p>
     </main>
   </div>
+
+  <section class="guide-card" id="guide-card" hidden aria-labelledby="guide-title">
+    <p class="eyebrow">90 SECOND GUIDE</p>
+    <p class="guide-progress" id="guide-progress"></p>
+    <h2 id="guide-title"></h2>
+    <p id="guide-description"></p>
+    <div class="guide-actions"><button id="guide-prev" type="button">← 前へ</button><button id="guide-open" type="button">展示を開く</button><button id="guide-next" type="button">次へ →</button><button id="guide-end" type="button">終了</button></div>
+  </section>
 
   <section class="exhibit-panel" id="exhibit-panel" hidden role="dialog" aria-modal="true" aria-labelledby="exhibit-title">
     <div class="panel-backdrop" data-close-exhibit></div>
     <div class="panel-card">
       <button class="close-button" id="close-exhibit" type="button" aria-label="展示説明を閉じる">×</button>
-      <p class="eyebrow" id="exhibit-type"></p>
-      <h2 id="exhibit-title"></h2>
-      <p id="exhibit-description"></p>
-      <div class="panel-links" id="exhibit-links"></div>
+      <p class="eyebrow" id="exhibit-type"></p><h2 id="exhibit-title"></h2><p id="exhibit-description"></p><div class="panel-links" id="exhibit-links"></div>
     </div>
   </section>
 
-  <noscript>
-    <div class="noscript-message">この展示室はJavaScriptを使います。JavaScriptを有効にしてから開き直してください。</div>
-  </noscript>
-
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
-      }
-    }
-  </script>
+  <noscript><div class="noscript-message">3D表示にはJavaScriptが必要です。展示一覧のリンクはJavaScriptなしでも利用できます。</div></noscript>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"}}</script>
   <script type="module" src="world.js"></script>
 </body>
 </html>

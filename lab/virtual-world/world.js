@@ -13,6 +13,16 @@ const exhibitType = document.querySelector("#exhibit-type");
 const exhibitTitle = document.querySelector("#exhibit-title");
 const exhibitDescription = document.querySelector("#exhibit-description");
 const exhibitLinks = document.querySelector("#exhibit-links");
+const startGuideButton = document.querySelector("#start-guide");
+const guideCard = document.querySelector("#guide-card");
+const guideProgress = document.querySelector("#guide-progress");
+const guideTitle = document.querySelector("#guide-title");
+const guideDescription = document.querySelector("#guide-description");
+const guidePrev = document.querySelector("#guide-prev");
+const guideNext = document.querySelector("#guide-next");
+const guideOpen = document.querySelector("#guide-open");
+const guideEnd = document.querySelector("#guide-end");
+const supportMessage = document.querySelector("#support-message");
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x091426);
@@ -22,7 +32,22 @@ const camera = new THREE.PerspectiveCamera(67, window.innerWidth / window.innerH
 camera.rotation.order = "YXZ";
 camera.position.set(0, 1.7, 8.2);
 
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
+let renderer;
+let webglAvailable = true;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
+  document.body.classList.add("webgl-ready");
+} catch (error) {
+  webglAvailable = false;
+  canvas.hidden = true;
+  supportMessage.textContent = "この環境では3D表示を開始できません。展示一覧と実リンクから作品をご覧ください。";
+  renderer = {
+    setPixelRatio() {},
+    setSize() {},
+    render() {},
+    outputColorSpace: THREE.SRGBColorSpace
+  };
+}
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
 renderer.setSize(window.innerWidth, window.innerHeight, false);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -44,6 +69,10 @@ let yaw = 0;
 let pitch = -0.05;
 let nearestExhibit = null;
 let activeExhibit = null;
+let guideIndex = 0;
+const guideIds = ["profile-about", "works-movies", "works-latest", "games-experiments", "exit-souvenirs"];
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const walkingSupported = webglAvailable && typeof canvas.requestPointerLock === "function" && !window.matchMedia("(pointer: coarse), (max-width: 700px)").matches;
 
 const exhibits = {
   blender: {
@@ -87,7 +116,7 @@ const exhibits = {
   "profile-about": {
     type: "02 / PROFILE ROOM",
     title: "自己紹介：教育 × 制作 × VTuber",
-    description: "うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年からVTuberとして制作過程と学びの実践を発信しています。難しい仕組みをすべて説明するのではなく、最初の「無理そう」をひとつ減らすことを大切にしています。",
+    description: "うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。最初の「無理そう」をひとつ減らすことを大切にしています。",
     links: [
       { label: "noteでV文化論を読む ↗", href: "https://note.com/sanpeita" },
       { label: "YouTubeを見る ↗", href: "https://www.youtube.com/@TheSANPEITA" }
@@ -121,6 +150,17 @@ const exhibits = {
       { label: "Blenderできそうシリーズ ↗", href: "https://www.youtube.com/@TheSANPEITA/shorts" },
       { label: "unityroomの作品 ↗", href: "https://unityroom.com/users/bapfjey9s3kr14itud7h" },
       { label: "ProtoPedia ↗", href: "https://protopedia.net/prototyper/sanpeita" }
+    ]
+  },
+  "works-latest": {
+    type: "03 / WORKS ROOM · RECENT BUILDS",
+    title: "2026年7月〜8月の最近作",
+    description: "Minecraft用Importer Mod、Unity版オルディアPhaseT2、AIエージェントへインシデントを委任するUnityゲーム、Blenderの透明っぽい素材の入口。最近の4本を新しい順で紹介します。",
+    links: [
+      { label: "MagicaVoxel Importer Mod ↗", href: "https://www.youtube.com/watch?v=VJ69-nhBhOU" },
+      { label: "Unity版オルディアPhaseT2 ↗", href: "https://www.youtube.com/watch?v=oXVi8Rup6is" },
+      { label: "AIエージェント委任Unityゲーム ↗", href: "https://www.youtube.com/watch?v=LZgxWzS0UVY" },
+      { label: "透明っぽい素材の入口 ↗", href: "https://www.youtube.com/watch?v=A-OFtZaHR0o" }
     ]
   },
   "games-casual": {
@@ -301,15 +341,51 @@ function addFloorArrow(z, dir) {
   scene.add(mesh);
 }
 
-function addWallPanel({ x, z, facing, width = 3.4, height = 2.1, label }) {
+function makePosterTexture({ title, category, summary }) {
+  const poster = document.createElement("canvas");
+  poster.width = 960;
+  poster.height = 540;
+  const ctx = poster.getContext("2d");
+  ctx.fillStyle = "#10233c";
+  ctx.fillRect(0, 0, poster.width, poster.height);
+  ctx.fillStyle = "#80d1ff";
+  ctx.fillRect(0, 0, 18, poster.height);
+  ctx.fillStyle = "#a6ebcf";
+  ctx.font = '800 30px "BIZ UDPGothic", sans-serif';
+  ctx.fillText(category, 58, 72);
+  ctx.fillStyle = "#e9f5ff";
+  ctx.font = '800 48px "BIZ UDPGothic", sans-serif';
+  ctx.fillText(title.slice(0, 28), 58, 170);
+  ctx.fillStyle = "#a9c0d2";
+  ctx.font = '600 26px "BIZ UDPGothic", sans-serif';
+  const words = summary.match(/.{1,30}/g) || [];
+  words.slice(0, 4).forEach((line, index) => ctx.fillText(line, 58, 265 + index * 48));
+  const texture = new THREE.CanvasTexture(poster);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
+function addWallPanel({ x, z, facing, width = 3.4, height = 2.1, label, imageUrl, category = "EXHIBIT", summary = "公開作品と活動の記録" }) {
   const group = new THREE.Group();
-  const board = new THREE.Mesh(new THREE.PlaneGeometry(width, height), boardMaterial);
+  const fallback = makePosterTexture({ title: label, category, summary });
+  const material = new THREE.MeshStandardMaterial({ map: fallback, roughness: 0.45, metalness: 0.12, side: THREE.DoubleSide });
+  const board = new THREE.Mesh(new THREE.PlaneGeometry(width, height), material);
   const frame = new THREE.Mesh(new THREE.BoxGeometry(width + 0.16, height + 0.16, 0.08), frameMaterial);
   board.position.z = 0.04;
   group.add(frame, board);
   group.position.set(x, 2.6, z);
   group.rotation.y = facing;
   scene.add(group);
+  if (imageUrl) {
+    new THREE.TextureLoader().load(imageUrl, (texture) => {
+      texture.colorSpace = THREE.SRGBColorSpace;
+      material.map = texture;
+      material.needsUpdate = true;
+    }, undefined, () => {
+      material.map = fallback;
+      material.needsUpdate = true;
+    });
+  }
   if (label) {
     const tag = makeLabel(label, { width: 520, height: 100, fontSize: 24 });
     tag.position.set(x, 3.95, z);
@@ -377,23 +453,24 @@ function buildRoom({ z1, z2, title, accent, backDoor = true }) {
 function buildPhase1() {
   buildCorridor(-11, -17, "02 PROFILE ROOM");
   buildRoom({ z1: -17, z2: -33, title: "02 PROFILE ROOM", accent: 0x8fd3b6 });
-  exhibitObjects.push({ id: "profile-about", position: addWallPanel({ x: -10.2, z: -24, facing: Math.PI / 2, label: "自己紹介" }).position });
-  exhibitObjects.push({ id: "profile-bring", position: addWallPanel({ x: 10.2, z: -26, facing: -Math.PI / 2, label: "What I Bring" }).position });
+  exhibitObjects.push({ id: "profile-about", position: addWallPanel({ x: -10.2, z: -24, facing: Math.PI / 2, label: "自己紹介", category: "PROFILE", summary: "教育 × 制作 × VTuber", imageUrl: "../../images/og-portfolio.png" }).position });
+  exhibitObjects.push({ id: "profile-bring", position: addWallPanel({ x: 10.2, z: -26, facing: -Math.PI / 2, label: "What I Bring", category: "PROFILE", summary: "入口をつくる3つの力" }).position });
 
   buildCorridor(-33, -39, "03 WORKS ROOM");
   buildRoom({ z1: -39, z2: -55, title: "03 WORKS ROOM", accent: 0x79c7f2 });
-  exhibitObjects.push({ id: "works-movies", position: addWallPanel({ x: -3.2, z: -53.6, facing: 0, label: "代表作4本" }).position });
-  exhibitObjects.push({ id: "works-projects", position: addWallPanel({ x: 3.2, z: -53.6, facing: 0, label: "主要プロジェクト" }).position });
+  exhibitObjects.push({ id: "works-movies", position: addWallPanel({ x: -4.8, z: -53.6, facing: 0, label: "代表作4本", category: "SELECTED WORKS", summary: "教育・ゲーム・デバイス・思想", imageUrl: "https://i.ytimg.com/vi/YogaOVAiXTU/hqdefault.jpg" }).position });
+  exhibitObjects.push({ id: "works-latest", position: addWallPanel({ x: 0, z: -53.6, facing: 0, label: "最近作4本", category: "RECENT BUILDS", summary: "2026年7月〜8月の制作", imageUrl: "https://i.ytimg.com/vi/VJ69-nhBhOU/hqdefault.jpg" }).position });
+  exhibitObjects.push({ id: "works-projects", position: addWallPanel({ x: 4.8, z: -53.6, facing: 0, label: "主要プロジェクト", category: "PROJECTS", summary: "公開作品から次の試作へ", imageUrl: "https://i.ytimg.com/vi/oXVi8Rup6is/hqdefault.jpg" }).position });
 
   buildCorridor(-55, -61, "04 GAMES & EXPERIMENTS");
   buildRoom({ z1: -61, z2: -77, title: "04 GAMES & EXPERIMENTS", accent: 0xffd166 });
-  exhibitObjects.push({ id: "games-casual", position: addWallPanel({ x: -3.2, z: -75.6, facing: 0, label: "カジュアルゲーム" }).position });
-  exhibitObjects.push({ id: "games-experiments", position: addWallPanel({ x: 3.2, z: -75.6, facing: 0, label: "実験的プロジェクト" }).position });
+  exhibitObjects.push({ id: "games-casual", position: addWallPanel({ x: -3.2, z: -75.6, facing: 0, label: "カジュアルゲーム", category: "GAMES", summary: "通信なしで遊べる公開制作", imageUrl: "../../images/HfPreddoor.png" }).position });
+  exhibitObjects.push({ id: "games-experiments", position: addWallPanel({ x: 3.2, z: -75.6, facing: 0, label: "実験的プロジェクト", category: "EXPERIMENTS", summary: "ゲームと空間の公開制作", imageUrl: "https://i.ytimg.com/vi/LZgxWzS0UVY/hqdefault.jpg" }).position });
 
   buildCorridor(-77, -83, "05 EXIT · OMIYAGE");
   buildRoom({ z1: -83, z2: -99, title: "05 EXIT · OMIYAGE", accent: 0xc96a4a });
-  exhibitObjects.push({ id: "exit-souvenirs", position: addWallPanel({ x: -3.2, z: -97.6, facing: 0, label: "おみやげコーナー" }).position });
-  exhibitObjects.push({ id: "exit-portfolios", position: addWallPanel({ x: 3.2, z: -97.6, facing: 0, label: "外部サービス実績" }).position });
+  exhibitObjects.push({ id: "exit-souvenirs", position: addWallPanel({ x: -3.2, z: -97.6, facing: 0, label: "おみやげコーナー", category: "OMIYAGE", summary: "活動の公開先を持ち帰る" }).position });
+  exhibitObjects.push({ id: "exit-portfolios", position: addWallPanel({ x: 3.2, z: -97.6, facing: 0, label: "外部サービス実績", category: "PUBLIC LINKS", summary: "公開ポートフォリオの棚", imageUrl: "../../images/kabe_viper_white.png" }).position });
 
   hWall(-11, 11, -99);
 
@@ -549,6 +626,11 @@ function resetView() {
 }
 
 function enterWorld() {
+  if (!walkingSupported) {
+    setStatus("この環境では歩行を強制しません。展示一覧または90秒ガイドをご利用ください。");
+    document.querySelector("#world-directory").focus({ preventScroll: false });
+    return;
+  }
   closePanel({ restoreFocus: false });
   welcomeCard.classList.add("is-minimized");
   canvas.requestPointerLock();
@@ -633,6 +715,7 @@ function updateNearestExhibit() {
 }
 
 function animateExhibits(elapsed) {
+  if (reducedMotion) return;
   let floatingIndex = 0;
   exhibitObjects.forEach(({ id, animation }) => {
     if (!animation) return;
@@ -654,9 +737,38 @@ function render() {
   requestAnimationFrame(render);
 }
 
+function renderGuide() {
+  const exhibit = exhibits[guideIds[guideIndex]];
+  guideProgress.textContent = `${guideIndex + 1} / ${guideIds.length}`;
+  guideTitle.textContent = exhibit.title;
+  guideDescription.textContent = exhibit.description;
+  guidePrev.disabled = guideIndex === 0;
+  guideNext.disabled = guideIndex === guideIds.length - 1;
+}
+
+function startGuide() {
+  if (document.pointerLockElement === canvas) document.exitPointerLock();
+  guideIndex = 0;
+  guideCard.hidden = false;
+  welcomeCard.classList.add("is-minimized");
+  renderGuide();
+  guideNext.focus({ preventScroll: true });
+}
+
+function endGuide() {
+  guideCard.hidden = true;
+  welcomeCard.classList.remove("is-minimized");
+  startGuideButton.focus({ preventScroll: true });
+}
+
 enterWorldButton.addEventListener("click", enterWorld);
+startGuideButton.addEventListener("click", startGuide);
+guidePrev.addEventListener("click", () => { if (guideIndex > 0) { guideIndex -= 1; renderGuide(); } });
+guideNext.addEventListener("click", () => { if (guideIndex < guideIds.length - 1) { guideIndex += 1; renderGuide(); } });
+guideOpen.addEventListener("click", () => openExhibit(guideIds[guideIndex]));
+guideEnd.addEventListener("click", endGuide);
 canvas.addEventListener("click", () => {
-  if (panel.hidden && document.pointerLockElement !== canvas) canvas.requestPointerLock();
+  if (walkingSupported && panel.hidden && document.pointerLockElement !== canvas) canvas.requestPointerLock();
 });
 document.addEventListener("pointerlockchange", updatePointerLockState);
 
@@ -668,10 +780,22 @@ document.addEventListener("mousemove", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
+  if (event.code === "KeyB" && !event.ctrlKey && !event.metaKey) {
+    window.location.href = "../../";
+    return;
+  }
+  if (event.code === "KeyG" && panel.hidden) {
+    event.preventDefault();
+    startGuide();
+    return;
+  }
+  if (!guideCard.hidden && event.code === "ArrowLeft") { guidePrev.click(); return; }
+  if (!guideCard.hidden && event.code === "ArrowRight") { guideNext.click(); return; }
   if (event.code === "Escape" && !panel.hidden) {
     closePanel();
     return;
   }
+  if (event.code === "Escape" && !guideCard.hidden) { endGuide(); return; }
   if (event.code === "KeyE" && nearestExhibit) {
     event.preventDefault();
     openExhibit(nearestExhibit.id);
@@ -692,7 +816,7 @@ openNearestButton.addEventListener("click", () => {
 closePanelButton.addEventListener("click", () => closePanel());
 document.querySelector("[data-close-exhibit]").addEventListener("click", () => closePanel());
 document.querySelectorAll("[data-exhibit-open]").forEach((button) => {
-  button.addEventListener("click", () => openExhibit(button.dataset.exhibitOpen));
+  button.addEventListener("click", (event) => { event.preventDefault(); openExhibit(button.dataset.exhibitOpen); });
 });
 
 window.addEventListener("resize", () => {
@@ -704,3 +828,12 @@ window.addEventListener("resize", () => {
 
 resetView();
 render();
+
+if (!walkingSupported) {
+  document.body.classList.add("directory-first");
+  enterWorldButton.textContent = "展示一覧を見る";
+  supportMessage.textContent = "モバイルまたはPointer Lock非対応環境では、歩行を強制せず展示一覧と90秒ガイドを優先します。";
+}
+
+const requestedExhibit = new URLSearchParams(window.location.search).get("exhibit");
+if (requestedExhibit && exhibits[requestedExhibit]) openExhibit(requestedExhibit);

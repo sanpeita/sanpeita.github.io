@@ -104,7 +104,7 @@
         "配信以外には何を発信していますか？"
       ],
       "facts": [
-        "2020年からVTuberとして活動している",
+        "2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始",
         "制作過程と学びの実践を発信している",
         "Blenderの短尺解説、ゲーム制作、自作デバイスの実験、V文化論などを扱っている",
         "アバターを現実の可能性を拡張する器として捉えている",
@@ -115,7 +115,7 @@
           "id": "vtuber-history-standard-01",
           "tone": "standard",
           "length": "medium",
-          "text": "うのっちは2020年からVTuberとして活動しています。配信や動画だけでなく、Blender、ゲーム制作、自作デバイス、教育現場での実践、アバター文化についても発信しています。"
+          "text": "2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。配信や動画だけでなく、Blender、ゲーム制作、自作デバイス、教育現場での実践、アバター文化についても発信しています。"
         },
         {
           "id": "vtuber-history-creator-01",
@@ -291,7 +291,11 @@
         "toioで自作ツインスティックを作りMinecraftを操作する作品を公開している",
         "Blender初心者向けの短尺シリーズを制作している",
         "Roblox Studioでゲーム文化を制作と学びへつなぐ作品を公開している",
-        "Unityゲーム、Fortniteクリエイター島、clusterワールドなども公開している"
+        "Unityゲーム、Fortniteクリエイター島、clusterワールドなども公開している",
+        "2026年8月4日にMagicaVoxel作品をMinecraftへ取り込む自作Importer Modの動画を公開した",
+        "2026年7月29日にUnity版オルディア開発PhaseT2進捗の動画を公開した",
+        "2026年7月22日にAIエージェントへインシデントを委任するUnityゲームの動画を公開した",
+        "2026年7月16日にBlenderの透明っぽい素材の入口を紹介する動画を公開した"
       ],
       "answers": [
         {
@@ -322,6 +326,26 @@
         {
           "label": "YouTubeを見る",
           "url": "https://www.youtube.com/@TheSANPEITA",
+          "type": "external"
+        },
+        {
+          "label": "MagicaVoxel Importer Modを見る",
+          "url": "https://www.youtube.com/watch?v=VJ69-nhBhOU",
+          "type": "external"
+        },
+        {
+          "label": "Unity版オルディアPhaseT2を見る",
+          "url": "https://www.youtube.com/watch?v=oXVi8Rup6is",
+          "type": "external"
+        },
+        {
+          "label": "AIエージェント委任Unityゲームを見る",
+          "url": "https://www.youtube.com/watch?v=LZgxWzS0UVY",
+          "type": "external"
+        },
+        {
+          "label": "透明っぽい素材の入口を見る",
+          "url": "https://www.youtube.com/watch?v=A-OFtZaHR0o",
           "type": "external"
         }
       ],
