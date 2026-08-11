@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sanpeita.github.io/exhibits/schema.json",
+  "title": "Unotchi portfolio exhibit",
+  "description": "通常Webポートフォリオと3D展示室が共有する、1作品分の正本です。",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "url",
+    "description",
+    "thumbnail",
+    "status",
+    "web",
+    "gallery3d"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "thumbnail": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "shortDescription": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "enum": ["published", "draft", "hidden"]
+    },
+    "web": {
+      "type": "object",
+      "required": ["visible"],
+      "properties": {
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "gallery3d": {
+      "type": "object",
+      "required": ["visible", "room"],
+      "properties": {
+        "visible": {
+          "type": "boolean"
+        },
+        "room": {
+          "enum": ["profile", "works", "games", "exit"]
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "position": {
+          "$ref": "#/$defs/vector3"
+        },
+        "rotation": {
+          "$ref": "#/$defs/vector3"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "vector3": {
+      "type": "object",
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

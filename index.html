@@ -24,6 +24,7 @@
   <script src="assets/chatbot/search-core.js" defer></script>
   <script src="assets/chatbot/tour-core.js" defer></script>
   <script src="assets/chatbot/chatbot.js" defer></script>
+  <script type="module" src="assets/exhibits/exhibit-catalog.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
@@ -279,20 +280,15 @@
           </div>
         </div>
 
-        <div class="ai-games-band" aria-labelledby="ai-games-title">
+        <div class="ai-games-band" aria-labelledby="exhibit-catalog-title">
           <div>
-            <small>AI STUDIO / OFFLINE GAMES</small>
-            <strong id="ai-games-title">通信なしで遊べる、カジュアルゲーム。</strong>
-            <p>AI Studioで生成した、非データ通信に特化したカジュアルゲームです。出先やオフラインでも軽く遊べる設計で、プレイページとコード・記録を公開しています。</p>
+            <small>WEB APPS / GAMES</small>
+            <strong id="exhibit-catalog-title">登録作品カタログ</strong>
+            <p>各作品は <code>exhibits/*.json</code> を正本として、通常Webと3D展示室の両方へ反映しています。</p>
+            <p id="exhibit-catalog-status" class="exhibit-catalog-status" role="status">作品情報を読み込んでいます。</p>
           </div>
-          <div class="ai-games-links">
-            <a href="https://github.com/sanpeita/Hole-IO-Casual-Game" target="_blank" rel="noopener noreferrer">Hole-IO <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/sanpeita/dodge-and-gather" target="_blank" rel="noopener noreferrer">dodge &amp; gather <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/sanpeita/OfflineFlap" target="_blank" rel="noopener noreferrer">OfflineFlap <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/sanpeita/the_strongest_princess" target="_blank" rel="noopener noreferrer">The Strongest Princess <span aria-hidden="true">↗</span></a>
-            <a href="https://sanpeita.github.io/gomoku/" target="_blank" rel="noopener noreferrer">五目並べ <span aria-hidden="true">↗</span></a>
-            <a href="https://sanpeita.github.io/Crowd-Runner/" target="_blank" rel="noopener noreferrer">Crowd Runner <span aria-hidden="true">↗</span></a>
-          </div>
+          <div class="exhibit-catalog" id="exhibit-catalog" aria-live="polite"></div>
+          <noscript><p class="exhibit-catalog-noscript">作品カタログの表示にはJavaScriptを有効にしてください。</p></noscript>
         </div>
       </div>
     </section>

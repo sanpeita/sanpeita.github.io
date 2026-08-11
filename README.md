@@ -28,7 +28,47 @@
 - `assets/chatbot/search-core.js` — Fuse.js検索と回答選択
 - `assets/chatbot/tour-core.js` — おすすめツアーの検証と前後遷移
 - `assets/chatbot/fuse.min.js` — 同梱しているFuse.js 7.1.0（Apache-2.0。ライセンスは同ディレクトリ内）
+- `exhibits/` — Web作品・ゲーム等の作品情報の正本、manifest、JSON Schema
+- `assets/exhibits/` — 正本の共通ローダー、Webカード描画、共通サムネイル
+- `scripts/add-exhibit.ps1` — URLから作品JSONとmanifestを更新するAI非依存CLI
+- `.codex/skills/exhibit-add/` — CLIを呼び出すCodex Skill
 - `lab/virtual-world/` — Three.jsで作る、独立した歩ける展示室のPhase 0実験
+
+## 作品情報の正本
+
+Webアプリ、ゲーム、ツール等の登録作品は、1作品1ファイルの `exhibits/*.json` を正本とします。`index.html` と `lab/virtual-world/world.js` に作品名・説明・URLを重複記述しません。
+
+`exhibits/manifest.json` はGitHub Pagesで利用できないディレクトリ走査の代わりに、読み込むJSONファイルを列挙します。`assets/exhibits/exhibit-data.mjs` がmanifestと各JSONを検証し、次の2つのViewへ渡します。
+
+```text
+exhibits/*.json
+       ├─ assets/exhibits/exhibit-catalog.js → 通常Web作品カード
+       └─ lab/virtual-world/world.js          → 3D展示物・説明パネル
+```
+
+必須項目と型は `exhibits/schema.json` が正本です。最低限 `id`、`title`、`type`、`url`、`description`、`thumbnail`、`status`、`web.visible`、`gallery3d.visible`、`gallery3d.room` を持たせます。公開Viewへ出るのは `status: "published"` の作品だけです。
+
+Webは `featured`、`order`、タイトルの順で整列します。3Dは `gallery3d.room` と `gallery3d.order` から各室の壁面スロットへ自動配置します。各室の自動枠は8件です。厳密な配置または9件目以降は、JSONへ `gallery3d.position` と必要に応じて `gallery3d.rotation` を指定します。
+
+JSONや画像は先頭 `/` を使わず、リポジトリルート相対で記述します。View側は `import.meta.url` からURLを解決するため、ローカルHTTPサーバーとGitHub Pagesのリポジトリサブパスのどちらでも動作します。`file://` では `fetch()` を検証できません。
+
+### 作品を追加する
+
+URLだけで登録できます。ページの到達確認、title/description metadata取得、ID生成、重複確認、JSON生成、manifest更新、書き込み後検証をCLIが行います。
+
+```powershell
+.\scripts\add-exhibit.ps1 -Url "https://example.github.io/app/"
+```
+
+必要に応じて `-Title`、`-Description`、`-Repository`、`-Type`、`-Category`、`-Tags`、`-Thumbnail`、`-Room`、`-Order`、`-GalleryOrder`、`-Featured` を指定できます。追加後は必ず次を実行し、HTTPサーバー経由でトップと展示室を確認します。
+
+```powershell
+node --test tests/*.test.cjs
+git diff --check
+python -m http.server 8000
+```
+
+Codexでは `$exhibit-add` を使うか、「このPagesをポートフォリオと3D展示室に追加して」とURLを渡します。Skillも同じCLIを呼ぶため、登録ロジックは二重化しません。
 
 ## 実験ページ
 

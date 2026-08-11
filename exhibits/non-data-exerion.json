@@ -1,0 +1,19 @@
+{
+  "id": "non-data-exerion",
+  "title": "EXERION 3D",
+  "type": "game",
+  "url": "https://sanpeita.github.io/NON-DATA_EXERION/",
+  "repository": "https://github.com/sanpeita/NON-DATA_EXERION",
+  "thumbnail": "assets/exhibits/placeholder.svg",
+  "description": "慣性がはたらく飛行感と疑似3D視点をブラウザで再構築した、完全オフライン対応のレトロシューティングゲームです。",
+  "shortDescription": "慣性のある飛行感を楽しめる、完全オフライン対応の3Dレトロシューティング。",
+  "category": "casual-game",
+  "tags": ["オフライン", "ブラウザゲーム", "疑似3D"],
+  "createdAt": "2026-08-11",
+  "updatedAt": "2026-08-11",
+  "featured": false,
+  "order": 80,
+  "status": "published",
+  "web": { "visible": true },
+  "gallery3d": { "visible": true, "room": "games", "order": 8 }
+}

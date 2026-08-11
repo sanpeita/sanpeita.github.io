@@ -1,0 +1,17 @@
+{
+  "id": "gomoku",
+  "title": "五目並べ",
+  "type": "game",
+  "url": "https://sanpeita.github.io/gomoku/",
+  "thumbnail": "assets/exhibits/placeholder.svg",
+  "description": "ブラウザだけで遊べる、完全オフライン対応の五目並べです。",
+  "shortDescription": "ブラウザで遊べる完全オフライン対応の五目並べ。",
+  "category": "casual-game",
+  "tags": ["AI Studio", "オフライン", "ブラウザゲーム"],
+  "updatedAt": "2026-08-11",
+  "featured": false,
+  "order": 50,
+  "status": "published",
+  "web": { "visible": true },
+  "gallery3d": { "visible": true, "room": "games", "order": 5 }
+}

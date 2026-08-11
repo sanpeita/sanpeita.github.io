@@ -1,0 +1,29 @@
+{
+    "id":  "crowd-runner",
+    "title":  "Crowd Runner",
+    "type":  "game",
+    "url":  "https://sanpeita.github.io/Crowd-Runner/",
+    "repository":  "https://github.com/sanpeita/Crowd-Runner",
+    "thumbnail":  "assets/exhibits/placeholder.svg",
+    "description":  "群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。",
+    "shortDescription":  "群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。",
+    "category":  "casual-game",
+    "tags":  [
+                 "AI Studio",
+                 "オフライン",
+                 "ブラウザゲーム"
+             ],
+    "createdAt":  "2026-08-11",
+    "updatedAt":  "2026-08-11",
+    "featured":  false,
+    "order":  60,
+    "status":  "published",
+    "web":  {
+                "visible":  true
+            },
+    "gallery3d":  {
+                      "visible":  true,
+                      "room":  "games",
+                      "order":  6
+                  }
+}

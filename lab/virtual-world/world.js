@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { filterGalleryExhibits, loadExhibits, resolveAssetUrl } from "../../assets/exhibits/exhibit-data.mjs";
 
 const canvas = document.querySelector("#world");
 const welcomeCard = document.querySelector("#welcome-card");
@@ -23,6 +24,7 @@ const guideNext = document.querySelector("#guide-next");
 const guideOpen = document.querySelector("#guide-open");
 const guideEnd = document.querySelector("#guide-end");
 const supportMessage = document.querySelector("#support-message");
+const managedExhibitList = document.querySelector("#managed-exhibit-list");
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x091426);
@@ -103,17 +105,10 @@ const exhibits = {
     ]
   },
   games: {
-    type: "AI STUDIO / OFFLINE GAMES",
-    title: "通信なしで遊べる、カジュアルゲーム6本",
-    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、プレイページとコード・記録を公開しています。",
-    links: [
-      { label: "Hole-IO ↗", href: "https://github.com/sanpeita/Hole-IO-Casual-Game" },
-      { label: "dodge & gather ↗", href: "https://github.com/sanpeita/dodge-and-gather" },
-      { label: "OfflineFlap ↗", href: "https://github.com/sanpeita/OfflineFlap" },
-      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" },
-      { label: "五目並べ ↗", href: "https://sanpeita.github.io/gomoku/" },
-      { label: "Crowd Runner ↗", href: "https://sanpeita.github.io/Crowd-Runner/" }
-    ]
+    type: "MANAGED EXHIBITS",
+    title: "登録作品カタログ",
+    description: "作品情報を読み込んでいます。",
+    links: [{ label: "文字ポートフォリオへ", href: "../../#projects" }]
   },
   "profile-about": {
     type: "02 / PROFILE ROOM",
@@ -167,16 +162,9 @@ const exhibits = {
   },
   "games-casual": {
     type: "04 / GAMES & EXPERIMENTS",
-    title: "通信なしで遊べる、カジュアルゲーム6本",
-    description: "AI Studioで生成した、非データ通信に特化したカジュアルゲームです。どこでも軽く遊べる設計で、プレイページとコード・記録を公開しています。",
-    links: [
-      { label: "Hole-IO ↗", href: "https://github.com/sanpeita/Hole-IO-Casual-Game" },
-      { label: "dodge & gather ↗", href: "https://github.com/sanpeita/dodge-and-gather" },
-      { label: "OfflineFlap ↗", href: "https://github.com/sanpeita/OfflineFlap" },
-      { label: "The Strongest Princess ↗", href: "https://github.com/sanpeita/the_strongest_princess" },
-      { label: "五目並べ ↗", href: "https://sanpeita.github.io/gomoku/" },
-      { label: "Crowd Runner ↗", href: "https://sanpeita.github.io/Crowd-Runner/" }
-    ]
+    title: "登録作品カタログ",
+    description: "作品情報を読み込んでいます。",
+    links: [{ label: "文字ポートフォリオへ", href: "../../#projects" }]
   },
   "games-experiments": {
     type: "04 / GAMES & EXPERIMENTS",
@@ -369,7 +357,7 @@ function makePosterTexture({ title, category, summary }) {
   return texture;
 }
 
-function addWallPanel({ x, z, facing, width = 3.4, height = 2.1, label, imageUrl, category = "EXHIBIT", summary = "公開作品と活動の記録" }) {
+function addWallPanel({ x, y = 2.6, z, facing = 0, rotation, width = 3.4, height = 2.1, label, imageUrl, category = "EXHIBIT", summary = "公開作品と活動の記録" }) {
   const group = new THREE.Group();
   const fallback = makePosterTexture({ title: label, category, summary });
   const material = new THREE.MeshStandardMaterial({ map: fallback, roughness: 0.45, metalness: 0.12, side: THREE.DoubleSide });
@@ -377,8 +365,9 @@ function addWallPanel({ x, z, facing, width = 3.4, height = 2.1, label, imageUrl
   const frame = new THREE.Mesh(new THREE.BoxGeometry(width + 0.16, height + 0.16, 0.08), frameMaterial);
   board.position.z = 0.04;
   group.add(frame, board);
-  group.position.set(x, 2.6, z);
-  group.rotation.y = facing;
+  group.position.set(x, y, z);
+  if (rotation) group.rotation.set(rotation.x, rotation.y, rotation.z);
+  else group.rotation.y = facing;
   scene.add(group);
   if (imageUrl) {
     new THREE.TextureLoader().load(imageUrl, (texture) => {
@@ -392,10 +381,10 @@ function addWallPanel({ x, z, facing, width = 3.4, height = 2.1, label, imageUrl
   }
   if (label) {
     const tag = makeLabel(label, { width: 520, height: 100, fontSize: 24 });
-    tag.position.set(x, 3.95, z);
+    tag.position.set(x, y + 1.35, z);
     scene.add(tag);
   }
-  return { position: group.position };
+  return { position: group.position, group };
 }
 
 function buildCorridor(z1, z2, nextLabel) {
@@ -485,6 +474,115 @@ function buildPhase1() {
   const entranceSign = makeLabel("01 ENTRANCE HALL", { width: 640, height: 120, fontSize: 30, accent: 0x79c7f2 });
   entranceSign.position.set(0, 5.4, -10.5);
   scene.add(entranceSign);
+}
+
+const ROOM_SLOTS = {
+  profile: [
+    { x: -10.2, z: -19.5, facing: Math.PI / 2 }, { x: 10.2, z: -19.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -23.5, facing: Math.PI / 2 }, { x: 10.2, z: -23.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -27.5, facing: Math.PI / 2 }, { x: 10.2, z: -27.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -31.0, facing: Math.PI / 2 }, { x: 10.2, z: -31.0, facing: -Math.PI / 2 }
+  ],
+  works: [
+    { x: -10.2, z: -41.5, facing: Math.PI / 2 }, { x: 10.2, z: -41.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -45.5, facing: Math.PI / 2 }, { x: 10.2, z: -45.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -49.5, facing: Math.PI / 2 }, { x: 10.2, z: -49.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -53.0, facing: Math.PI / 2 }, { x: 10.2, z: -53.0, facing: -Math.PI / 2 }
+  ],
+  games: [
+    { x: -10.2, z: -63.5, facing: Math.PI / 2 }, { x: 10.2, z: -63.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -67.5, facing: Math.PI / 2 }, { x: 10.2, z: -67.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -71.5, facing: Math.PI / 2 }, { x: 10.2, z: -71.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -74.5, facing: Math.PI / 2 }, { x: 10.2, z: -74.5, facing: -Math.PI / 2 }
+  ],
+  exit: [
+    { x: -10.2, z: -85.5, facing: Math.PI / 2 }, { x: 10.2, z: -85.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -89.5, facing: Math.PI / 2 }, { x: 10.2, z: -89.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -93.5, facing: Math.PI / 2 }, { x: 10.2, z: -93.5, facing: -Math.PI / 2 },
+    { x: -10.2, z: -96.5, facing: Math.PI / 2 }, { x: 10.2, z: -96.5, facing: -Math.PI / 2 }
+  ]
+};
+
+function toExhibitPanelData(item) {
+  const links = [{ label: "作品を開く ↗", href: item.url }];
+  if (item.repository && item.repository !== item.url) links.push({ label: "コードを見る ↗", href: item.repository });
+  links.push({ label: "文字ポートフォリオで見る", href: `../../#exhibit-${item.id}` });
+  return {
+    type: `${item.gallery3d.room.toUpperCase()} / ${item.type.toUpperCase()}`,
+    title: item.title,
+    description: item.description,
+    links
+  };
+}
+
+function hydrateManagedExhibits(items) {
+  for (const item of items) exhibits[item.id] = toExhibitPanelData(item);
+  const catalogLinks = items.map((item) => ({ label: `${item.title} ↗`, href: item.url }));
+  exhibits.games = {
+    type: "MANAGED EXHIBITS",
+    title: `登録作品カタログ ${items.length}件`,
+    description: "同じ作品JSONから、文字ポートフォリオのカードと3D展示物を生成しています。",
+    links: catalogLinks
+  };
+  const games = items.filter((item) => item.gallery3d.room === "games");
+  exhibits["games-casual"] = {
+    type: "04 / GAMES & EXPERIMENTS",
+    title: `通信なしで遊べる、カジュアルゲーム${games.length}本`,
+    description: "AI Studioで制作した、非データ通信に特化したカジュアルゲームです。各作品の基本情報とリンクはexhibits JSONから読み込んでいます。",
+    links: games.map((item) => ({ label: `${item.title} ↗`, href: item.url }))
+  };
+}
+
+function addManagedExhibits(items, siteRootUrl) {
+  const roomCounts = new Map();
+  for (const item of items) {
+    const room = item.gallery3d.room;
+    const slotIndex = roomCounts.get(room) || 0;
+    roomCounts.set(room, slotIndex + 1);
+    const explicit = item.gallery3d.position;
+    const slot = ROOM_SLOTS[room]?.[slotIndex];
+    if (!explicit && !slot) {
+      console.warn(`${room} roomの自動配置枠が不足しているため、${item.id}の3Dパネルを省略しました。positionを指定してください。`);
+      continue;
+    }
+    const placement = explicit
+      ? { x: explicit.x, y: explicit.y, z: explicit.z, rotation: item.gallery3d.rotation || { x: 0, y: 0, z: 0 } }
+      : slot;
+    const panelObject = addWallPanel({
+      ...placement,
+      label: item.title,
+      category: item.category || item.type,
+      summary: item.shortDescription || item.description,
+      imageUrl: item.thumbnail.endsWith("placeholder.svg") ? null : resolveAssetUrl(item.thumbnail, siteRootUrl)
+    });
+    exhibitObjects.push({ id: item.id, position: panelObject.position });
+  }
+}
+
+function renderManagedDirectory(items, loadError) {
+  if (!managedExhibitList) return;
+  if (loadError) {
+    const row = document.createElement("li");
+    const message = document.createElement("span");
+    message.textContent = "登録作品を読み込めませんでした。";
+    row.append(message);
+    managedExhibitList.replaceChildren(row);
+    return;
+  }
+  managedExhibitList.replaceChildren(...items.map((item) => {
+    const row = document.createElement("li");
+    const details = document.createElement("a");
+    details.href = `?exhibit=${encodeURIComponent(item.id)}`;
+    details.dataset.exhibitOpen = item.id;
+    details.textContent = item.title;
+    const direct = document.createElement("a");
+    direct.href = item.url;
+    direct.target = "_blank";
+    direct.rel = "noopener noreferrer";
+    direct.textContent = "作品を開く ↗";
+    row.append(details, direct);
+    return row;
+  }));
 }
 
 function addPedestal(position, color, feature) {
@@ -580,9 +678,22 @@ const exhibitObjects = [
   { id: "games", position: gamesObject.group.position, animation: gamesObject }
 ];
 
+const siteRootUrl = new URL("../../", import.meta.url);
+let managedExhibits = [];
+let managedExhibitLoadError = null;
+try {
+  managedExhibits = filterGalleryExhibits(await loadExhibits(new URL("exhibits/manifest.json", siteRootUrl)));
+  hydrateManagedExhibits(managedExhibits);
+} catch (error) {
+  managedExhibitLoadError = error;
+  console.error("登録作品を読み込めませんでした。既存展示だけで続行します。", error);
+}
+
 addLights();
 addRoom();
 buildPhase1();
+addManagedExhibits(managedExhibits, siteRootUrl);
+renderManagedDirectory(managedExhibits, managedExhibitLoadError);
 
 function setStatus(message) {
   status.textContent = message;

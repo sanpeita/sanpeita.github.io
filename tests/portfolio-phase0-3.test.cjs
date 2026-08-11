@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { pathToFileURL } = require("node:url");
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
@@ -9,6 +10,14 @@ const styles = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 const worldHtml = fs.readFileSync(path.join(root, "lab/virtual-world/index.html"), "utf8");
 const worldJs = fs.readFileSync(path.join(root, "lab/virtual-world/world.js"), "utf8");
 const worldCss = fs.readFileSync(path.join(root, "lab/virtual-world/world.css"), "utf8");
+const exhibitCatalogJs = fs.readFileSync(path.join(root, "assets/exhibits/exhibit-catalog.js"), "utf8");
+const exhibitDataPath = path.join(root, "assets/exhibits/exhibit-data.mjs");
+const exhibitDataJs = fs.readFileSync(exhibitDataPath, "utf8");
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "exhibits/manifest.json"), "utf8"));
+const schema = JSON.parse(fs.readFileSync(path.join(root, "exhibits/schema.json"), "utf8"));
+const managedExhibits = manifest.exhibits.map((filename) => JSON.parse(fs.readFileSync(path.join(root, "exhibits", filename), "utf8")));
+const migratedCasualIds = new Set(["hole-io", "dodge-and-gather", "offline-flap", "the-strongest-princess", "gomoku", "crowd-runner"]);
+const migratedCasualExhibits = managedExhibits.filter((item) => migratedCasualIds.has(item.id));
 const knowledgeText = fs.readFileSync(path.join(root, "assets/chatbot/knowledge.json"), "utf8");
 const knowledge = JSON.parse(knowledgeText);
 
@@ -38,18 +47,55 @@ test("the four recent video URLs are aligned across index, knowledge, and world"
   }
 });
 
-test("the two playable casual games are aligned across the portfolio and virtual world pedestal", () => {
-  const casualExhibitStart = worldJs.indexOf('"games-casual": {');
-  const casualExhibitEnd = worldJs.indexOf('"games-experiments": {', casualExhibitStart);
-  const casualExhibit = worldJs.slice(casualExhibitStart, casualExhibitEnd);
-
-  assert.ok(casualExhibitStart >= 0);
-  assert.ok(casualExhibitEnd > casualExhibitStart);
-  assert.ok(casualExhibit.includes("通信なしで遊べる、カジュアルゲーム6本"));
-  for (const url of casualGameUrls) {
-    assert.ok(index.includes(url), `index: ${url}`);
-    assert.ok(casualExhibit.includes(url), `games-casual: ${url}`);
+test("exhibits manifest is the unique source for the migrated casual games", () => {
+  assert.equal(manifest.version, 1);
+  assert.equal(manifest.schema, "schema.json");
+  assert.equal(new Set(managedExhibits.map((item) => item.id)).size, managedExhibits.length);
+  assert.equal(new Set(managedExhibits.map((item) => item.url.toLowerCase().replace(/\/+$/, ""))).size, managedExhibits.length);
+  assert.equal(migratedCasualExhibits.length, migratedCasualIds.size);
+  for (const item of migratedCasualExhibits) {
+    assert.equal(item.status, "published", item.id);
+    assert.equal(item.web.visible, true, item.id);
+    assert.equal(item.gallery3d.visible, true, item.id);
+    assert.equal(item.gallery3d.room, "games", item.id);
   }
+  for (const url of casualGameUrls) {
+    assert.ok(managedExhibits.some((item) => item.url === url), `manifest exhibit: ${url}`);
+    assert.equal(index.includes(url), false, `index duplicate: ${url}`);
+    assert.equal(worldJs.includes(url), false, `world duplicate: ${url}`);
+  }
+});
+
+test("one published exhibit feeds both the web and 3D view filters", async () => {
+  const { filterGalleryExhibits, filterWebExhibits, validateExhibit } = await import(pathToFileURL(exhibitDataPath).href);
+  const crowdRunner = managedExhibits.find((item) => item.id === "crowd-runner");
+  assert.ok(crowdRunner);
+  assert.deepEqual(validateExhibit(crowdRunner), { valid: true, errors: [] });
+  assert.ok(filterWebExhibits(managedExhibits).some((item) => item.id === crowdRunner.id));
+  assert.ok(filterGalleryExhibits(managedExhibits).some((item) => item.id === crowdRunner.id));
+  const draft = { ...crowdRunner, id: "draft-copy", url: "https://example.com/draft", status: "draft" };
+  const webOnly = { ...crowdRunner, id: "web-only", url: "https://example.com/web", gallery3d: { ...crowdRunner.gallery3d, visible: false } };
+  const galleryOnly = { ...crowdRunner, id: "gallery-only", url: "https://example.com/gallery", web: { visible: false } };
+  assert.deepEqual(filterWebExhibits([draft, webOnly, galleryOnly]).map((item) => item.id), ["web-only"]);
+  assert.deepEqual(filterGalleryExhibits([draft, webOnly, galleryOnly]).map((item) => item.id), ["gallery-only"]);
+  assert.ok(index.includes('id="exhibit-catalog"'));
+  assert.ok(index.includes('src="assets/exhibits/exhibit-catalog.js"'));
+  assert.ok(exhibitCatalogJs.includes("filterWebExhibits"));
+  assert.ok(worldJs.includes("filterGalleryExhibits"));
+  assert.ok(worldJs.includes("addManagedExhibits(managedExhibits, siteRootUrl)"));
+});
+
+test("schema and loaders preserve static GitHub Pages paths", () => {
+  for (const field of ["id", "title", "type", "url", "description", "thumbnail", "status", "web", "gallery3d"]) {
+    assert.ok(schema.required.includes(field), field);
+  }
+  assert.deepEqual(schema.properties.status.enum, ["published", "draft", "hidden"]);
+  assert.ok(exhibitCatalogJs.includes('new URL("../../", import.meta.url)'));
+  assert.ok(worldJs.includes('new URL("../../", import.meta.url)'));
+  assert.ok(exhibitDataJs.includes("new URL(filename, manifestUrl)"));
+  assert.ok(exhibitDataJs.includes('{ cache: "no-cache" }'));
+  assert.equal(exhibitCatalogJs.includes('fetch("/'), false);
+  assert.equal(worldJs.includes('fetch("/'), false);
 });
 
 test("knowledge contract and world fallbacks remain explicit", () => {

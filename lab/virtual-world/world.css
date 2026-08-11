@@ -202,6 +202,8 @@ body.directory-first .controls { display: none; }
 .directory-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .directory-heading .eyebrow { margin: 0; color: var(--muted); font-size: 8px; }
 .directory-heading h2 { color: var(--muted); font-size: 13px; }
+.managed-directory-heading { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(233,245,255,.13); }
+.directory-list span { padding: 7px 9px; color: var(--muted); font-size: 11px; }
 
 .directory-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
 

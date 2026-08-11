@@ -1,0 +1,4 @@
+interface:
+  display_name: "展示作品を追加"
+  short_description: "公開URLからWeb一覧と3D展示室へ作品を一括登録します"
+  default_prompt: "Use $exhibit-add to add this public URL to both the web portfolio and 3D gallery."

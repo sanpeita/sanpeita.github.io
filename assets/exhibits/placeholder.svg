@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">うのっち作品サムネイル</title>
+  <desc id="desc">青い背景にEXHIBITと表示した共通プレースホルダー</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1d35"/>
+      <stop offset="1" stop-color="#214f70"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <path d="M80 84h1040v507H80z" fill="none" stroke="#80d1ff" stroke-width="6"/>
+  <circle cx="600" cy="292" r="92" fill="none" stroke="#a6ebcf" stroke-width="16"/>
+  <path d="M538 292h124M600 230v124" stroke="#a6ebcf" stroke-width="16" stroke-linecap="round"/>
+  <text x="600" y="455" fill="#eef8ff" font-family="system-ui,sans-serif" font-size="62" font-weight="800" text-anchor="middle" letter-spacing="12">EXHIBIT</text>
+  <text x="600" y="518" fill="#b7d3e6" font-family="system-ui,sans-serif" font-size="30" text-anchor="middle">UNOTCHI PORTFOLIO</text>
+</svg>

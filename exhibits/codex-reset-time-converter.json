@@ -1,0 +1,19 @@
+{
+  "id": "codex-reset-time-converter",
+  "title": "Codex Reset Time Converter",
+  "type": "web-app",
+  "url": "https://sanpeita.github.io/CodexResetTimeConverter/",
+  "repository": "https://github.com/sanpeita/CodexResetTimeConverter",
+  "thumbnail": "assets/exhibits/placeholder.svg",
+  "description": "OpenAI Codexなどのリセット時刻（GMT / PDT / PST）を、日本時間（JST）へ変換するブラウザ完結のWebツールです。",
+  "shortDescription": "Codexのリセット時刻を日本時間へ変換するブラウザ完結ツール。",
+  "category": "utility",
+  "tags": ["Codex", "時刻変換", "ブラウザツール"],
+  "createdAt": "2026-08-11",
+  "updatedAt": "2026-08-11",
+  "featured": false,
+  "order": 70,
+  "status": "published",
+  "web": { "visible": true },
+  "gallery3d": { "visible": true, "room": "games", "order": 7 }
+}
