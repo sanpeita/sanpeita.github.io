@@ -709,7 +709,7 @@ const blenderObject = addPedestal(new THREE.Vector3(-5.0, 0, -3.1), 0x7dcaff, ma
 const toioObject = addPedestal(new THREE.Vector3(4.0, 0, -6.8), 0x9de8ca, makeToioObject);
 const githubObject = addPedestal(new THREE.Vector3(5.0, 0, -3.1), 0xffdd87, makeGithubObject);
 const gamesObject = addPedestal(new THREE.Vector3(-4.0, 0, -6.8), 0xc96a4a, makeGamesObject);
-const standee = addStandee({ x: 4.8, z: 2.2, imageUrl: "../../images/unotchi-official-standing.png", facing: 0 });
+const standee = addStandee({ x: 3.2, z: -1.0, imageUrl: "../../images/unotchi-official-standing.png", facing: 0 });
 
 const exhibitObjects = [
   { id: "blender", position: blenderObject.group.position, animation: blenderObject },
