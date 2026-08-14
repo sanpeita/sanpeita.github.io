@@ -363,7 +363,7 @@ function addWallPanel({ x, y = 2.6, z, facing = 0, rotation, width = 3.4, height
   const material = new THREE.MeshStandardMaterial({ map: fallback, roughness: 0.45, metalness: 0.12, side: THREE.DoubleSide });
   const board = new THREE.Mesh(new THREE.PlaneGeometry(width, height), material);
   const frame = new THREE.Mesh(new THREE.BoxGeometry(width + 0.16, height + 0.16, 0.08), frameMaterial);
-  board.position.z = 0.04;
+  board.position.z = 0.06;
   group.add(frame, board);
   group.position.set(x, y, z);
   if (rotation) group.rotation.set(rotation.x, rotation.y, rotation.z);
@@ -451,14 +451,14 @@ function buildPhase1() {
 
   buildCorridor(-33, -39, "03 WORKS ROOM");
   buildRoom({ z1: -39, z2: -55, title: "03 WORKS ROOM", accent: 0x79c7f2 });
-  exhibitObjects.push({ id: "works-movies", position: addWallPanel({ x: -4.8, z: -53.6, facing: 0, label: "代表作4本", category: "SELECTED WORKS", summary: "教育・ゲーム・デバイス・思想", imageUrl: "https://i.ytimg.com/vi/YogaOVAiXTU/hqdefault.jpg" }).position });
-  exhibitObjects.push({ id: "works-latest", position: addWallPanel({ x: 0, z: -53.6, facing: 0, label: "最近作4本", category: "RECENT BUILDS", summary: "2026年7月〜8月の制作", imageUrl: "https://i.ytimg.com/vi/VJ69-nhBhOU/hqdefault.jpg" }).position });
+  exhibitObjects.push({ id: "works-movies", position: addWallPanel({ x: -7.6, z: -53.6, facing: 0, label: "代表作4本", category: "SELECTED WORKS", summary: "教育・ゲーム・デバイス・思想", imageUrl: "https://i.ytimg.com/vi/YogaOVAiXTU/hqdefault.jpg" }).position });
+  exhibitObjects.push({ id: "works-latest", position: addWallPanel({ x: -4.6, z: -53.6, facing: 0, label: "最近作4本", category: "RECENT BUILDS", summary: "2026年7月〜8月の制作", imageUrl: "https://i.ytimg.com/vi/VJ69-nhBhOU/hqdefault.jpg" }).position });
   exhibitObjects.push({ id: "works-projects", position: addWallPanel({ x: 4.8, z: -53.6, facing: 0, label: "主要プロジェクト", category: "PROJECTS", summary: "公開作品から次の試作へ", imageUrl: "https://i.ytimg.com/vi/oXVi8Rup6is/hqdefault.jpg" }).position });
 
   buildCorridor(-55, -61, "04 GAMES & EXPERIMENTS");
   buildRoom({ z1: -61, z2: -77, title: "04 GAMES & EXPERIMENTS", accent: 0xffd166 });
-  exhibitObjects.push({ id: "games-casual", position: addWallPanel({ x: -3.2, z: -75.6, facing: 0, label: "カジュアルゲーム", category: "GAMES", summary: "通信なしで遊べる公開制作", imageUrl: "../../images/HfPreddoor.png" }).position });
-  exhibitObjects.push({ id: "games-experiments", position: addWallPanel({ x: 3.2, z: -75.6, facing: 0, label: "実験的プロジェクト", category: "EXPERIMENTS", summary: "ゲームと空間の公開制作", imageUrl: "https://i.ytimg.com/vi/LZgxWzS0UVY/hqdefault.jpg" }).position });
+  exhibitObjects.push({ id: "games-casual", position: addWallPanel({ x: -4.6, z: -75.6, facing: 0, label: "カジュアルゲーム", category: "GAMES", summary: "通信なしで遊べる公開制作", imageUrl: "../../images/HfPreddoor.png" }).position });
+  exhibitObjects.push({ id: "games-experiments", position: addWallPanel({ x: 4.6, z: -75.6, facing: 0, label: "実験的プロジェクト", category: "EXPERIMENTS", summary: "ゲームと空間の公開制作", imageUrl: "https://i.ytimg.com/vi/LZgxWzS0UVY/hqdefault.jpg" }).position });
 
   buildCorridor(-77, -83, "05 EXIT · OMIYAGE");
   buildRoom({ z1: -83, z2: -99, title: "05 EXIT · OMIYAGE", accent: 0xc96a4a });
@@ -623,6 +623,45 @@ function addPedestal(position, color, feature) {
   return { group, halo, visual };
 }
 
+function addStandee({ x, z, imageUrl, facing = 0 }) {
+  const group = new THREE.Group();
+  group.position.set(x, 0, z);
+  group.rotation.y = facing;
+
+  const base = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.55, 0.72, 0.14, 40),
+    new THREE.MeshStandardMaterial({ color: 0x1a314d, roughness: 0.35, metalness: 0.6 })
+  );
+  base.position.y = 0.07;
+  group.add(base);
+
+  const halo = new THREE.Mesh(
+    new THREE.TorusGeometry(0.56, 0.04, 10, 40),
+    new THREE.MeshBasicMaterial({ color: 0x9de8ca, transparent: true, opacity: 0.92 })
+  );
+  halo.rotation.x = Math.PI / 2;
+  halo.position.y = 0.16;
+  group.add(halo);
+
+  const edgeMaterial = new THREE.MeshStandardMaterial({ color: 0x0d1c30, roughness: 0.4, metalness: 0.3, transparent: true, opacity: 0.85, depthWrite: false });
+  const faceMaterial = new THREE.MeshBasicMaterial({ map: null, transparent: true, depthWrite: false, side: THREE.DoubleSide });
+  const stand = new THREE.Mesh(
+    new THREE.BoxGeometry(1.1, 2.2, 0.05),
+    [edgeMaterial, edgeMaterial, edgeMaterial, edgeMaterial, faceMaterial, faceMaterial]
+  );
+  stand.position.y = 0.14 + 1.1;
+  group.add(stand);
+
+  new THREE.TextureLoader().load(imageUrl, (texture) => {
+    texture.colorSpace = THREE.SRGBColorSpace;
+    faceMaterial.map = texture;
+    faceMaterial.needsUpdate = true;
+  });
+
+  scene.add(group);
+  return group;
+}
+
 function makeBlenderObject() {
   const material = new THREE.MeshStandardMaterial({ color: 0x8acfff, metalness: 0.64, roughness: 0.24, emissive: 0x0e3150, emissiveIntensity: 0.55 });
   return new THREE.Mesh(new THREE.TorusKnotGeometry(0.66, 0.21, 120, 18), material);
@@ -667,9 +706,10 @@ function makeGamesObject() {
 }
 
 const blenderObject = addPedestal(new THREE.Vector3(-5.0, 0, -3.1), 0x7dcaff, makeBlenderObject);
-const toioObject = addPedestal(new THREE.Vector3(0, 0, -6.3), 0x9de8ca, makeToioObject);
+const toioObject = addPedestal(new THREE.Vector3(4.0, 0, -6.8), 0x9de8ca, makeToioObject);
 const githubObject = addPedestal(new THREE.Vector3(5.0, 0, -3.1), 0xffdd87, makeGithubObject);
-const gamesObject = addPedestal(new THREE.Vector3(-2.6, 0, -7.6), 0xc96a4a, makeGamesObject);
+const gamesObject = addPedestal(new THREE.Vector3(-4.0, 0, -6.8), 0xc96a4a, makeGamesObject);
+const standee = addStandee({ x: 6.6, z: -8.8, imageUrl: "../../images/unotchi-official-standing.png", facing: -Math.PI / 2 });
 
 const exhibitObjects = [
   { id: "blender", position: blenderObject.group.position, animation: blenderObject },
@@ -848,6 +888,7 @@ function render() {
   move(delta);
   updateNearestExhibit();
   animateExhibits(elapsed);
+  if (!reducedMotion && standee) standee.rotation.y += delta * 0.35;
   renderer.render(scene, camera);
   requestAnimationFrame(render);
 }
