@@ -10,10 +10,10 @@
   "category": "utility",
   "tags": ["Codex", "時刻変換", "ブラウザツール"],
   "createdAt": "2026-08-11",
-  "updatedAt": "2026-08-11",
+  "updatedAt": "2026-08-25",
   "featured": false,
   "order": 70,
   "status": "published",
   "web": { "visible": true },
-  "gallery3d": { "visible": true, "room": "games", "order": 7 }
+  "gallery3d": { "visible": true, "room": "works", "order": 1 }
 }

@@ -7,6 +7,7 @@ const assert = require("node:assert/strict");
 const root = path.resolve(__dirname, "..");
 const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const styles = fs.readFileSync(path.join(root, "styles.css"), "utf8");
+const tokens = fs.readFileSync(path.join(root, "tokens.css"), "utf8");
 const worldHtml = fs.readFileSync(path.join(root, "lab/virtual-world/index.html"), "utf8");
 const worldJs = fs.readFileSync(path.join(root, "lab/virtual-world/world.js"), "utf8");
 const worldCss = fs.readFileSync(path.join(root, "lab/virtual-world/world.css"), "utf8");
@@ -16,7 +17,7 @@ const exhibitDataJs = fs.readFileSync(exhibitDataPath, "utf8");
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "exhibits/manifest.json"), "utf8"));
 const schema = JSON.parse(fs.readFileSync(path.join(root, "exhibits/schema.json"), "utf8"));
 const managedExhibits = manifest.exhibits.map((filename) => JSON.parse(fs.readFileSync(path.join(root, "exhibits", filename), "utf8")));
-const migratedCasualIds = new Set(["hole-io", "dodge-and-gather", "offline-flap", "the-strongest-princess", "gomoku", "crowd-runner"]);
+const migratedCasualIds = new Set(["hole-io", "island-survival-craft-defense", "dodge-and-gather", "offline-flap", "the-strongest-princess", "gomoku", "crowd-runner"]);
 const migratedCasualExhibits = managedExhibits.filter((item) => migratedCasualIds.has(item.id));
 const knowledgeText = fs.readFileSync(path.join(root, "assets/chatbot/knowledge.json"), "utf8");
 const knowledge = JSON.parse(knowledgeText);
@@ -30,6 +31,16 @@ const recentUrls = [
 ];
 const casualGameUrls = [
   "https://sanpeita.github.io/gomoku/",
+  "https://sanpeita.github.io/Crowd-Runner/"
+];
+const requestedPlayableUrls = [
+  "https://sanpeita.github.io/Hole-IO-Casual-Game/",
+  "https://sanpeita.github.io/Island-Survival-Craft-Defense/",
+  "https://sanpeita.github.io/dodge-and-gather/",
+  "https://sanpeita.github.io/OfflineFlap/",
+  "https://sanpeita.github.io/the_strongest_princess/",
+  "https://sanpeita.github.io/CodexResetTimeConverter/",
+  "https://sanpeita.github.io/NON-DATA_EXERION/",
   "https://sanpeita.github.io/Crowd-Runner/"
 ];
 
@@ -85,6 +96,29 @@ test("one published exhibit feeds both the web and 3D view filters", async () =>
   assert.ok(worldJs.includes("addManagedExhibits(managedExhibits, siteRootUrl)"));
 });
 
+test("application catalogue uses direct public pages and separates games from the web tool", () => {
+  for (const url of requestedPlayableUrls) {
+    const exhibit = managedExhibits.find((item) => item.url === url);
+    assert.ok(exhibit, url);
+    assert.equal(exhibit.status, "published", exhibit.id);
+    assert.equal(exhibit.web.visible, true, exhibit.id);
+    assert.equal(exhibit.gallery3d.visible, true, exhibit.id);
+    assert.equal(exhibit.url.startsWith("https://github.com/"), false, exhibit.id);
+  }
+  const converter = managedExhibits.find((item) => item.id === "codex-reset-time-converter");
+  assert.equal(converter.type, "web-app");
+  assert.equal(converter.gallery3d.room, "works");
+  for (const item of managedExhibits.filter((entry) => entry.type === "game")) {
+    assert.equal(item.gallery3d.room, "games", item.id);
+  }
+  assert.ok(index.includes('id="playable-games"'));
+  assert.ok(index.includes('href="#playable-games"'));
+  assert.ok(index.includes("YouTubeゲームルームへの対応状況は別途検証中です。"));
+  assert.ok(exhibitCatalogJs.includes('item.type === "game"'));
+  assert.ok(exhibitCatalogJs.includes('"今すぐ遊ぶ ↗"'));
+  assert.ok(exhibitCatalogJs.includes('"公開Webツール"'));
+});
+
 test("schema and loaders preserve static GitHub Pages paths", () => {
   for (const field of ["id", "title", "type", "url", "description", "thumbnail", "status", "web", "gallery3d"]) {
     assert.ok(schema.required.includes(field), field);
@@ -126,4 +160,15 @@ test("hero CTAs stay on one line and stack at 700px or below", () => {
     styles,
     /@media \(max-width: 700px\) \{[\s\S]*?\.hero-actions \{[^}]*flex-direction:\s*column;[^}]*align-items:\s*stretch;[^}]*\}[\s\S]*?\.hero-actions \.button \{[^}]*width:\s*100%;[^}]*\}/
   );
+});
+
+test("playable catalogue keeps token and mobile overflow contracts", () => {
+  assert.ok(styles.includes('@import url("tokens.css")'));
+  assert.match(styles, /html \{[^}]*overflow-x:\s*clip;/s);
+  assert.match(styles, /body \{[^}]*overflow-x:\s*clip;/s);
+  assert.ok(styles.includes(".exhibit-grid"));
+  assert.match(styles, /@media \(max-width: 700px\) \{[\s\S]*?\.exhibit-grid \{[^}]*grid-template-columns:\s*minmax\(0, 1fr\);/);
+  for (const token of ["--color-game-paper", "--font-game-display", "--space-game-md", "--ease-game-out", "--radius-game-lg"]) {
+    assert.ok(tokens.includes(token), token);
+  }
 });

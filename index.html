@@ -41,6 +41,7 @@
       <nav aria-label="メインナビゲーション">
         <a href="lab/virtual-world/">展示室</a>
         <a href="#works">代表作</a>
+        <a href="#playable-games">ゲーム</a>
         <a href="#culture">V文化論</a>
         <a href="#projects">制作実績</a>
         <a href="#links">リンク</a>
@@ -280,11 +281,12 @@
           </div>
         </div>
 
-        <div class="ai-games-band" aria-labelledby="exhibit-catalog-title">
-          <div>
-            <small>WEB APPS / GAMES</small>
-            <strong id="exhibit-catalog-title">登録作品カタログ</strong>
-            <p>各作品は <code>exhibits/*.json</code> を正本として、通常Webと3D展示室の両方へ反映しています。</p>
+        <div class="ai-games-band" id="playable-games" aria-labelledby="exhibit-catalog-title">
+          <div class="exhibit-catalog-intro">
+            <h3 id="exhibit-catalog-title">公開ゲームを、ブラウザですぐ体験。</h3>
+            <p>各カードの「今すぐ遊ぶ」は、コード置き場ではなく公開プレイ版を開きます。作品は通常Webと3D展示室へ同じ正本から掲載しています。</p>
+            <p class="exhibit-application-note">YouTubeゲームルームへの対応状況は別途検証中です。ここでは、現在の通常ブラウザ公開版を確認できます。</p>
+            <a class="exhibit-anchor-link" href="#playable-games" aria-label="公開ゲーム一覧の固定リンク">この一覧への固定リンク</a>
             <p id="exhibit-catalog-status" class="exhibit-catalog-status" role="status">作品情報を読み込んでいます。</p>
           </div>
           <div class="exhibit-catalog" id="exhibit-catalog" aria-live="polite"></div>

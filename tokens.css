@@ -1,0 +1,47 @@
+/* Hallmark · scoped catalogue tokens · existing portfolio palette · OKLCH only */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4 */
+
+:root {
+  --color-game-paper: oklch(99% 0.008 82);
+  --color-game-paper-2: oklch(96% 0.018 235);
+  --color-game-rule: oklch(78% 0.025 235);
+  --color-game-ink: oklch(30% 0.055 235);
+  --color-game-ink-soft: oklch(40% 0.035 235);
+  --color-game-muted: oklch(49% 0.025 235);
+  --color-game-accent: oklch(44% 0.09 240);
+  --color-game-focus: oklch(58% 0.15 55);
+  --color-game-thumb: oklch(24% 0.045 245);
+  --color-game-tag: oklch(96% 0.025 230);
+  --color-game-tag-ink: oklch(47% 0.04 225);
+
+  --font-game-display: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
+  --font-game-body: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+
+  --space-game-xs: 0.5rem;
+  --space-game-2xs: 0.25rem;
+  --space-game-sm: 0.75rem;
+  --space-game-md: 1rem;
+  --space-game-lg: 1.5rem;
+  --space-game-xl: 2.5rem;
+  --space-game-2xl: 4rem;
+
+  --text-game-label: 0.625rem;
+  --text-game-tag: 0.625rem;
+  --text-game-link: 0.75rem;
+  --text-game-body: 0.875rem;
+  --text-game-card-title: 1.25rem;
+  --text-game-heading: 1.5rem;
+
+  --ease-game-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-game-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-game-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-game-micro: 120ms;
+  --dur-game-short: 180ms;
+  --dur-game-long: 420ms;
+
+  --rule-game: 1px;
+  --radius-game-sm: 0.75rem;
+  --radius-game-lg: 1.125rem;
+  --radius-game-pill: 999px;
+  --shadow-game-card: 0 12px 30px oklch(30% 0.055 235 / 0.09);
+}

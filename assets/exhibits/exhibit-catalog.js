@@ -23,7 +23,7 @@ function createCard(exhibit) {
   imageLink.href = exhibit.url;
   imageLink.target = "_blank";
   imageLink.rel = "noopener noreferrer";
-  imageLink.setAttribute("aria-label", `${exhibit.title}を開く`);
+  imageLink.setAttribute("aria-label", exhibit.type === "game" ? `${exhibit.title}を今すぐ遊ぶ` : `${exhibit.title}を開く`);
   const image = document.createElement("img");
   image.src = resolveAssetUrl(exhibit.thumbnail, siteRootUrl);
   image.alt = `${exhibit.title}のサムネイル`;
@@ -36,7 +36,7 @@ function createCard(exhibit) {
   const meta = document.createElement("p");
   meta.className = "exhibit-card-meta";
   meta.textContent = [exhibit.category, exhibit.type].filter(Boolean).join(" / ").toUpperCase();
-  const heading = document.createElement("h3");
+  const heading = document.createElement("h4");
   heading.textContent = exhibit.title;
   const description = document.createElement("p");
   description.textContent = exhibit.shortDescription || exhibit.description;
@@ -51,7 +51,7 @@ function createCard(exhibit) {
   open.href = exhibit.url;
   open.target = "_blank";
   open.rel = "noopener noreferrer";
-  open.textContent = "作品を開く ↗";
+  open.textContent = exhibit.type === "game" ? "今すぐ遊ぶ ↗" : "ツールを開く ↗";
   links.append(open);
   if (exhibit.repository && exhibit.repository !== exhibit.url) {
     const repository = document.createElement("a");
@@ -68,12 +68,36 @@ function createCard(exhibit) {
   return article;
 }
 
+function createCollection(items, className) {
+  const collection = document.createElement("div");
+  collection.className = className;
+  collection.append(...items.map(createCard));
+  return collection;
+}
+
+function createToolSection(items) {
+  const section = document.createElement("section");
+  section.className = "exhibit-tools";
+  section.setAttribute("aria-labelledby", "web-tools-title");
+  const heading = document.createElement("h3");
+  heading.id = "web-tools-title";
+  heading.textContent = "公開Webツール";
+  const description = document.createElement("p");
+  description.textContent = "ゲーム以外のブラウザ作品です。";
+  section.append(heading, description, createCollection(items, "exhibit-grid exhibit-tool-grid"));
+  return section;
+}
+
 async function renderCatalog() {
   if (!mount) return;
   try {
     const items = filterWebExhibits(await loadExhibits(manifestUrl));
-    mount.replaceChildren(...items.map(createCard));
-    status.textContent = `${items.length}作品を掲載しています。`;
+    const games = items.filter((item) => item.type === "game");
+    const tools = items.filter((item) => item.type !== "game");
+    const collections = [createCollection(games, "exhibit-grid exhibit-game-grid")];
+    if (tools.length > 0) collections.push(createToolSection(tools));
+    mount.replaceChildren(...collections);
+    status.textContent = `${games.length}本の公開ゲームと${tools.length}件のWebツールを掲載しています。`;
     document.documentElement.dataset.exhibitCatalogReady = "true";
   } catch (error) {
     console.error("作品カタログを読み込めませんでした。", error);

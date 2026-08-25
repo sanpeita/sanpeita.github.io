@@ -1,14 +1,15 @@
 {
-    "version":  1,
-    "schema":  "schema.json",
-    "exhibits":  [
-    "crowd-runner.json",
+  "version": 1,
+  "schema": "schema.json",
+  "exhibits": [
     "codex-reset-time-converter.json",
+    "crowd-runner.json",
     "dodge-and-gather.json",
-    "non-data-exerion.json",
     "gomoku.json",
-                     "hole-io.json",
-                     "offline-flap.json",
-                     "the-strongest-princess.json"
-                 ]
+    "hole-io.json",
+    "island-survival-craft-defense.json",
+    "non-data-exerion.json",
+    "offline-flap.json",
+    "the-strongest-princess.json"
+  ]
 }
