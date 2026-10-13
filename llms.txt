@@ -1,0 +1,62 @@
+# うのっち ポートフォリオ
+
+> 教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。
+
+うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。制作過程と学びの実践を発信しています。
+
+このファイルは、検索や回答のために訪れたAIエージェント向けの入口です。引用・要約に使える事実は `llms-full.txt`（全文）と `llms.json`（構造化データ）にまとめています。
+
+## 主要ページ
+
+- [トップページ](https://sanpeita.github.io/): プロフィール、代表作、最近作、V文化論、公開ゲーム一覧、外部リンク
+- [公開ゲーム一覧](https://sanpeita.github.io/#playable-games): ブラウザですぐ遊べる公開ゲームの固定リンク
+- [バーチャル展示室](https://sanpeita.github.io/lab/virtual-world/): 5室を歩く独立Web作品（検索向けには noindex）
+
+## 代表作（まず見る4本）
+
+- [toioで自作ツインスティック、Minecraftを動かしてみた](https://www.youtube.com/watch?v=YogaOVAiXTU): DEVICE × GAME。物理デバイス、Unity、ゲームをひとつの遊びに接続。作る力と、見た瞬間に伝わる企画性を示す一作です。
+- [最初は「複製1個」でOK](https://www.youtube.com/watch?v=wpBQTzA3uyg): BLENDERできそう。全部覚えなくていい。ひとつの操作に絞って、Blenderの初見の恐怖を下げる代表回です。
+- [爆発Backroomsをゲーム化する](https://www.youtube.com/watch?v=Hn6c8Ln2A0w): ROBLOX × BUILD。遊びながら仕組みを観察し、Roblox Studioで作り直す。ゲーム文化を制作と学びへ翻訳します。
+- [近づく前に、フィールドを合わせる](https://www.youtube.com/watch?v=Jg-ROUK7HN0): V CULTURE。VTuberの「近さ」を感情論だけでなく設計として考える、うのっちの思想を短尺にした一作です。
+
+## 最近の制作（2026年7月〜8月）
+
+- [MagicaVoxel作品をマイクラに召喚！自作Importer Mod](https://www.youtube.com/watch?v=VJ69-nhBhOU): 公開日 2026-08-04
+- [Unity版オルディア開発PhaseT2進捗](https://www.youtube.com/watch?v=oXVi8Rup6is): 公開日 2026-07-29
+- [AIエージェントへインシデントを委任するUnityゲーム](https://www.youtube.com/watch?v=LZgxWzS0UVY): 公開日 2026-07-22
+- [Blenderって無理そう？透明っぽい素材の入口](https://www.youtube.com/watch?v=A-OFtZaHR0o): 公開日 2026-07-16
+
+## 公開ゲーム（ブラウザで遊べる）
+
+- [Hole-IO](https://sanpeita.github.io/Hole-IO-Casual-Game/): 街を吸い込み、穴を育てる縦画面カジュアルゲーム。
+- [Island Survival Craft & Defense](https://sanpeita.github.io/Island-Survival-Craft-Defense/): 島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。
+- [dodge & gather](https://sanpeita.github.io/dodge-and-gather/): ネオンの障害物を避けて集めるカジュアルアクション。
+- [OfflineFlap](https://sanpeita.github.io/OfflineFlap/): タイミングよく障害物を抜けるフラップアクション。
+- [The Strongest Princess](https://sanpeita.github.io/the_strongest_princess/): 最強の姫がダンジョンを爆砕して進む2Dアクション。
+- [五目並べ](https://sanpeita.github.io/gomoku/): ブラウザで遊べる完全オフライン対応の五目並べ。
+- [Crowd Runner](https://sanpeita.github.io/Crowd-Runner/): 群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。
+- [Codex Reset Time Converter](https://sanpeita.github.io/CodexResetTimeConverter/): Codexのリセット時刻を日本時間へ変換するブラウザ完結ツール。
+- [EXERION 3D](https://sanpeita.github.io/NON-DATA_EXERION/): 慣性のある飛行感を楽しめる、完全オフライン対応の3Dレトロシューティング。
+
+## 発信場所
+
+- [YouTube](https://www.youtube.com/@TheSANPEITA): Shorts・制作・配信
+- [YouTube Shorts](https://www.youtube.com/@TheSANPEITA/shorts): Blenderできそうなど短尺
+- [note](https://note.com/sanpeita): V文化論・活動記録
+- [TikTok](https://www.tiktok.com/@unotchi): 短尺動画・ライブ
+- [X](https://x.com/unoksanpt): 日々の制作ログ
+- [GitHub](https://github.com/sanpeita): コード・プロジェクト
+- [Qiita](https://qiita.com/sanpeita): 技術記事
+- [unityroom](https://unityroom.com/users/bapfjey9s3kr14itud7h): 公開Unityゲーム
+- [ProtoPedia](https://protopedia.net/prototyper/sanpeita): 試作の公開記録
+- [3D Data Japan](https://3d-data.skhonpo.com/collections/unotchi_sanpeita): 3Dデータの公開
+- [cluster](https://cluster.mu/u/sanpeita): clusterワールド
+- [Fortnite](https://www.fortnite.com/@unotchi/8265-0398-2062?lang=ja): クリエイター島
+- [ワンダーメイクフェス5 toioブース映像](https://www.youtube.com/watch?v=ZgVxVa9wKUo&t=101s): イベント実績の確認映像
+
+## Optional
+
+- [llms-full.txt](https://sanpeita.github.io/llms-full.txt): すべての確認済み事実をまとめた詳細版
+- [llms.json](https://sanpeita.github.io/llms.json): 機械可読な構造化データ
+- [exhibits/manifest.json](https://sanpeita.github.io/exhibits/manifest.json): 公開作品の正本（1作品1ファイル）
+- [assets/chatbot/knowledge.json](https://sanpeita.github.io/assets/chatbot/knowledge.json): うのっちナビの知識（15カテゴリ）

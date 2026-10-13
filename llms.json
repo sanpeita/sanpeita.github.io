@@ -1,0 +1,704 @@
+{
+  "version": 1,
+  "updated": "2026-10-13",
+  "site": {
+    "url": "https://sanpeita.github.io/",
+    "name": "うのっち ポートフォリオ",
+    "language": "ja",
+    "description": "教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。"
+  },
+  "person": {
+    "name": "うのっち",
+    "alternateName": [
+      "unveri",
+      "sanpeita",
+      "unotchi"
+    ],
+    "url": "https://sanpeita.github.io/",
+    "image": "https://sanpeita.github.io/images/unotchi-official-standing.png",
+    "tagline": "難しそうを、できそうに。",
+    "description": "うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。制作過程と学びの実践を発信しています。",
+    "origin": "2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始",
+    "roles": [
+      "VTuber",
+      "講師",
+      "クリエイター"
+    ],
+    "knowsAbout": [
+      "Unity",
+      "Blender",
+      "3DCG",
+      "Roblox",
+      "Minecraft",
+      "toio",
+      "3Dプリント",
+      "デジタル教材開発",
+      "V文化論"
+    ]
+  },
+  "philosophy": [
+    {
+      "title": "難しそうを、できそうに。",
+      "statement": "得意なのは、難しい仕組みをすべて説明することではなく、最初の「無理そう」をひとつ減らすことです。"
+    },
+    {
+      "title": "全部覚えなくて大丈夫。",
+      "statement": "全部を一度に覚えなくていい。まずは、ひとつ見えれば十分です。"
+    },
+    {
+      "title": "姿を変えることは、逃げることではない。",
+      "statement": "アバターは、現実を捨てるためではなく、現実の可能性を拡張するための器になれる。"
+    }
+  ],
+  "featuredWorks": [
+    {
+      "title": "toioで自作ツインスティック、Minecraftを動かしてみた",
+      "url": "https://www.youtube.com/watch?v=YogaOVAiXTU",
+      "label": "DEVICE × GAME",
+      "description": "物理デバイス、Unity、ゲームをひとつの遊びに接続。作る力と、見た瞬間に伝わる企画性を示す一作です。"
+    },
+    {
+      "title": "最初は「複製1個」でOK",
+      "url": "https://www.youtube.com/watch?v=wpBQTzA3uyg",
+      "label": "BLENDERできそう",
+      "description": "全部覚えなくていい。ひとつの操作に絞って、Blenderの初見の恐怖を下げる代表回です。"
+    },
+    {
+      "title": "爆発Backroomsをゲーム化する",
+      "url": "https://www.youtube.com/watch?v=Hn6c8Ln2A0w",
+      "label": "ROBLOX × BUILD",
+      "description": "遊びながら仕組みを観察し、Roblox Studioで作り直す。ゲーム文化を制作と学びへ翻訳します。"
+    },
+    {
+      "title": "近づく前に、フィールドを合わせる",
+      "url": "https://www.youtube.com/watch?v=Jg-ROUK7HN0",
+      "label": "V CULTURE",
+      "description": "VTuberの「近さ」を感情論だけでなく設計として考える、うのっちの思想を短尺にした一作です。"
+    }
+  ],
+  "recentWorks": [
+    {
+      "title": "MagicaVoxel作品をマイクラに召喚！自作Importer Mod",
+      "url": "https://www.youtube.com/watch?v=VJ69-nhBhOU",
+      "publishedAt": "2026-08-04"
+    },
+    {
+      "title": "Unity版オルディア開発PhaseT2進捗",
+      "url": "https://www.youtube.com/watch?v=oXVi8Rup6is",
+      "publishedAt": "2026-07-29"
+    },
+    {
+      "title": "AIエージェントへインシデントを委任するUnityゲーム",
+      "url": "https://www.youtube.com/watch?v=LZgxWzS0UVY",
+      "publishedAt": "2026-07-22"
+    },
+    {
+      "title": "Blenderって無理そう？透明っぽい素材の入口",
+      "url": "https://www.youtube.com/watch?v=A-OFtZaHR0o",
+      "publishedAt": "2026-07-16"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Blenderできそうシリーズ",
+      "type": "3D EDUCATION",
+      "description": "「最初は3つだけ」「全部覚えなくていい」を軸に、Blenderを初めて触る人の不安をひとつ減らすShortsと教材を制作。受け手の反応を、次の一歩の設計へつないでいます。",
+      "url": "https://www.youtube.com/@TheSANPEITA/shorts"
+    },
+    {
+      "title": "toioTacticalField",
+      "type": "TOIO × UNITY",
+      "description": "toio Core Cube と Unity で、机上に戦域を立ち上げる自動タクティクス実験。Transporterのゴール到達と3役の認識を通過し、いまはScoutの探索を小さく試作しています。",
+      "url": "https://www.youtube.com/@TheSANPEITA/shorts"
+    },
+    {
+      "title": "ゲームと空間の公開制作",
+      "type": "GAME & WORLD",
+      "description": "Unityゲーム、Fortniteクリエイター島、clusterワールド、Roblox Studioでの試作など、ゲーム文化の中で「遊んで分かる」作品を公開しています。",
+      "url": "https://unityroom.com/users/bapfjey9s3kr14itud7h"
+    }
+  ],
+  "games": [
+    {
+      "id": "hole-io",
+      "title": "Hole-IO",
+      "url": "https://sanpeita.github.io/Hole-IO-Casual-Game/",
+      "type": "game",
+      "category": "casual-game",
+      "description": "街のオブジェクトを吸い込みながら穴を大きくしていく、縦画面で遊べるカジュアルゲームです。",
+      "shortDescription": "街を吸い込み、穴を育てる縦画面カジュアルゲーム。",
+      "tags": [
+        "AI Studio",
+        "オフライン",
+        "カジュアルゲーム"
+      ],
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "island-survival-craft-defense",
+      "title": "Island Survival Craft & Defense",
+      "url": "https://sanpeita.github.io/Island-Survival-Craft-Defense/",
+      "type": "game",
+      "category": "survival-game",
+      "description": "島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。",
+      "shortDescription": "島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。",
+      "tags": [
+        "3D",
+        "サバイバル",
+        "クラフト",
+        "ブラウザゲーム"
+      ],
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "dodge-and-gather",
+      "title": "dodge & gather",
+      "url": "https://sanpeita.github.io/dodge-and-gather/",
+      "type": "game",
+      "category": "casual-game",
+      "description": "ネオンの障害物を避けながらアイテムを集める、ブラウザで遊べるカジュアルアクションゲームです。",
+      "shortDescription": "ネオンの障害物を避けて集めるカジュアルアクション。",
+      "tags": [
+        "AI Studio",
+        "オフライン",
+        "カジュアルゲーム"
+      ],
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "offline-flap",
+      "title": "OfflineFlap",
+      "url": "https://sanpeita.github.io/OfflineFlap/",
+      "type": "game",
+      "category": "casual-game",
+      "description": "タイミングよく羽ばたいて障害物を抜ける、ブラウザで遊べるフラップアクションゲームです。",
+      "shortDescription": "タイミングよく障害物を抜けるフラップアクション。",
+      "tags": [
+        "AI Studio",
+        "オフライン",
+        "カジュアルゲーム"
+      ],
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "the-strongest-princess",
+      "title": "The Strongest Princess",
+      "url": "https://sanpeita.github.io/the_strongest_princess/",
+      "type": "game",
+      "category": "casual-game",
+      "description": "最強の姫を操作し、ダンジョンを爆砕しながら進む、ブラウザで遊べる2Dスクロールアクションゲームです。",
+      "shortDescription": "最強の姫がダンジョンを爆砕して進む2Dアクション。",
+      "tags": [
+        "AI Studio",
+        "オフライン",
+        "2Dアクション"
+      ],
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "gomoku",
+      "title": "五目並べ",
+      "url": "https://sanpeita.github.io/gomoku/",
+      "type": "game",
+      "category": "casual-game",
+      "description": "ブラウザだけで遊べる、完全オフライン対応の五目並べです。",
+      "shortDescription": "ブラウザで遊べる完全オフライン対応の五目並べ。",
+      "tags": [
+        "AI Studio",
+        "オフライン",
+        "ブラウザゲーム"
+      ],
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "crowd-runner",
+      "title": "Crowd Runner",
+      "url": "https://sanpeita.github.io/Crowd-Runner/",
+      "type": "game",
+      "category": "casual-game",
+      "description": "群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。",
+      "shortDescription": "群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。",
+      "tags": [
+        "AI Studio",
+        "オフライン",
+        "ブラウザゲーム"
+      ],
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "codex-reset-time-converter",
+      "title": "Codex Reset Time Converter",
+      "url": "https://sanpeita.github.io/CodexResetTimeConverter/",
+      "type": "web-app",
+      "category": "utility",
+      "description": "OpenAI Codexなどのリセット時刻（GMT / PDT / PST）を、日本時間（JST）へ変換するブラウザ完結のWebツールです。",
+      "shortDescription": "Codexのリセット時刻を日本時間へ変換するブラウザ完結ツール。",
+      "tags": [
+        "Codex",
+        "時刻変換",
+        "ブラウザツール"
+      ],
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "non-data-exerion",
+      "title": "EXERION 3D",
+      "url": "https://sanpeita.github.io/NON-DATA_EXERION/",
+      "type": "game",
+      "category": "casual-game",
+      "description": "慣性がはたらく飛行感と疑似3D視点をブラウザで再構築した、完全オフライン対応のレトロシューティングゲームです。",
+      "shortDescription": "慣性のある飛行感を楽しめる、完全オフライン対応の3Dレトロシューティング。",
+      "tags": [
+        "オフライン",
+        "ブラウザゲーム",
+        "疑似3D"
+      ],
+      "updatedAt": "2026-08-11"
+    }
+  ],
+  "noteArticles": [
+    {
+      "title": "姿を変えることで、人は新しい自分になれる。",
+      "url": "https://note.com/sanpeita/n/na5e8b49a6931",
+      "label": "IDENTITY / TED",
+      "description": "アバターが現実の自分を拡張するという、活動の中核。"
+    },
+    {
+      "title": "clusterとアバター文化に出会って変わったこと",
+      "url": "https://note.com/sanpeita/n/n24b0f31c3116",
+      "label": "AVATAR CULTURE",
+      "description": "2020年の原点。VRoid、Blender、Unity、VTuber活動がつながった記録。"
+    },
+    {
+      "title": "VTuberうのっち TED世界共創計画とは",
+      "url": "https://note.com/sanpeita/n/n996d1c35ad1c",
+      "label": "CO-CREATION",
+      "description": "「寄り添い」と「拡張」を掲げ、発信と登壇をつなぐ宣言。"
+    }
+  ],
+  "links": [
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@TheSANPEITA",
+      "note": "Shorts・制作・配信"
+    },
+    {
+      "label": "YouTube Shorts",
+      "url": "https://www.youtube.com/@TheSANPEITA/shorts",
+      "note": "Blenderできそうなど短尺"
+    },
+    {
+      "label": "note",
+      "url": "https://note.com/sanpeita",
+      "note": "V文化論・活動記録"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@unotchi",
+      "note": "短尺動画・ライブ"
+    },
+    {
+      "label": "X",
+      "url": "https://x.com/unoksanpt",
+      "note": "日々の制作ログ"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/sanpeita",
+      "note": "コード・プロジェクト"
+    },
+    {
+      "label": "Qiita",
+      "url": "https://qiita.com/sanpeita",
+      "note": "技術記事"
+    },
+    {
+      "label": "unityroom",
+      "url": "https://unityroom.com/users/bapfjey9s3kr14itud7h",
+      "note": "公開Unityゲーム"
+    },
+    {
+      "label": "ProtoPedia",
+      "url": "https://protopedia.net/prototyper/sanpeita",
+      "note": "試作の公開記録"
+    },
+    {
+      "label": "3D Data Japan",
+      "url": "https://3d-data.skhonpo.com/collections/unotchi_sanpeita",
+      "note": "3Dデータの公開"
+    },
+    {
+      "label": "cluster",
+      "url": "https://cluster.mu/u/sanpeita",
+      "note": "clusterワールド"
+    },
+    {
+      "label": "Fortnite",
+      "url": "https://www.fortnite.com/@unotchi/8265-0398-2062?lang=ja",
+      "note": "クリエイター島"
+    },
+    {
+      "label": "ワンダーメイクフェス5 toioブース映像",
+      "url": "https://www.youtube.com/watch?v=ZgVxVa9wKUo&t=101s",
+      "note": "イベント実績の確認映像"
+    }
+  ],
+  "faq": [
+    {
+      "id": "profile-overview",
+      "question": "うのっちは何をしている人？",
+      "facts": [
+        "教育現場でデジタル教材開発と3D制作に関わる講師・クリエイターである",
+        "VTuberとして活動している",
+        "Blender、Roblox、Unityなどを扱っている",
+        "ゲーム、3D制作、ロボット、自作デバイス、V文化論について発信している",
+        "難しそうなものを、最初の一歩へ変えることを活動の軸にしている"
+      ],
+      "links": [
+        {
+          "label": "プロフィールを見る",
+          "url": "https://sanpeita.github.io/#about"
+        }
+      ]
+    },
+    {
+      "id": "vtuber-history",
+      "question": "VTuberとしての活動歴は？",
+      "facts": [
+        "2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始",
+        "制作過程と学びの実践を発信している",
+        "Blenderの短尺解説、ゲーム制作、自作デバイスの実験、V文化論などを扱っている",
+        "アバターを現実の可能性を拡張する器として捉えている",
+        "YouTube、TikTok、note、Xなど複数の場所で発信している"
+      ],
+      "links": [
+        {
+          "label": "YouTubeを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA"
+        },
+        {
+          "label": "V文化論を読む",
+          "url": "https://note.com/sanpeita"
+        }
+      ]
+    },
+    {
+      "id": "core-strengths",
+      "question": "うのっちの強みは？",
+      "facts": [
+        "初見の人が止まりやすい場所を観察することを重視している",
+        "難しい仕組みを、小さく試せる形へ変えることを得意としている",
+        "制作して終わりではなく、反応を見て改善を続けている",
+        "教育、制作、VTuber活動を横断している",
+        "見ている人が自分もやってみたいと思える入口をつくることを目指している"
+      ],
+      "links": [
+        {
+          "label": "活動の考え方を見る",
+          "url": "https://sanpeita.github.io/#what-i-bring"
+        }
+      ]
+    },
+    {
+      "id": "team-contribution",
+      "question": "チームに加わると何ができる？",
+      "facts": [
+        "教育現場で相手の理解度を観察しながら支援している",
+        "Unity、Blender、Roblox、Minecraft、3Dプリントなど複数領域を扱える",
+        "アイデアを試作品や教材、動画として形にできる",
+        "初めて触れる人が参加しやすい入口を設計できる",
+        "制作後の反応を次の改善へつなげている"
+      ],
+      "links": [
+        {
+          "label": "制作実績を見る",
+          "url": "https://sanpeita.github.io/#projects"
+        },
+        {
+          "label": "GitHubを見る",
+          "url": "https://github.com/sanpeita"
+        }
+      ]
+    },
+    {
+      "id": "representative-works",
+      "question": "代表作品と実績を教えて",
+      "facts": [
+        "toioとUnityを組み合わせた作品を制作している",
+        "BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した",
+        "toioで自作ツインスティックを作りMinecraftを操作する作品を公開している",
+        "Blender初心者向けの短尺シリーズを制作している",
+        "Roblox Studioでゲーム文化を制作と学びへつなぐ作品を公開している",
+        "Unityゲーム、Fortniteクリエイター島、clusterワールドなども公開している",
+        "2026年8月4日にMagicaVoxel作品をMinecraftへ取り込む自作Importer Modの動画を公開した",
+        "2026年7月29日にUnity版オルディア開発PhaseT2進捗の動画を公開した",
+        "2026年7月22日にAIエージェントへインシデントを委任するUnityゲームの動画を公開した",
+        "2026年7月16日にBlenderの透明っぽい素材の入口を紹介する動画を公開した"
+      ],
+      "links": [
+        {
+          "label": "代表作を見る",
+          "url": "https://sanpeita.github.io/#works"
+        },
+        {
+          "label": "unityroomを見る",
+          "url": "https://unityroom.com/users/bapfjey9s3kr14itud7h"
+        },
+        {
+          "label": "YouTubeを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA"
+        },
+        {
+          "label": "MagicaVoxel Importer Modを見る",
+          "url": "https://www.youtube.com/watch?v=VJ69-nhBhOU"
+        },
+        {
+          "label": "Unity版オルディアPhaseT2を見る",
+          "url": "https://www.youtube.com/watch?v=oXVi8Rup6is"
+        },
+        {
+          "label": "AIエージェント委任Unityゲームを見る",
+          "url": "https://www.youtube.com/watch?v=LZgxWzS0UVY"
+        },
+        {
+          "label": "透明っぽい素材の入口を見る",
+          "url": "https://www.youtube.com/watch?v=A-OFtZaHR0o"
+        }
+      ]
+    },
+    {
+      "id": "unity-experience",
+      "question": "Unityでは何をしている？",
+      "facts": [
+        "Unityを使ったゲーム制作とデジタル教材開発に関わっている",
+        "toioとUnityを組み合わせた作品を制作している",
+        "Unityゲームをunityroomなどで公開している",
+        "ゲームを作るだけでなく、初めて学ぶ人の入口を設計している",
+        "思いつきを試作し、公開し、反応を次の改善へつなげている"
+      ],
+      "links": [
+        {
+          "label": "unityroomを見る",
+          "url": "https://unityroom.com/users/bapfjey9s3kr14itud7h"
+        }
+      ]
+    },
+    {
+      "id": "digital-education",
+      "question": "教材開発・デジタル教育について",
+      "facts": [
+        "教育現場でデジタル教材開発と3D制作に関わっている",
+        "初めて触れる人が止まりやすい場所を観察している",
+        "すべてを一度に教えず、小さく試せる入口を作っている",
+        "教材や作品への反応を、次の改善へつなげている",
+        "Unity、Blender、Robloxなどのデジタル制作を扱っている"
+      ],
+      "links": [
+        {
+          "label": "Blender教材を見る",
+          "url": "https://www.youtube.com/@TheSANPEITA/shorts"
+        }
+      ]
+    },
+    {
+      "id": "blender-3dcg",
+      "question": "Blender・3DCGについて",
+      "facts": [
+        "Blender初心者向けの短尺動画と教材を制作している",
+        "ひとつの操作に絞り、初見の恐怖を減らす構成を採用している",
+        "教育現場での反応を次の教材改善へつなげている",
+        "VRoid、Blender、Unity、VTuber活動をつなげてきた",
+        "過去にはShadeを使った3DCG制作も行っている"
+      ],
+      "links": [
+        {
+          "label": "Blenderできそうを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA/shorts"
+        }
+      ]
+    },
+    {
+      "id": "roblox-minecraft",
+      "question": "Roblox・Minecraftについて",
+      "facts": [
+        "Roblox Studioを使ったゲーム制作と試作を行っている",
+        "遊んだゲームの仕組みを観察し、制作と学びへつなげている",
+        "爆発Backroomsをゲーム化する短尺作品を公開している",
+        "toioと自作ツインスティックを使いMinecraftを操作する作品を制作した",
+        "Fortniteクリエイター島やclusterワールドなどの公開制作も行っている"
+      ],
+      "links": [
+        {
+          "label": "Roblox作品を見る",
+          "url": "https://sanpeita.github.io/#works"
+        }
+      ]
+    },
+    {
+      "id": "toio-devices",
+      "question": "toio・自作デバイスについて",
+      "facts": [
+        "toioを入力装置やゲームの駒として再解釈している",
+        "toio、Unity、ゲームを組み合わせた作品を制作している",
+        "自作ツインスティックでMinecraftを操作する作品を公開している",
+        "BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した",
+        "物理的なデバイスと画面上の遊びをつなぐ企画を行っている"
+      ],
+      "links": [
+        {
+          "label": "ツインスティック作品を見る",
+          "url": "https://sanpeita.github.io/#works"
+        }
+      ]
+    },
+    {
+      "id": "streaming-video",
+      "question": "配信・動画では何を発信している？",
+      "facts": [
+        "YouTube、TikTok、note、Xなど複数の場所で発信している",
+        "Blender初心者向けの短尺動画を制作している",
+        "Unity、Roblox、Minecraft、toio、自作デバイスなどの制作を扱っている",
+        "完成した作品だけでなく、制作過程や学びも発信している",
+        "ゲーム、教育、技術、VTuber文化を横断している"
+      ],
+      "links": [
+        {
+          "label": "YouTubeを見る",
+          "url": "https://www.youtube.com/@TheSANPEITA"
+        }
+      ]
+    },
+    {
+      "id": "v-culture",
+      "question": "V文化論ってなに？",
+      "facts": [
+        "アバターは現実から逃げるためだけのものではないと考えている",
+        "アバターは現実の可能性を拡張する器になれると考えている",
+        "姿を変えることで、新しい行動や自己表現に踏み出せる可能性を扱っている",
+        "VTuberの近さや関係性を、感情だけでなく設計として考えている",
+        "V文化についての考えをnoteや短尺動画で記録している",
+        "姿を変えることで人は新しい自分になれる、というテーマを活動の中核に置いている"
+      ],
+      "links": [
+        {
+          "label": "V文化論を読む",
+          "url": "https://note.com/sanpeita"
+        }
+      ]
+    },
+    {
+      "id": "events-awards",
+      "question": "イベント・受賞実績について",
+      "facts": [
+        "ワンダーメイクフェス5のtoioブースに関わった活動記録が公開されている",
+        "ワンダーメイクフェス5のtoioブースレポート動画で、子どもたちと活動する様子を確認できる",
+        "紹介動画はYouTubeで公開されている",
+        "指定位置は動画の1分41秒付近である",
+        "BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した",
+        "toio、Unity、教育、ものづくりを横断する活動を行っている"
+      ],
+      "links": [
+        {
+          "label": "ワンダーメイクフェス5の映像を見る",
+          "url": "https://www.youtube.com/watch?v=ZgVxVa9wKUo&t=101s"
+        }
+      ]
+    },
+    {
+      "id": "digital-fabrication",
+      "question": "3Dプリント・デジファブについて",
+      "facts": [
+        "3Dモデリングと3Dプリントを組み合わせた試作を行っている",
+        "自作デバイスや作品に合わせたケースや部品を制作している",
+        "FDM方式と光造形方式の3Dプリンターを扱っている",
+        "造形物を完成品だけでなく、教材や試作品として活用している",
+        "デジタルデータを実際に触れられる物へ変える制作を行っている",
+        "教育現場における3D制作やデジファブにも関わっている"
+      ],
+      "links": [
+        {
+          "label": "自作デバイス作品を見る",
+          "url": "https://sanpeita.github.io/#works"
+        }
+      ]
+    },
+    {
+      "id": "contact-socials",
+      "question": "連絡先・活動場所について",
+      "facts": [
+        "YouTubeでShorts、制作、配信を公開している",
+        "TikTokで短尺動画とライブを行っている",
+        "Xで日々の制作ログを発信している",
+        "noteでV文化論と活動記録を公開している",
+        "GitHubでコードとプロジェクトを公開している",
+        "Qiitaで技術記事を公開している",
+        "ポートフォリオ下部に各活動先へのリンクが掲載されている"
+      ],
+      "links": [
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@TheSANPEITA"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/unoksanpt"
+        },
+        {
+          "label": "note",
+          "url": "https://note.com/sanpeita"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sanpeita"
+        },
+        {
+          "label": "Qiita",
+          "url": "https://qiita.com/sanpeita"
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "label": "llms.txt",
+      "url": "https://sanpeita.github.io/llms.txt",
+      "note": "エージェント向けの入口（要約とリンク）"
+    },
+    {
+      "label": "llms-full.txt",
+      "url": "https://sanpeita.github.io/llms-full.txt",
+      "note": "確認済み事実の全文"
+    },
+    {
+      "label": "sitemap.xml",
+      "url": "https://sanpeita.github.io/sitemap.xml",
+      "note": "公開URLの一覧"
+    }
+  ],
+  "sources": [
+    {
+      "label": "agent/profile.json",
+      "path": "agent/profile.json",
+      "note": "このファイル（エージェント向けの構造化正本）",
+      "url": "https://sanpeita.github.io/agent/profile.json"
+    },
+    {
+      "label": "exhibits/manifest.json",
+      "path": "exhibits/manifest.json",
+      "note": "公開作品の正本（1作品1ファイル）",
+      "url": "https://sanpeita.github.io/exhibits/manifest.json"
+    },
+    {
+      "label": "assets/chatbot/knowledge.json",
+      "path": "assets/chatbot/knowledge.json",
+      "note": "うのっちナビの確認済み事実（15カテゴリ）",
+      "url": "https://sanpeita.github.io/assets/chatbot/knowledge.json"
+    },
+    {
+      "label": "index.html",
+      "path": "index.html",
+      "note": "公開ページ本文",
+      "url": "https://sanpeita.github.io/index.html"
+    }
+  ]
+}

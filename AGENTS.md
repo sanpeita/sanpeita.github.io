@@ -20,6 +20,16 @@
   - `fuse.min.js` — 同梱のFuse 7.1.0。テストが直接requireする。変更・アップグレードしない。
 - `index.html` の script順は `search-core.js` → `tour-core.js` → `chatbot.js`（すべて `defer`）。壊さない。
 
+## 検索・回答エージェント向けの入口（必読）
+
+AI検索・AIブラウザ等のエージェントが事実を取り違えずに読むための層。人間向けのページ構成とは独立。
+
+- 正本: `agent/profile.json`（人物・活動・代表作・リンク）、`exhibits/`（公開作品）、`assets/chatbot/knowledge.json`（確認済み事実）。
+- 生成物: `sitemap.xml` / `llms.txt` / `llms-full.txt` / `llms.json`。**手で編集しない。** 正本を変えたら `node scripts/generate-agent-files.mjs` を実行する。
+- `robots.txt` は手書きの方針ファイル。全公開URLを許可し、主なAIエージェントを明示する。`Disallow` を書かない（`/lab/virtual-world/` は meta の `noindex` に任せる）。
+- `index.html` の `<head>` の JSON-LD（`Person` / `WebSite` / `ProfilePage`）は `agent/profile.json` と揃える。`tests/agent-files.test.cjs` が一致を検証するので、片方だけ直すと落ちる。
+- 確認は再生成 → `node --test tests/*.test.cjs` の順。`llms-full.txt` は `knowledge.json` の全intentの `facts` を落としてはいけない。
+
 ## 設計資料（変更しない前提）
 
 `UNOTCHI_NAV_V1_1_SOL_SPEC.md` と `UNOTCHI_NAV_V1_1_TERRA_DESIGN.md` が本仕様。認定的な仕様なので書き換えず、設計時に参照する。`README.md` の「うのっちナビ 1.1」章が編集手順を定義している。

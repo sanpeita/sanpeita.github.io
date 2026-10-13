@@ -33,6 +33,39 @@
 - `scripts/add-exhibit.ps1` — URLから作品JSONとmanifestを更新するAI非依存CLI
 - `.codex/skills/exhibit-add/` — CLIを呼び出すCodex Skill
 - `lab/virtual-world/` — Three.jsで作る、独立した歩ける展示室のPhase 0実験
+- `agent/profile.json` — 検索・回答エージェント向けの、人物・活動・代表作の構造化正本
+- `scripts/generate-agent-files.mjs` — `agent/profile.json` と `exhibits/` からエージェント向け入口を生成するCLI
+- `robots.txt` — クロール方針（手書きの静的ファイル）と `sitemap.xml`（生成物）
+- `llms.txt` / `llms-full.txt` / `llms.json` — エージェント向けの要約・全文・構造化データ（生成物）
+
+## 検索・回答エージェント向けの入口
+
+検索や回答のために訪れたAIエージェント（AI検索、AIブラウザ、回答エンジン）が、事実を取り違えずに読める入口を公開しています。人間向けのページ構成は変えません。
+
+| ファイル | 役割 | 作り方 |
+| --- | --- | --- |
+| `robots.txt` | クロール方針。全URLを許可し、主なAIエージェントを明示する | 手書き（方針の変更時だけ編集） |
+| `sitemap.xml` | 公開URLの一覧。`/lab/virtual-world/` は `noindex` のため載せない | 生成 |
+| `llms.txt` | 要約と主要リンク（llms.txt形式） | 生成 |
+| `llms-full.txt` | 確認済み事実の全文。`knowledge.json` の15カテゴリを落とさない | 生成 |
+| `llms.json` | 機械可読な構造化データ（人物・作品・ゲーム・FAQ） | 生成 |
+
+正本は `agent/profile.json`（人物・活動・代表作・リンク）、`exhibits/`（公開作品）、`assets/chatbot/knowledge.json`（確認済み事実）です。生成物は実行時刻に依存せず、`agent/profile.json` の `updated` を日付に使います。
+
+`index.html` の `<head>` には `Person` / `WebSite` / `ProfilePage` のJSON-LDを直接置いています。値を変えるときは `agent/profile.json` と揃えてください（テストが一致を検証します）。
+
+### 入口を更新する
+
+正本を変えたら、必ず再生成して検査します。
+
+```powershell
+node scripts/generate-agent-files.mjs
+node --test tests/*.test.cjs
+```
+
+`tests/agent-files.test.cjs` が、生成物と正本の一致、JSON-LDと `agent/profile.json` の一致、公開作品の並び順、`robots.txt`・`sitemap.xml` の内容、禁止の本人性表現の不在を検証します。作品を追加したときも同じ手順です。
+
+記載できるのは公開情報と本人確認済みの記録だけです。賞歴・数値・関係性を推測で補わず、再生数やフォロワー数は固定表示しません。
 
 ## 作品情報の正本
 

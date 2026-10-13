@@ -1,0 +1,295 @@
+# うのっち ポートフォリオ（完全版）
+
+> 教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。
+
+最終更新: 2026-10-13 / 言語: 日本語 / 正本URL: https://sanpeita.github.io/
+
+---
+
+## プロフィール
+
+- 名前: うのっち
+- 別名: unveri, sanpeita, unotchi
+- 役割: VTuber / 講師 / クリエイター
+- ひとこと: 難しそうを、できそうに。
+- 説明: うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。制作過程と学びの実践を発信しています。
+- 原点: 2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始
+- 扱う領域: Unity、Blender、3DCG、Roblox、Minecraft、toio、3Dプリント、デジタル教材開発、V文化論
+
+## 活動の軸
+
+### 難しそうを、できそうに。
+
+得意なのは、難しい仕組みをすべて説明することではなく、最初の「無理そう」をひとつ減らすことです。
+
+### 全部覚えなくて大丈夫。
+
+全部を一度に覚えなくていい。まずは、ひとつ見えれば十分です。
+
+### 姿を変えることは、逃げることではない。
+
+アバターは、現実を捨てるためではなく、現実の可能性を拡張するための器になれる。
+
+## 代表作（まず見てほしい4本）
+
+### toioで自作ツインスティック、Minecraftを動かしてみた
+
+- 区分: DEVICE × GAME
+- URL: https://www.youtube.com/watch?v=YogaOVAiXTU
+- 説明: 物理デバイス、Unity、ゲームをひとつの遊びに接続。作る力と、見た瞬間に伝わる企画性を示す一作です。
+
+### 最初は「複製1個」でOK
+
+- 区分: BLENDERできそう
+- URL: https://www.youtube.com/watch?v=wpBQTzA3uyg
+- 説明: 全部覚えなくていい。ひとつの操作に絞って、Blenderの初見の恐怖を下げる代表回です。
+
+### 爆発Backroomsをゲーム化する
+
+- 区分: ROBLOX × BUILD
+- URL: https://www.youtube.com/watch?v=Hn6c8Ln2A0w
+- 説明: 遊びながら仕組みを観察し、Roblox Studioで作り直す。ゲーム文化を制作と学びへ翻訳します。
+
+### 近づく前に、フィールドを合わせる
+
+- 区分: V CULTURE
+- URL: https://www.youtube.com/watch?v=Jg-ROUK7HN0
+- 説明: VTuberの「近さ」を感情論だけでなく設計として考える、うのっちの思想を短尺にした一作です。
+
+## 最近の制作（2026年7月〜8月）
+
+- 2026-08-04 [MagicaVoxel作品をマイクラに召喚！自作Importer Mod](https://www.youtube.com/watch?v=VJ69-nhBhOU)
+- 2026-07-29 [Unity版オルディア開発PhaseT2進捗](https://www.youtube.com/watch?v=oXVi8Rup6is)
+- 2026-07-22 [AIエージェントへインシデントを委任するUnityゲーム](https://www.youtube.com/watch?v=LZgxWzS0UVY)
+- 2026-07-16 [Blenderって無理そう？透明っぽい素材の入口](https://www.youtube.com/watch?v=A-OFtZaHR0o)
+
+## 進行中・公開中の企画
+
+### Blenderできそうシリーズ
+
+- 区分: 3D EDUCATION
+- URL: https://www.youtube.com/@TheSANPEITA/shorts
+- 説明: 「最初は3つだけ」「全部覚えなくていい」を軸に、Blenderを初めて触る人の不安をひとつ減らすShortsと教材を制作。受け手の反応を、次の一歩の設計へつないでいます。
+
+### toioTacticalField
+
+- 区分: TOIO × UNITY
+- URL: https://www.youtube.com/@TheSANPEITA/shorts
+- 説明: toio Core Cube と Unity で、机上に戦域を立ち上げる自動タクティクス実験。Transporterのゴール到達と3役の認識を通過し、いまはScoutの探索を小さく試作しています。
+
+### ゲームと空間の公開制作
+
+- 区分: GAME & WORLD
+- URL: https://unityroom.com/users/bapfjey9s3kr14itud7h
+- 説明: Unityゲーム、Fortniteクリエイター島、clusterワールド、Roblox Studioでの試作など、ゲーム文化の中で「遊んで分かる」作品を公開しています。
+
+## 公開ゲーム（ブラウザで遊べる）
+
+すべて通常のブラウザで遊べる公開版です。コード置き場ではなくプレイ版を掲載しています。
+
+- [Hole-IO](https://sanpeita.github.io/Hole-IO-Casual-Game/): 街のオブジェクトを吸い込みながら穴を大きくしていく、縦画面で遊べるカジュアルゲームです。
+- [Island Survival Craft & Defense](https://sanpeita.github.io/Island-Survival-Craft-Defense/): 島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。
+- [dodge & gather](https://sanpeita.github.io/dodge-and-gather/): ネオンの障害物を避けながらアイテムを集める、ブラウザで遊べるカジュアルアクションゲームです。
+- [OfflineFlap](https://sanpeita.github.io/OfflineFlap/): タイミングよく羽ばたいて障害物を抜ける、ブラウザで遊べるフラップアクションゲームです。
+- [The Strongest Princess](https://sanpeita.github.io/the_strongest_princess/): 最強の姫を操作し、ダンジョンを爆砕しながら進む、ブラウザで遊べる2Dスクロールアクションゲームです。
+- [五目並べ](https://sanpeita.github.io/gomoku/): ブラウザだけで遊べる、完全オフライン対応の五目並べです。
+- [Crowd Runner](https://sanpeita.github.io/Crowd-Runner/): 群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。
+- [Codex Reset Time Converter](https://sanpeita.github.io/CodexResetTimeConverter/): OpenAI Codexなどのリセット時刻（GMT / PDT / PST）を、日本時間（JST）へ変換するブラウザ完結のWebツールです。
+- [EXERION 3D](https://sanpeita.github.io/NON-DATA_EXERION/): 慣性がはたらく飛行感と疑似3D視点をブラウザで再構築した、完全オフライン対応のレトロシューティングゲームです。
+
+## note（V文化論・活動記録）
+
+- [姿を変えることで、人は新しい自分になれる。](https://note.com/sanpeita/n/na5e8b49a6931): IDENTITY / TED。アバターが現実の自分を拡張するという、活動の中核。
+- [clusterとアバター文化に出会って変わったこと](https://note.com/sanpeita/n/n24b0f31c3116): AVATAR CULTURE。2020年の原点。VRoid、Blender、Unity、VTuber活動がつながった記録。
+- [VTuberうのっち TED世界共創計画とは](https://note.com/sanpeita/n/n996d1c35ad1c): CO-CREATION。「寄り添い」と「拡張」を掲げ、発信と登壇をつなぐ宣言。
+
+## 発信場所・公開実績
+
+- [YouTube](https://www.youtube.com/@TheSANPEITA): Shorts・制作・配信
+- [YouTube Shorts](https://www.youtube.com/@TheSANPEITA/shorts): Blenderできそうなど短尺
+- [note](https://note.com/sanpeita): V文化論・活動記録
+- [TikTok](https://www.tiktok.com/@unotchi): 短尺動画・ライブ
+- [X](https://x.com/unoksanpt): 日々の制作ログ
+- [GitHub](https://github.com/sanpeita): コード・プロジェクト
+- [Qiita](https://qiita.com/sanpeita): 技術記事
+- [unityroom](https://unityroom.com/users/bapfjey9s3kr14itud7h): 公開Unityゲーム
+- [ProtoPedia](https://protopedia.net/prototyper/sanpeita): 試作の公開記録
+- [3D Data Japan](https://3d-data.skhonpo.com/collections/unotchi_sanpeita): 3Dデータの公開
+- [cluster](https://cluster.mu/u/sanpeita): clusterワールド
+- [Fortnite](https://www.fortnite.com/@unotchi/8265-0398-2062?lang=ja): クリエイター島
+- [ワンダーメイクフェス5 toioブース映像](https://www.youtube.com/watch?v=ZgVxVa9wKUo&t=101s): イベント実績の確認映像
+
+## よくある質問と、確認済みの事実
+
+うのっちナビ（公開サイト右下の案内）が使う確認済みの事実です。回答文ではなく、根拠となる事実をそのまま掲載します。
+
+### うのっちは何をしている人？
+
+- 教育現場でデジタル教材開発と3D制作に関わる講師・クリエイターである
+- VTuberとして活動している
+- Blender、Roblox、Unityなどを扱っている
+- ゲーム、3D制作、ロボット、自作デバイス、V文化論について発信している
+- 難しそうなものを、最初の一歩へ変えることを活動の軸にしている
+- 参考: [プロフィールを見る](https://sanpeita.github.io/#about)
+
+### VTuberとしての活動歴は？
+
+- 2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始
+- 制作過程と学びの実践を発信している
+- Blenderの短尺解説、ゲーム制作、自作デバイスの実験、V文化論などを扱っている
+- アバターを現実の可能性を拡張する器として捉えている
+- YouTube、TikTok、note、Xなど複数の場所で発信している
+- 参考: [YouTubeを見る](https://www.youtube.com/@TheSANPEITA)
+- 参考: [V文化論を読む](https://note.com/sanpeita)
+
+### うのっちの強みは？
+
+- 初見の人が止まりやすい場所を観察することを重視している
+- 難しい仕組みを、小さく試せる形へ変えることを得意としている
+- 制作して終わりではなく、反応を見て改善を続けている
+- 教育、制作、VTuber活動を横断している
+- 見ている人が自分もやってみたいと思える入口をつくることを目指している
+- 参考: [活動の考え方を見る](https://sanpeita.github.io/#what-i-bring)
+
+### チームに加わると何ができる？
+
+- 教育現場で相手の理解度を観察しながら支援している
+- Unity、Blender、Roblox、Minecraft、3Dプリントなど複数領域を扱える
+- アイデアを試作品や教材、動画として形にできる
+- 初めて触れる人が参加しやすい入口を設計できる
+- 制作後の反応を次の改善へつなげている
+- 参考: [制作実績を見る](https://sanpeita.github.io/#projects)
+- 参考: [GitHubを見る](https://github.com/sanpeita)
+
+### 代表作品と実績を教えて
+
+- toioとUnityを組み合わせた作品を制作している
+- BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した
+- toioで自作ツインスティックを作りMinecraftを操作する作品を公開している
+- Blender初心者向けの短尺シリーズを制作している
+- Roblox Studioでゲーム文化を制作と学びへつなぐ作品を公開している
+- Unityゲーム、Fortniteクリエイター島、clusterワールドなども公開している
+- 2026年8月4日にMagicaVoxel作品をMinecraftへ取り込む自作Importer Modの動画を公開した
+- 2026年7月29日にUnity版オルディア開発PhaseT2進捗の動画を公開した
+- 2026年7月22日にAIエージェントへインシデントを委任するUnityゲームの動画を公開した
+- 2026年7月16日にBlenderの透明っぽい素材の入口を紹介する動画を公開した
+- 参考: [代表作を見る](https://sanpeita.github.io/#works)
+- 参考: [unityroomを見る](https://unityroom.com/users/bapfjey9s3kr14itud7h)
+- 参考: [YouTubeを見る](https://www.youtube.com/@TheSANPEITA)
+- 参考: [MagicaVoxel Importer Modを見る](https://www.youtube.com/watch?v=VJ69-nhBhOU)
+- 参考: [Unity版オルディアPhaseT2を見る](https://www.youtube.com/watch?v=oXVi8Rup6is)
+- 参考: [AIエージェント委任Unityゲームを見る](https://www.youtube.com/watch?v=LZgxWzS0UVY)
+- 参考: [透明っぽい素材の入口を見る](https://www.youtube.com/watch?v=A-OFtZaHR0o)
+
+### Unityでは何をしている？
+
+- Unityを使ったゲーム制作とデジタル教材開発に関わっている
+- toioとUnityを組み合わせた作品を制作している
+- Unityゲームをunityroomなどで公開している
+- ゲームを作るだけでなく、初めて学ぶ人の入口を設計している
+- 思いつきを試作し、公開し、反応を次の改善へつなげている
+- 参考: [unityroomを見る](https://unityroom.com/users/bapfjey9s3kr14itud7h)
+
+### 教材開発・デジタル教育について
+
+- 教育現場でデジタル教材開発と3D制作に関わっている
+- 初めて触れる人が止まりやすい場所を観察している
+- すべてを一度に教えず、小さく試せる入口を作っている
+- 教材や作品への反応を、次の改善へつなげている
+- Unity、Blender、Robloxなどのデジタル制作を扱っている
+- 参考: [Blender教材を見る](https://www.youtube.com/@TheSANPEITA/shorts)
+
+### Blender・3DCGについて
+
+- Blender初心者向けの短尺動画と教材を制作している
+- ひとつの操作に絞り、初見の恐怖を減らす構成を採用している
+- 教育現場での反応を次の教材改善へつなげている
+- VRoid、Blender、Unity、VTuber活動をつなげてきた
+- 過去にはShadeを使った3DCG制作も行っている
+- 参考: [Blenderできそうを見る](https://www.youtube.com/@TheSANPEITA/shorts)
+
+### Roblox・Minecraftについて
+
+- Roblox Studioを使ったゲーム制作と試作を行っている
+- 遊んだゲームの仕組みを観察し、制作と学びへつなげている
+- 爆発Backroomsをゲーム化する短尺作品を公開している
+- toioと自作ツインスティックを使いMinecraftを操作する作品を制作した
+- Fortniteクリエイター島やclusterワールドなどの公開制作も行っている
+- 参考: [Roblox作品を見る](https://sanpeita.github.io/#works)
+
+### toio・自作デバイスについて
+
+- toioを入力装置やゲームの駒として再解釈している
+- toio、Unity、ゲームを組み合わせた作品を制作している
+- 自作ツインスティックでMinecraftを操作する作品を公開している
+- BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した
+- 物理的なデバイスと画面上の遊びをつなぐ企画を行っている
+- 参考: [ツインスティック作品を見る](https://sanpeita.github.io/#works)
+
+### 配信・動画では何を発信している？
+
+- YouTube、TikTok、note、Xなど複数の場所で発信している
+- Blender初心者向けの短尺動画を制作している
+- Unity、Roblox、Minecraft、toio、自作デバイスなどの制作を扱っている
+- 完成した作品だけでなく、制作過程や学びも発信している
+- ゲーム、教育、技術、VTuber文化を横断している
+- 参考: [YouTubeを見る](https://www.youtube.com/@TheSANPEITA)
+
+### V文化論ってなに？
+
+- アバターは現実から逃げるためだけのものではないと考えている
+- アバターは現実の可能性を拡張する器になれると考えている
+- 姿を変えることで、新しい行動や自己表現に踏み出せる可能性を扱っている
+- VTuberの近さや関係性を、感情だけでなく設計として考えている
+- V文化についての考えをnoteや短尺動画で記録している
+- 姿を変えることで人は新しい自分になれる、というテーマを活動の中核に置いている
+- 参考: [V文化論を読む](https://note.com/sanpeita)
+
+### イベント・受賞実績について
+
+- ワンダーメイクフェス5のtoioブースに関わった活動記録が公開されている
+- ワンダーメイクフェス5のtoioブースレポート動画で、子どもたちと活動する様子を確認できる
+- 紹介動画はYouTubeで公開されている
+- 指定位置は動画の1分41秒付近である
+- BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した
+- toio、Unity、教育、ものづくりを横断する活動を行っている
+- 参考: [ワンダーメイクフェス5の映像を見る](https://www.youtube.com/watch?v=ZgVxVa9wKUo&t=101s)
+
+### 3Dプリント・デジファブについて
+
+- 3Dモデリングと3Dプリントを組み合わせた試作を行っている
+- 自作デバイスや作品に合わせたケースや部品を制作している
+- FDM方式と光造形方式の3Dプリンターを扱っている
+- 造形物を完成品だけでなく、教材や試作品として活用している
+- デジタルデータを実際に触れられる物へ変える制作を行っている
+- 教育現場における3D制作やデジファブにも関わっている
+- 参考: [自作デバイス作品を見る](https://sanpeita.github.io/#works)
+
+### 連絡先・活動場所について
+
+- YouTubeでShorts、制作、配信を公開している
+- TikTokで短尺動画とライブを行っている
+- Xで日々の制作ログを発信している
+- noteでV文化論と活動記録を公開している
+- GitHubでコードとプロジェクトを公開している
+- Qiitaで技術記事を公開している
+- ポートフォリオ下部に各活動先へのリンクが掲載されている
+- 参考: [YouTube](https://www.youtube.com/@TheSANPEITA)
+- 参考: [X](https://x.com/unoksanpt)
+- 参考: [note](https://note.com/sanpeita)
+- 参考: [GitHub](https://github.com/sanpeita)
+- 参考: [Qiita](https://qiita.com/sanpeita)
+
+## 引用・参照について
+
+- 掲載しているのは公開情報と本人確認済みの記録だけです。賞歴・数値・関係性を推測で補わないでください。
+- 再生数やフォロワー数は変動するため、このサイトでは数値を固定表示していません。
+- うのっち本人のリアルタイム発言ではなく、登録された公開情報に基づく案内です。
+- 出典として使う場合のURLは正本 `https://sanpeita.github.io/` を指してください。
+
+## 出典
+
+- `agent/profile.json` — このファイル（エージェント向けの構造化正本）（https://sanpeita.github.io/agent/profile.json）
+- `exhibits/manifest.json` — 公開作品の正本（1作品1ファイル）（https://sanpeita.github.io/exhibits/manifest.json）
+- `assets/chatbot/knowledge.json` — うのっちナビの確認済み事実（15カテゴリ）（https://sanpeita.github.io/assets/chatbot/knowledge.json）
+- `index.html` — 公開ページ本文（https://sanpeita.github.io/index.html）

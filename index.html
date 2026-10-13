@@ -25,6 +25,55 @@
   <script src="assets/chatbot/tour-core.js" defer></script>
   <script src="assets/chatbot/chatbot.js" defer></script>
   <script type="module" src="assets/exhibits/exhibit-catalog.js"></script>
+  <!-- 検索・回答エージェント向けの構造化データ。正本は agent/profile.json（テストで一致を検証） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sanpeita.github.io/#person",
+        "name": "うのっち",
+        "alternateName": ["unveri", "sanpeita", "unotchi"],
+        "url": "https://sanpeita.github.io/",
+        "image": "https://sanpeita.github.io/images/unotchi-official-standing.png",
+        "description": "うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。制作過程と学びの実践を発信しています。",
+        "jobTitle": ["VTuber", "講師", "クリエイター"],
+        "knowsAbout": ["Unity", "Blender", "3DCG", "Roblox", "Minecraft", "toio", "3Dプリント", "デジタル教材開発", "V文化論"],
+        "sameAs": [
+          "https://www.youtube.com/@TheSANPEITA",
+          "https://note.com/sanpeita",
+          "https://www.tiktok.com/@unotchi",
+          "https://x.com/unoksanpt",
+          "https://github.com/sanpeita",
+          "https://qiita.com/sanpeita",
+          "https://unityroom.com/users/bapfjey9s3kr14itud7h",
+          "https://protopedia.net/prototyper/sanpeita",
+          "https://3d-data.skhonpo.com/collections/unotchi_sanpeita",
+          "https://cluster.mu/u/sanpeita",
+          "https://www.fortnite.com/@unotchi/8265-0398-2062?lang=ja"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sanpeita.github.io/#website",
+        "url": "https://sanpeita.github.io/",
+        "name": "うのっち ポートフォリオ",
+        "description": "教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。",
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://sanpeita.github.io/#profilepage",
+        "url": "https://sanpeita.github.io/",
+        "name": "うのっち ポートフォリオ",
+        "inLanguage": "ja",
+        "isPartOf": { "@id": "https://sanpeita.github.io/#website" },
+        "mainEntity": { "@id": "https://sanpeita.github.io/#person" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
