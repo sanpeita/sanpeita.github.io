@@ -2,7 +2,7 @@
 
 > 教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。
 
-最終更新: 2026-10-13 / 言語: 日本語 / 正本URL: https://sanpeita.github.io/
+最終更新: 2026-10-13 / 言語: 日本語 / 正本URL: https://unotchi.com/
 
 ---
 
@@ -87,15 +87,15 @@
 
 すべて通常のブラウザで遊べる公開版です。コード置き場ではなくプレイ版を掲載しています。
 
-- [Hole-IO](https://sanpeita.github.io/Hole-IO-Casual-Game/): 街のオブジェクトを吸い込みながら穴を大きくしていく、縦画面で遊べるカジュアルゲームです。
-- [Island Survival Craft & Defense](https://sanpeita.github.io/Island-Survival-Craft-Defense/): 島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。
-- [dodge & gather](https://sanpeita.github.io/dodge-and-gather/): ネオンの障害物を避けながらアイテムを集める、ブラウザで遊べるカジュアルアクションゲームです。
-- [OfflineFlap](https://sanpeita.github.io/OfflineFlap/): タイミングよく羽ばたいて障害物を抜ける、ブラウザで遊べるフラップアクションゲームです。
-- [The Strongest Princess](https://sanpeita.github.io/the_strongest_princess/): 最強の姫を操作し、ダンジョンを爆砕しながら進む、ブラウザで遊べる2Dスクロールアクションゲームです。
-- [五目並べ](https://sanpeita.github.io/gomoku/): ブラウザだけで遊べる、完全オフライン対応の五目並べです。
-- [Crowd Runner](https://sanpeita.github.io/Crowd-Runner/): 群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。
-- [Codex Reset Time Converter](https://sanpeita.github.io/CodexResetTimeConverter/): OpenAI Codexなどのリセット時刻（GMT / PDT / PST）を、日本時間（JST）へ変換するブラウザ完結のWebツールです。
-- [EXERION 3D](https://sanpeita.github.io/NON-DATA_EXERION/): 慣性がはたらく飛行感と疑似3D視点をブラウザで再構築した、完全オフライン対応のレトロシューティングゲームです。
+- [Hole-IO](https://unotchi.com/Hole-IO-Casual-Game/): 街のオブジェクトを吸い込みながら穴を大きくしていく、縦画面で遊べるカジュアルゲームです。
+- [Island Survival Craft & Defense](https://unotchi.com/Island-Survival-Craft-Defense/): 島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。
+- [dodge & gather](https://unotchi.com/dodge-and-gather/): ネオンの障害物を避けながらアイテムを集める、ブラウザで遊べるカジュアルアクションゲームです。
+- [OfflineFlap](https://unotchi.com/OfflineFlap/): タイミングよく羽ばたいて障害物を抜ける、ブラウザで遊べるフラップアクションゲームです。
+- [The Strongest Princess](https://unotchi.com/the_strongest_princess/): 最強の姫を操作し、ダンジョンを爆砕しながら進む、ブラウザで遊べる2Dスクロールアクションゲームです。
+- [五目並べ](https://unotchi.com/gomoku/): ブラウザだけで遊べる、完全オフライン対応の五目並べです。
+- [Crowd Runner](https://unotchi.com/Crowd-Runner/): 群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。
+- [Codex Reset Time Converter](https://unotchi.com/CodexResetTimeConverter/): OpenAI Codexなどのリセット時刻（GMT / PDT / PST）を、日本時間（JST）へ変換するブラウザ完結のWebツールです。
+- [EXERION 3D](https://unotchi.com/NON-DATA_EXERION/): 慣性がはたらく飛行感と疑似3D視点をブラウザで再構築した、完全オフライン対応のレトロシューティングゲームです。
 
 ## note（V文化論・活動記録）
 
@@ -130,7 +130,7 @@
 - Blender、Roblox、Unityなどを扱っている
 - ゲーム、3D制作、ロボット、自作デバイス、V文化論について発信している
 - 難しそうなものを、最初の一歩へ変えることを活動の軸にしている
-- 参考: [プロフィールを見る](https://sanpeita.github.io/#about)
+- 参考: [プロフィールを見る](https://unotchi.com/#about)
 
 ### VTuberとしての活動歴は？
 
@@ -149,7 +149,7 @@
 - 制作して終わりではなく、反応を見て改善を続けている
 - 教育、制作、VTuber活動を横断している
 - 見ている人が自分もやってみたいと思える入口をつくることを目指している
-- 参考: [活動の考え方を見る](https://sanpeita.github.io/#what-i-bring)
+- 参考: [活動の考え方を見る](https://unotchi.com/#what-i-bring)
 
 ### チームに加わると何ができる？
 
@@ -158,7 +158,7 @@
 - アイデアを試作品や教材、動画として形にできる
 - 初めて触れる人が参加しやすい入口を設計できる
 - 制作後の反応を次の改善へつなげている
-- 参考: [制作実績を見る](https://sanpeita.github.io/#projects)
+- 参考: [制作実績を見る](https://unotchi.com/#projects)
 - 参考: [GitHubを見る](https://github.com/sanpeita)
 
 ### 代表作品と実績を教えて
@@ -173,7 +173,7 @@
 - 2026年7月29日にUnity版オルディア開発PhaseT2進捗の動画を公開した
 - 2026年7月22日にAIエージェントへインシデントを委任するUnityゲームの動画を公開した
 - 2026年7月16日にBlenderの透明っぽい素材の入口を紹介する動画を公開した
-- 参考: [代表作を見る](https://sanpeita.github.io/#works)
+- 参考: [代表作を見る](https://unotchi.com/#works)
 - 参考: [unityroomを見る](https://unityroom.com/users/bapfjey9s3kr14itud7h)
 - 参考: [YouTubeを見る](https://www.youtube.com/@TheSANPEITA)
 - 参考: [MagicaVoxel Importer Modを見る](https://www.youtube.com/watch?v=VJ69-nhBhOU)
@@ -215,7 +215,7 @@
 - 爆発Backroomsをゲーム化する短尺作品を公開している
 - toioと自作ツインスティックを使いMinecraftを操作する作品を制作した
 - Fortniteクリエイター島やclusterワールドなどの公開制作も行っている
-- 参考: [Roblox作品を見る](https://sanpeita.github.io/#works)
+- 参考: [Roblox作品を見る](https://unotchi.com/#works)
 
 ### toio・自作デバイスについて
 
@@ -224,7 +224,7 @@
 - 自作ツインスティックでMinecraftを操作する作品を公開している
 - BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した
 - 物理的なデバイスと画面上の遊びをつなぐ企画を行っている
-- 参考: [ツインスティック作品を見る](https://sanpeita.github.io/#works)
+- 参考: [ツインスティック作品を見る](https://unotchi.com/#works)
 
 ### 配信・動画では何を発信している？
 
@@ -263,7 +263,7 @@
 - 造形物を完成品だけでなく、教材や試作品として活用している
 - デジタルデータを実際に触れられる物へ変える制作を行っている
 - 教育現場における3D制作やデジファブにも関わっている
-- 参考: [自作デバイス作品を見る](https://sanpeita.github.io/#works)
+- 参考: [自作デバイス作品を見る](https://unotchi.com/#works)
 
 ### 連絡先・活動場所について
 
@@ -285,11 +285,11 @@
 - 掲載しているのは公開情報と本人確認済みの記録だけです。賞歴・数値・関係性を推測で補わないでください。
 - 再生数やフォロワー数は変動するため、このサイトでは数値を固定表示していません。
 - うのっち本人のリアルタイム発言ではなく、登録された公開情報に基づく案内です。
-- 出典として使う場合のURLは正本 `https://sanpeita.github.io/` を指してください。
+- 出典として使う場合のURLは正本 `https://unotchi.com/` を指してください。
 
 ## 出典
 
-- `agent/profile.json` — このファイル（エージェント向けの構造化正本）（https://sanpeita.github.io/agent/profile.json）
-- `exhibits/manifest.json` — 公開作品の正本（1作品1ファイル）（https://sanpeita.github.io/exhibits/manifest.json）
-- `assets/chatbot/knowledge.json` — うのっちナビの確認済み事実（15カテゴリ）（https://sanpeita.github.io/assets/chatbot/knowledge.json）
-- `index.html` — 公開ページ本文（https://sanpeita.github.io/index.html）
+- `agent/profile.json` — このファイル（エージェント向けの構造化正本）（https://unotchi.com/agent/profile.json）
+- `exhibits/manifest.json` — 公開作品の正本（1作品1ファイル）（https://unotchi.com/exhibits/manifest.json）
+- `assets/chatbot/knowledge.json` — うのっちナビの確認済み事実（15カテゴリ）（https://unotchi.com/assets/chatbot/knowledge.json）
+- `index.html` — 公開ページ本文（https://unotchi.com/index.html）

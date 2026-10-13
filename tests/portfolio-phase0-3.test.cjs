@@ -30,18 +30,18 @@ const recentUrls = [
   "https://www.youtube.com/watch?v=A-OFtZaHR0o"
 ];
 const casualGameUrls = [
-  "https://sanpeita.github.io/gomoku/",
-  "https://sanpeita.github.io/Crowd-Runner/"
+  "https://unotchi.com/gomoku/",
+  "https://unotchi.com/Crowd-Runner/"
 ];
 const requestedPlayableUrls = [
-  "https://sanpeita.github.io/Hole-IO-Casual-Game/",
-  "https://sanpeita.github.io/Island-Survival-Craft-Defense/",
-  "https://sanpeita.github.io/dodge-and-gather/",
-  "https://sanpeita.github.io/OfflineFlap/",
-  "https://sanpeita.github.io/the_strongest_princess/",
-  "https://sanpeita.github.io/CodexResetTimeConverter/",
-  "https://sanpeita.github.io/NON-DATA_EXERION/",
-  "https://sanpeita.github.io/Crowd-Runner/"
+  "https://unotchi.com/Hole-IO-Casual-Game/",
+  "https://unotchi.com/Island-Survival-Craft-Defense/",
+  "https://unotchi.com/dodge-and-gather/",
+  "https://unotchi.com/OfflineFlap/",
+  "https://unotchi.com/the_strongest_princess/",
+  "https://unotchi.com/CodexResetTimeConverter/",
+  "https://unotchi.com/NON-DATA_EXERION/",
+  "https://unotchi.com/Crowd-Runner/"
 ];
 
 test("2020 YouTube origin copy is aligned across index, knowledge, and world", () => {

@@ -2,7 +2,7 @@
   "id": "gomoku",
   "title": "五目並べ",
   "type": "game",
-  "url": "https://sanpeita.github.io/gomoku/",
+  "url": "https://unotchi.com/gomoku/",
   "thumbnail": "assets/exhibits/placeholder.svg",
   "description": "ブラウザだけで遊べる、完全オフライン対応の五目並べです。",
   "shortDescription": "ブラウザで遊べる完全オフライン対応の五目並べ。",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://sanpeita.github.io/exhibits/schema.json",
+  "$id": "https://unotchi.com/exhibits/schema.json",
   "title": "Unotchi portfolio exhibit",
   "description": "通常Webポートフォリオと3D展示室が共有する、1作品分の正本です。",
   "type": "object",

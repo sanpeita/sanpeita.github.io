@@ -2,7 +2,7 @@
   "version": 1,
   "updated": "2026-10-13",
   "site": {
-    "url": "https://sanpeita.github.io/",
+    "url": "https://unotchi.com/",
     "name": "うのっち ポートフォリオ",
     "language": "ja",
     "description": "教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。"
@@ -10,8 +10,8 @@
   "person": {
     "name": "うのっち",
     "alternateName": ["unveri", "sanpeita", "unotchi"],
-    "url": "https://sanpeita.github.io/",
-    "image": "https://sanpeita.github.io/images/unotchi-official-standing.png",
+    "url": "https://unotchi.com/",
+    "image": "https://unotchi.com/images/unotchi-official-standing.png",
     "tagline": "難しそうを、できそうに。",
     "description": "うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。制作過程と学びの実践を発信しています。",
     "origin": "2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始",

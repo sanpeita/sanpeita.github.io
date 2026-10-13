@@ -1,4 +1,4 @@
-# うのっち ポートフォリオ (https://sanpeita.github.io/)
+# うのっち ポートフォリオ (https://unotchi.com/)
 # 公開ポートフォリオを、検索エンジンとAI検索・回答エージェントに正しく読んでもらうための方針です。
 # 引用・参照は歓迎します。数値の推測や、確認済みでない実績の補完はご遠慮ください。
 
@@ -51,13 +51,13 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://sanpeita.github.io/sitemap.xml
+Sitemap: https://unotchi.com/sitemap.xml
 
 # 機械可読な入口（エージェントはここから読むと事実を取り違えにくい）
-# - https://sanpeita.github.io/llms.txt       要約と主要リンク
-# - https://sanpeita.github.io/llms-full.txt  確認済み事実の全文
-# - https://sanpeita.github.io/llms.json      構造化データ
-# - https://sanpeita.github.io/exhibits/manifest.json  公開作品の正本
+# - https://unotchi.com/llms.txt       要約と主要リンク
+# - https://unotchi.com/llms-full.txt  確認済み事実の全文
+# - https://unotchi.com/llms.json      構造化データ
+# - https://unotchi.com/exhibits/manifest.json  公開作品の正本
 #
 # /lab/virtual-world/ は meta robots="noindex,follow" です。クロールは許可したまま
 # noindex を読ませるため、ここでは Disallow しません。

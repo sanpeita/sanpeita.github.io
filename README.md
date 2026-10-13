@@ -1,6 +1,6 @@
 # うのっち ポートフォリオ
 
-`https://sanpeita.github.io/` で公開する、うのっちの公式ポートフォリオです。
+`https://unotchi.com/` で公開する、うのっちの公式ポートフォリオです。`https://sanpeita.github.io/` は同じ内容へ301転送されます（公開URLの正本ホストはリポジトリ直下の `CNAME` が決めます）。
 
 ## 目的
 
@@ -51,6 +51,8 @@
 | `llms.json` | 機械可読な構造化データ（人物・作品・ゲーム・FAQ） | 生成 |
 
 正本は `agent/profile.json`（人物・活動・代表作・リンク）、`exhibits/`（公開作品）、`assets/chatbot/knowledge.json`（確認済み事実）です。生成物は実行時刻に依存せず、`agent/profile.json` の `updated` を日付に使います。
+
+公開URLの正本ホストは `https://unotchi.com`（ルートの `CNAME`）です。`https://sanpeita.github.io` はホスト全体（作品ページも含む）が301転送なので、新しい絶対URLには使いません。作品URLも `exhibits/*.json` で unotchi.com を使います。
 
 `index.html` の `<head>` には `Person` / `WebSite` / `ProfilePage` のJSON-LDを直接置いています。値を変えるときは `agent/profile.json` と揃えてください（テストが一致を検証します）。
 
@@ -105,9 +107,9 @@ Codexでは `$exhibit-add` を使うか、「このPagesをポートフォリオ
 
 ### 審査・応募で公開ゲームを提示する
 
-公開ゲームをまとめて提示するときの正本URLは `https://sanpeita.github.io/#playable-games` です。トップページ内で作者の活動背景を確認でき、アンカーからゲーム一覧へ直行し、各カードの「今すぐ遊ぶ」からGitHubではなく公開プレイ版を開けます。
+公開ゲームをまとめて提示するときの正本URLは `https://unotchi.com/#playable-games` です。トップページ内で作者の活動背景を確認でき、アンカーからゲーム一覧へ直行し、各カードの「今すぐ遊ぶ」からGitHubではなく公開プレイ版を開けます。
 
-`https://sanpeita.github.io/lab/virtual-world/` は体験型の第二導線です。審査フォームには文字ポートフォリオのアンカーを優先し、3D展示室は補足として使います。通常ブラウザで公開中であることと、YouTube Playables対応・Certification準備が完了していることは別の状態として扱います。
+`https://unotchi.com/lab/virtual-world/` は体験型の第二導線です。審査フォームには文字ポートフォリオのアンカーを優先し、3D展示室は補足として使います。通常ブラウザで公開中であることと、YouTube Playables対応・Certification準備が完了していることは別の状態として扱います。
 
 ## 実験ページ
 

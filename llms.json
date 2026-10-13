@@ -2,7 +2,7 @@
   "version": 1,
   "updated": "2026-10-13",
   "site": {
-    "url": "https://sanpeita.github.io/",
+    "url": "https://unotchi.com/",
     "name": "うのっち ポートフォリオ",
     "language": "ja",
     "description": "教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。"
@@ -14,8 +14,8 @@
       "sanpeita",
       "unotchi"
     ],
-    "url": "https://sanpeita.github.io/",
-    "image": "https://sanpeita.github.io/images/unotchi-official-standing.png",
+    "url": "https://unotchi.com/",
+    "image": "https://unotchi.com/images/unotchi-official-standing.png",
     "tagline": "難しそうを、できそうに。",
     "description": "うのっちは、教育現場でデジタル教材開発・3D制作に関わる講師／クリエイターです。2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始。制作過程と学びの実践を発信しています。",
     "origin": "2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始",
@@ -122,7 +122,7 @@
     {
       "id": "hole-io",
       "title": "Hole-IO",
-      "url": "https://sanpeita.github.io/Hole-IO-Casual-Game/",
+      "url": "https://unotchi.com/Hole-IO-Casual-Game/",
       "type": "game",
       "category": "casual-game",
       "description": "街のオブジェクトを吸い込みながら穴を大きくしていく、縦画面で遊べるカジュアルゲームです。",
@@ -137,7 +137,7 @@
     {
       "id": "island-survival-craft-defense",
       "title": "Island Survival Craft & Defense",
-      "url": "https://sanpeita.github.io/Island-Survival-Craft-Defense/",
+      "url": "https://unotchi.com/Island-Survival-Craft-Defense/",
       "type": "game",
       "category": "survival-game",
       "description": "島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。",
@@ -153,7 +153,7 @@
     {
       "id": "dodge-and-gather",
       "title": "dodge & gather",
-      "url": "https://sanpeita.github.io/dodge-and-gather/",
+      "url": "https://unotchi.com/dodge-and-gather/",
       "type": "game",
       "category": "casual-game",
       "description": "ネオンの障害物を避けながらアイテムを集める、ブラウザで遊べるカジュアルアクションゲームです。",
@@ -168,7 +168,7 @@
     {
       "id": "offline-flap",
       "title": "OfflineFlap",
-      "url": "https://sanpeita.github.io/OfflineFlap/",
+      "url": "https://unotchi.com/OfflineFlap/",
       "type": "game",
       "category": "casual-game",
       "description": "タイミングよく羽ばたいて障害物を抜ける、ブラウザで遊べるフラップアクションゲームです。",
@@ -183,7 +183,7 @@
     {
       "id": "the-strongest-princess",
       "title": "The Strongest Princess",
-      "url": "https://sanpeita.github.io/the_strongest_princess/",
+      "url": "https://unotchi.com/the_strongest_princess/",
       "type": "game",
       "category": "casual-game",
       "description": "最強の姫を操作し、ダンジョンを爆砕しながら進む、ブラウザで遊べる2Dスクロールアクションゲームです。",
@@ -198,7 +198,7 @@
     {
       "id": "gomoku",
       "title": "五目並べ",
-      "url": "https://sanpeita.github.io/gomoku/",
+      "url": "https://unotchi.com/gomoku/",
       "type": "game",
       "category": "casual-game",
       "description": "ブラウザだけで遊べる、完全オフライン対応の五目並べです。",
@@ -213,7 +213,7 @@
     {
       "id": "crowd-runner",
       "title": "Crowd Runner",
-      "url": "https://sanpeita.github.io/Crowd-Runner/",
+      "url": "https://unotchi.com/Crowd-Runner/",
       "type": "game",
       "category": "casual-game",
       "description": "群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。",
@@ -228,7 +228,7 @@
     {
       "id": "codex-reset-time-converter",
       "title": "Codex Reset Time Converter",
-      "url": "https://sanpeita.github.io/CodexResetTimeConverter/",
+      "url": "https://unotchi.com/CodexResetTimeConverter/",
       "type": "web-app",
       "category": "utility",
       "description": "OpenAI Codexなどのリセット時刻（GMT / PDT / PST）を、日本時間（JST）へ変換するブラウザ完結のWebツールです。",
@@ -243,7 +243,7 @@
     {
       "id": "non-data-exerion",
       "title": "EXERION 3D",
-      "url": "https://sanpeita.github.io/NON-DATA_EXERION/",
+      "url": "https://unotchi.com/NON-DATA_EXERION/",
       "type": "game",
       "category": "casual-game",
       "description": "慣性がはたらく飛行感と疑似3D視点をブラウザで再構築した、完全オフライン対応のレトロシューティングゲームです。",
@@ -357,7 +357,7 @@
       "links": [
         {
           "label": "プロフィールを見る",
-          "url": "https://sanpeita.github.io/#about"
+          "url": "https://unotchi.com/#about"
         }
       ]
     },
@@ -395,7 +395,7 @@
       "links": [
         {
           "label": "活動の考え方を見る",
-          "url": "https://sanpeita.github.io/#what-i-bring"
+          "url": "https://unotchi.com/#what-i-bring"
         }
       ]
     },
@@ -412,7 +412,7 @@
       "links": [
         {
           "label": "制作実績を見る",
-          "url": "https://sanpeita.github.io/#projects"
+          "url": "https://unotchi.com/#projects"
         },
         {
           "label": "GitHubを見る",
@@ -438,7 +438,7 @@
       "links": [
         {
           "label": "代表作を見る",
-          "url": "https://sanpeita.github.io/#works"
+          "url": "https://unotchi.com/#works"
         },
         {
           "label": "unityroomを見る",
@@ -530,7 +530,7 @@
       "links": [
         {
           "label": "Roblox作品を見る",
-          "url": "https://sanpeita.github.io/#works"
+          "url": "https://unotchi.com/#works"
         }
       ]
     },
@@ -547,7 +547,7 @@
       "links": [
         {
           "label": "ツインスティック作品を見る",
-          "url": "https://sanpeita.github.io/#works"
+          "url": "https://unotchi.com/#works"
         }
       ]
     },
@@ -618,7 +618,7 @@
       "links": [
         {
           "label": "自作デバイス作品を見る",
-          "url": "https://sanpeita.github.io/#works"
+          "url": "https://unotchi.com/#works"
         }
       ]
     },
@@ -661,17 +661,17 @@
   "documents": [
     {
       "label": "llms.txt",
-      "url": "https://sanpeita.github.io/llms.txt",
+      "url": "https://unotchi.com/llms.txt",
       "note": "エージェント向けの入口（要約とリンク）"
     },
     {
       "label": "llms-full.txt",
-      "url": "https://sanpeita.github.io/llms-full.txt",
+      "url": "https://unotchi.com/llms-full.txt",
       "note": "確認済み事実の全文"
     },
     {
       "label": "sitemap.xml",
-      "url": "https://sanpeita.github.io/sitemap.xml",
+      "url": "https://unotchi.com/sitemap.xml",
       "note": "公開URLの一覧"
     }
   ],
@@ -680,25 +680,25 @@
       "label": "agent/profile.json",
       "path": "agent/profile.json",
       "note": "このファイル（エージェント向けの構造化正本）",
-      "url": "https://sanpeita.github.io/agent/profile.json"
+      "url": "https://unotchi.com/agent/profile.json"
     },
     {
       "label": "exhibits/manifest.json",
       "path": "exhibits/manifest.json",
       "note": "公開作品の正本（1作品1ファイル）",
-      "url": "https://sanpeita.github.io/exhibits/manifest.json"
+      "url": "https://unotchi.com/exhibits/manifest.json"
     },
     {
       "label": "assets/chatbot/knowledge.json",
       "path": "assets/chatbot/knowledge.json",
       "note": "うのっちナビの確認済み事実（15カテゴリ）",
-      "url": "https://sanpeita.github.io/assets/chatbot/knowledge.json"
+      "url": "https://unotchi.com/assets/chatbot/knowledge.json"
     },
     {
       "label": "index.html",
       "path": "index.html",
       "note": "公開ページ本文",
-      "url": "https://sanpeita.github.io/index.html"
+      "url": "https://unotchi.com/index.html"
     }
   ]
 }

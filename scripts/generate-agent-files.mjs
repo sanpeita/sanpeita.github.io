@@ -28,7 +28,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { filterWebExhibits } from "../assets/exhibits/exhibit-data.mjs";
 
-export const ORIGIN = "https://sanpeita.github.io";
+export const ORIGIN = "https://unotchi.com";
 export const GENERATED_FILES = ["sitemap.xml", "llms.txt", "llms-full.txt", "llms.json"];
 
 function readJson(file) {

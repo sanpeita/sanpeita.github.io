@@ -8,9 +8,9 @@
 
 ## 主要ページ
 
-- [トップページ](https://sanpeita.github.io/): プロフィール、代表作、最近作、V文化論、公開ゲーム一覧、外部リンク
-- [公開ゲーム一覧](https://sanpeita.github.io/#playable-games): ブラウザですぐ遊べる公開ゲームの固定リンク
-- [バーチャル展示室](https://sanpeita.github.io/lab/virtual-world/): 5室を歩く独立Web作品（検索向けには noindex）
+- [トップページ](https://unotchi.com/): プロフィール、代表作、最近作、V文化論、公開ゲーム一覧、外部リンク
+- [公開ゲーム一覧](https://unotchi.com/#playable-games): ブラウザですぐ遊べる公開ゲームの固定リンク
+- [バーチャル展示室](https://unotchi.com/lab/virtual-world/): 5室を歩く独立Web作品（検索向けには noindex）
 
 ## 代表作（まず見る4本）
 
@@ -28,15 +28,15 @@
 
 ## 公開ゲーム（ブラウザで遊べる）
 
-- [Hole-IO](https://sanpeita.github.io/Hole-IO-Casual-Game/): 街を吸い込み、穴を育てる縦画面カジュアルゲーム。
-- [Island Survival Craft & Defense](https://sanpeita.github.io/Island-Survival-Craft-Defense/): 島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。
-- [dodge & gather](https://sanpeita.github.io/dodge-and-gather/): ネオンの障害物を避けて集めるカジュアルアクション。
-- [OfflineFlap](https://sanpeita.github.io/OfflineFlap/): タイミングよく障害物を抜けるフラップアクション。
-- [The Strongest Princess](https://sanpeita.github.io/the_strongest_princess/): 最強の姫がダンジョンを爆砕して進む2Dアクション。
-- [五目並べ](https://sanpeita.github.io/gomoku/): ブラウザで遊べる完全オフライン対応の五目並べ。
-- [Crowd Runner](https://sanpeita.github.io/Crowd-Runner/): 群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。
-- [Codex Reset Time Converter](https://sanpeita.github.io/CodexResetTimeConverter/): Codexのリセット時刻を日本時間へ変換するブラウザ完結ツール。
-- [EXERION 3D](https://sanpeita.github.io/NON-DATA_EXERION/): 慣性のある飛行感を楽しめる、完全オフライン対応の3Dレトロシューティング。
+- [Hole-IO](https://unotchi.com/Hole-IO-Casual-Game/): 街を吸い込み、穴を育てる縦画面カジュアルゲーム。
+- [Island Survival Craft & Defense](https://unotchi.com/Island-Survival-Craft-Defense/): 島で資源を集め、クラフトと拠点防衛を進める、ブラウザで遊べる3Dサバイバルゲームです。
+- [dodge & gather](https://unotchi.com/dodge-and-gather/): ネオンの障害物を避けて集めるカジュアルアクション。
+- [OfflineFlap](https://unotchi.com/OfflineFlap/): タイミングよく障害物を抜けるフラップアクション。
+- [The Strongest Princess](https://unotchi.com/the_strongest_princess/): 最強の姫がダンジョンを爆砕して進む2Dアクション。
+- [五目並べ](https://unotchi.com/gomoku/): ブラウザで遊べる完全オフライン対応の五目並べ。
+- [Crowd Runner](https://unotchi.com/Crowd-Runner/): 群れを増やしながら進む、ブラウザで遊べるカジュアルシューティングゲームです。
+- [Codex Reset Time Converter](https://unotchi.com/CodexResetTimeConverter/): Codexのリセット時刻を日本時間へ変換するブラウザ完結ツール。
+- [EXERION 3D](https://unotchi.com/NON-DATA_EXERION/): 慣性のある飛行感を楽しめる、完全オフライン対応の3Dレトロシューティング。
 
 ## 発信場所
 
@@ -56,7 +56,7 @@
 
 ## Optional
 
-- [llms-full.txt](https://sanpeita.github.io/llms-full.txt): すべての確認済み事実をまとめた詳細版
-- [llms.json](https://sanpeita.github.io/llms.json): 機械可読な構造化データ
-- [exhibits/manifest.json](https://sanpeita.github.io/exhibits/manifest.json): 公開作品の正本（1作品1ファイル）
-- [assets/chatbot/knowledge.json](https://sanpeita.github.io/assets/chatbot/knowledge.json): うのっちナビの知識（15カテゴリ）
+- [llms-full.txt](https://unotchi.com/llms-full.txt): すべての確認済み事実をまとめた詳細版
+- [llms.json](https://unotchi.com/llms.json): 機械可読な構造化データ
+- [exhibits/manifest.json](https://unotchi.com/exhibits/manifest.json): 公開作品の正本（1作品1ファイル）
+- [assets/chatbot/knowledge.json](https://unotchi.com/assets/chatbot/knowledge.json): うのっちナビの知識（15カテゴリ）

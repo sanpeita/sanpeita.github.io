@@ -29,6 +29,8 @@ AI検索・AIブラウザ等のエージェントが事実を取り違えずに�
 - `robots.txt` は手書きの方針ファイル。全公開URLを許可し、主なAIエージェントを明示する。`Disallow` を書かない（`/lab/virtual-world/` は meta の `noindex` に任せる）。
 - `index.html` の `<head>` の JSON-LD（`Person` / `WebSite` / `ProfilePage`）は `agent/profile.json` と揃える。`tests/agent-files.test.cjs` が一致を検証するので、片方だけ直すと落ちる。
 - 確認は再生成 → `node --test tests/*.test.cjs` の順。`llms-full.txt` は `knowledge.json` の全intentの `facts` を落としてはいけない。
+- 公開URLの正本ホストは `https://unotchi.com`（ルートの `CNAME`）。`https://sanpeita.github.io` はホスト全体（`/gomoku/` などの作品ページも含む）が301転送なので、新しい絶対URLに使わない。テストが旧ホストの混入を検出する。
+- `UNOTCHI_NAV_V1_1_SOL_SPEC.md` と `UNOTCHI_NAV_V1_1_TERRA_DESIGN.md` は凍結仕様。ホスト名の表記が古くても書き換えない。
 
 ## 設計資料（変更しない前提）
 

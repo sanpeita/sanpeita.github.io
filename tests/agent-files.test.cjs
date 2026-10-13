@@ -24,7 +24,7 @@ const llmsJsonText = unix(read("llms.json"));
 const sitemap = unix(read("sitemap.xml"));
 const llmsJson = JSON.parse(llmsJsonText);
 
-const ORIGIN = "https://sanpeita.github.io";
+const ORIGIN = "https://unotchi.com";
 const originCopy = "2020年、YouTubeの「うのっち」チャンネルを起点にVTuber活動を開始";
 const indexAnchors = new Set([...index.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
 const forbiddenPhrases = ["リアルのうのっち", "実写のうのっち", "中の人", "素顔", "顔出し"];
@@ -162,7 +162,7 @@ test("公開作品は exhibits が正本で、llms.json / llms.txt が同じ並�
 test("sitemap.xml は公開URLだけを載せ、noindex ページを含めない", () => {
   assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>\n<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
   assert.ok(sitemap.trimEnd().endsWith("</urlset>"));
-  assert.equal(sitemap.includes("<loc>https://sanpeita.github.io/</loc>"), true);
+  assert.equal(sitemap.includes(`<loc>${ORIGIN}/</loc>`), true);
 
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   assert.equal(new Set(locs).size, locs.length, "loc が重複しています");
@@ -229,4 +229,29 @@ test("エージェント向け成果物に禁止の本人性表現が混ざら�
       assert.equal(text.includes(phrase), false, `${name}: ${phrase}`);
     }
   }
+});
+
+test("公開URLの正本ホストは unotchi.com（旧ホストの絶対URLを残さない）", async () => {
+  const { ORIGIN: origin } = await agent();
+  assert.equal(origin, "https://unotchi.com");
+  const legacyHost = "https://sanpeita.github.io";
+  const published = [
+    ["index.html", index],
+    ["lab/virtual-world/index.html", read("lab/virtual-world/index.html")],
+    ["robots.txt", robots],
+    ["sitemap.xml", sitemap],
+    ["llms.txt", llmsTxt],
+    ["llms-full.txt", llmsFull],
+    ["llms.json", llmsJsonText],
+    ["agent/profile.json", read("agent/profile.json")]
+  ];
+  for (const [name, text] of published) {
+    assert.equal(text.includes(legacyHost), false, `${name} に旧ホストの絶対URLが残っています`);
+  }
+
+  const locs = sitemap.split("<loc>").slice(1).map((chunk) => chunk.slice(0, chunk.indexOf("</loc>")));
+  assert.ok(locs.length > 1, "sitemap の loc が足りません");
+  for (const loc of locs) assert.ok(loc.startsWith("https://unotchi.com/"), loc);
+  assert.ok(robots.includes("Sitemap: https://unotchi.com/sitemap.xml"));
+  for (const game of llmsJson.games) assert.ok(game.url.startsWith("https://unotchi.com/"), game.id);
 });
