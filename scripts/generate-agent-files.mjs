@@ -285,16 +285,36 @@ export function buildAgentFiles(root) {
   };
 }
 
+/** 改行コードの違いを無視して比較するための正規化。
+ *
+ * このリポジトリは `core.autocrlf=true` で使われることがあり、blobはLFでも
+ * チェックアウト直後の作業ツリーはCRLFになる。バイト比較をそのまま行うと、
+ * 中身が正しいのに「正本と一致しない」と誤判定するため、比較だけ正規化する。
+ * 書き出しは常にLF（blobと同じ）にする。
+ */
+export function normalizeEol(text) {
+  return text.replace(/\r\n/g, "\n");
+}
+
+function pendingFiles(root, files) {
+  return Object.keys(files).filter((filename) => {
+    const target = path.join(root, filename);
+    if (!fs.existsSync(target)) return true;
+    return normalizeEol(fs.readFileSync(target, "utf8")) !== normalizeEol(files[filename]);
+  });
+}
+
+/** 書き換えが必要なファイル名を返す。**書き込みはしない**（テストから使う純粋な検査）。 */
+export function planAgentFiles(root) {
+  return pendingFiles(root, buildAgentFiles(root));
+}
+
 /** 生成物をリポジトリ直下へ書き出す。書き換えたファイル名を返す。 */
 export function writeAgentFiles(root) {
   const files = buildAgentFiles(root);
-  const changed = [];
-  for (const [filename, content] of Object.entries(files)) {
-    const target = path.join(root, filename);
-    if (!fs.existsSync(target) || fs.readFileSync(target, "utf8") !== content) {
-      fs.writeFileSync(target, content, "utf8");
-      changed.push(filename);
-    }
+  const changed = pendingFiles(root, files);
+  for (const filename of changed) {
+    fs.writeFileSync(path.join(root, filename), files[filename], "utf8");
   }
   return changed;
 }

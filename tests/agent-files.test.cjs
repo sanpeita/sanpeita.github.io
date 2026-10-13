@@ -6,6 +6,10 @@ const assert = require("node:assert/strict");
 
 const root = path.resolve(__dirname, "..");
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
+const LF = String.fromCharCode(10);
+const CRLF = String.fromCharCode(13) + LF;
+/** blobはLF、作業ツリーはCRLFになりうる（core.autocrlf=true）。生成物の検査は改行を無視して行う。 */
+const unix = (text) => text.split(CRLF).join(LF);
 
 const index = read("index.html");
 const knowledgeText = read("assets/chatbot/knowledge.json");
@@ -14,10 +18,10 @@ const profile = JSON.parse(read("agent/profile.json"));
 const manifest = JSON.parse(read("exhibits/manifest.json"));
 const exhibits = manifest.exhibits.map((filename) => JSON.parse(read(path.join("exhibits", filename))));
 const robots = read("robots.txt");
-const llmsTxt = read("llms.txt");
-const llmsFull = read("llms-full.txt");
-const llmsJsonText = read("llms.json");
-const sitemap = read("sitemap.xml");
+const llmsTxt = unix(read("llms.txt"));
+const llmsFull = unix(read("llms-full.txt"));
+const llmsJsonText = unix(read("llms.json"));
+const sitemap = unix(read("sitemap.xml"));
 const llmsJson = JSON.parse(llmsJsonText);
 
 const ORIGIN = "https://sanpeita.github.io";
@@ -43,13 +47,22 @@ test("生成物は正本から再現できる（再生成し忘れると落ち�
   const built = buildAgentFiles(root);
   assert.deepEqual(Object.keys(built).sort(), [...generatedFiles].sort());
   for (const filename of generatedFiles) {
-    assert.equal(read(filename), built[filename], `${filename} が正本と一致しません。scripts/generate-agent-files.mjs を実行してください`);
+    assert.equal(
+      unix(read(filename)),
+      unix(built[filename]),
+      `${filename} が正本と一致しません。node scripts/generate-agent-files.mjs を実行してください`
+    );
   }
 });
 
-test("再生成は冪等（2回目は書き込みが発生しない）", async () => {
-  const { writeAgentFiles } = await agent();
-  assert.deepEqual(writeAgentFiles(root), []);
+test("再生成は冪等で、検査は作業ツリーを書き換えない", async () => {
+  const { buildAgentFiles, planAgentFiles } = await agent();
+  // 実行時刻などに依存しない（2回作って同じ結果になる）
+  const first = buildAgentFiles(root);
+  const second = buildAgentFiles(root);
+  assert.deepEqual(first, second);
+  // 正本と一致していれば、書き込みが必要なファイルは無い（純粋な検査・副作用なし）
+  assert.deepEqual(planAgentFiles(root), []);
 });
 
 test("agent/profile.json は origin 文と既存の正本に揃っている", () => {
