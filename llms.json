@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-13",
+  "updated": "2026-10-18",
   "site": {
     "url": "https://unotchi.com/",
     "name": "うのっち ポートフォリオ",
@@ -116,6 +116,12 @@
       "type": "GAME & WORLD",
       "description": "Unityゲーム、Fortniteクリエイター島、clusterワールド、Roblox Studioでの試作など、ゲーム文化の中で「遊んで分かる」作品を公開しています。",
       "url": "https://unityroom.com/users/bapfjey9s3kr14itud7h"
+    },
+    {
+      "title": "Blenderアドオン（オープンソース）",
+      "type": "BLENDER ADD-ONS",
+      "description": "制作と教育の現場で自分が使う道具として開発しているBlenderアドオン群。メッシュの診断と修復、安全に減らすリメッシュ、VRM規格のボーンに沿って立方体を割り当てるブロックマネキン（トルソー）などを、1ボタンで使える形で公開しています。",
+      "url": "https://github.com/sanpeita/unotchi-blender-addons"
     }
   ],
   "games": [

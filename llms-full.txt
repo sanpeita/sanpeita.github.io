@@ -2,7 +2,7 @@
 
 > 教育 × 制作 × VTuber。難しい技術の「最初の一歩」をつくる、うのっちの公式ポートフォリオです。
 
-最終更新: 2026-10-13 / 言語: 日本語 / 正本URL: https://unotchi.com/
+最終更新: 2026-10-18 / 言語: 日本語 / 正本URL: https://unotchi.com/
 
 ---
 
@@ -82,6 +82,12 @@
 - 区分: GAME & WORLD
 - URL: https://unityroom.com/users/bapfjey9s3kr14itud7h
 - 説明: Unityゲーム、Fortniteクリエイター島、clusterワールド、Roblox Studioでの試作など、ゲーム文化の中で「遊んで分かる」作品を公開しています。
+
+### Blenderアドオン（オープンソース）
+
+- 区分: BLENDER ADD-ONS
+- URL: https://github.com/sanpeita/unotchi-blender-addons
+- 説明: 制作と教育の現場で自分が使う道具として開発しているBlenderアドオン群。メッシュの診断と修復、安全に減らすリメッシュ、VRM規格のボーンに沿って立方体を割り当てるブロックマネキン（トルソー）などを、1ボタンで使える形で公開しています。
 
 ## 公開ゲーム（ブラウザで遊べる）
 
