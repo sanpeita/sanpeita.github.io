@@ -539,6 +539,8 @@ h2 {
 
 .project-card .text-link { margin-top: auto; padding-top: 18px; }
 
+.awards-section .project-card > p:not(.project-type) { line-break: strict; }
+
 .evidence-band {
   display: grid;
   grid-template-columns: 0.7fr 1.3fr;

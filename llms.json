@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-18",
+  "updated": "2026-10-29",
   "site": {
     "url": "https://unotchi.com/",
     "name": "うのっち ポートフォリオ",
@@ -122,6 +122,23 @@
       "type": "BLENDER ADD-ONS",
       "description": "制作と教育の現場で自分が使う道具として開発しているBlenderアドオン群。メッシュの診断と修復、安全に減らすリメッシュ、VRM規格のボーンに沿って立方体を割り当てるブロックマネキン（トルソー）などを、1ボタンで使える形で公開しています。",
       "url": "https://github.com/sanpeita/unotchi-blender-addons"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Halloween Yenran Stand",
+      "result": "3位（3rd place）",
+      "event": "Tripo Halloween 3D Printing Challenge",
+      "date": "2026-10",
+      "description": "オリジナルキャラクター煙嵐をハロウィン仕様に再設計し、単体フィギュアではなく実用的なスマートフォンスタンドとして成立させた作品。ドラフト印刷、サポート材の問題、スライサー設定、後処理までの工程を記録として共有した点が評価された。"
+    },
+    {
+      "title": "blender-dekisou — one line in, a Blender short out",
+      "result": "提出（Best Apps and Agents Track）",
+      "event": "Nebius × NVIDIA Global AI Hackathon",
+      "date": "2026-10",
+      "url": "https://devpost.com/software/blender-dekisou-one-line-in-a-blender-short-out",
+      "description": "テーマ1行から33〜36秒の縦型Blenderショートを組み立てる制作パイプライン。モデルは計画・脚本・フレーム検証だけを担当し、bpyとffmpegが決定論的に実行する設計にして、失敗が黙って壊れた映像にならないようにした。"
     }
   ],
   "games": [
@@ -601,7 +618,9 @@
         "紹介動画はYouTubeで公開されている",
         "指定位置は動画の1分41秒付近である",
         "BeytoioがtoioとUnityの作品動画コンテストで審査員特別賞を受賞した",
-        "toio、Unity、教育、ものづくりを横断する活動を行っている"
+        "toio、Unity、教育、ものづくりを横断する活動を行っている",
+        "TripoのHalloween 3D Printing Challengeで3位に入賞し、オリジナルキャラクターのスマートフォンスタンドを制作した",
+        "NebiusとNVIDIAのAIハッカソンに、テーマ1行からBlenderの縦型ショートを制作する仕組みを提出した"
       ],
       "links": [
         {

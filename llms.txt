@@ -26,6 +26,11 @@
 - [AIエージェントへインシデントを委任するUnityゲーム](https://www.youtube.com/watch?v=LZgxWzS0UVY): 公開日 2026-07-22
 - [Blenderって無理そう？透明っぽい素材の入口](https://www.youtube.com/watch?v=A-OFtZaHR0o): 公開日 2026-07-16
 
+## 受賞・外部評価
+
+- Halloween Yenran Stand — 3位（3rd place）（Tripo Halloween 3D Printing Challenge, 2026-10）: オリジナルキャラクター煙嵐をハロウィン仕様に再設計し、単体フィギュアではなく実用的なスマートフォンスタンドとして成立させた作品。ドラフト印刷、サポート材の問題、スライサー設定、後処理までの工程を記録として共有した点が評価された。
+- [blender-dekisou — one line in, a Blender short out](https://devpost.com/software/blender-dekisou-one-line-in-a-blender-short-out) — 提出（Best Apps and Agents Track）（Nebius × NVIDIA Global AI Hackathon, 2026-10）: テーマ1行から33〜36秒の縦型Blenderショートを組み立てる制作パイプライン。モデルは計画・脚本・フレーム検証だけを担当し、bpyとffmpegが決定論的に実行する設計にして、失敗が黙って壊れた映像にならないようにした。
+
 ## 公開ゲーム（ブラウザで遊べる）
 
 - [Hole-IO](https://unotchi.com/Hole-IO-Casual-Game/): 街を吸い込み、穴を育てる縦画面カジュアルゲーム。

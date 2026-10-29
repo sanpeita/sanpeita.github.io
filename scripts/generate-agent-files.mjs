@@ -108,6 +108,12 @@ export function buildLlmsTxt(profile, exhibits) {
     lines.push(`- [${work.title}](${work.url}): 公開日 ${work.publishedAt}`);
   }
 
+  lines.push("", "## 受賞・外部評価", "");
+  for (const award of profile.awards || []) {
+    const label = award.url ? `[${award.title}](${award.url})` : award.title;
+    lines.push(`- ${label} — ${award.result}（${award.event}, ${award.date}）: ${award.description}`);
+  }
+
   lines.push("", "## 公開ゲーム（ブラウザで遊べる）", "");
   for (const game of games) {
     lines.push(`- [${game.title}](${game.url}): ${game.shortDescription || game.description}`);
@@ -169,6 +175,13 @@ export function buildLlmsFullTxt(profile, exhibits, knowledge) {
   lines.push("## 最近の制作（2026年7月〜8月）", "");
   for (const work of profile.recentWorks) {
     lines.push(`- ${work.publishedAt} [${work.title}](${work.url})`);
+  }
+
+  lines.push("## 受賞・外部評価", "");
+  for (const award of profile.awards || []) {
+    lines.push(`### ${award.title}`, "", `- 結果: ${award.result}`, `- 大会: ${award.event}（${award.date}）`);
+    if (award.url) lines.push(`- URL: ${award.url}`);
+    lines.push(`- 説明: ${award.description}`, "");
   }
 
   lines.push("", "## 進行中・公開中の企画", "");
@@ -241,6 +254,7 @@ export function buildLlmsJson(profile, exhibits, knowledge) {
     featuredWorks: profile.featuredWorks,
     recentWorks: profile.recentWorks,
     projects: profile.projects,
+    awards: profile.awards || [],
     games: games.map((game) => ({
       id: game.id,
       title: game.title,
