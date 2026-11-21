@@ -519,6 +519,19 @@ h2 {
 .project-card-sun { background: #fff5d9; }
 .project-card-lavender { background: #f0ecfb; }
 
+/* 目立たせたいカード: 上端に全幅バナー（.project-card の padding 30px を打ち消す） */
+.project-card-feature { padding-top: 0; }
+
+.project-banner {
+  margin: 0 -30px 22px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
+  background: #0000f2;
+  border-bottom: 1px solid rgba(31, 79, 116, 0.12);
+}
+
+.project-banner img { display: block; width: 100%; height: auto; }
+
 .project-icon {
   width: 48px;
   height: 48px;

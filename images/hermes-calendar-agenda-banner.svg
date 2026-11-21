@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="t d">
+  <title id="t">calendar-agenda — Hermes Agent plugin</title>
+  <desc id="d">Nous blue banner with a white calendar sheet and a completed check mark.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0af7"/>
+      <stop offset="0.55" stop-color="#0000f2"/>
+      <stop offset="1" stop-color="#0000c2"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.28" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.6" cy="1.6" r="1.6" fill="#ffffff" fill-opacity="0.10"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#00005a" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="600" fill="url(#bg)"/>
+  <rect width="1200" height="600" fill="url(#dots)"/>
+  <rect width="1200" height="600" fill="url(#glow)"/>
+
+  <!-- 背景の大きなカレンダー輪郭 -->
+  <g opacity="0.14" fill="none" stroke="#ffffff" stroke-width="3">
+    <rect x="690" y="40" width="440" height="500" rx="46"/>
+    <line x1="690" y1="150" x2="1130" y2="150"/>
+    <line x1="800" y1="40" x2="800" y2="96" stroke-linecap="round" stroke-width="10"/>
+    <line x1="1020" y1="40" x2="1020" y2="96" stroke-linecap="round" stroke-width="10"/>
+  </g>
+
+  <!-- テキスト -->
+  <g font-family="'Helvetica Neue', Helvetica, Arial, 'Noto Sans JP', sans-serif">
+    <text x="72" y="212" fill="#ffffff" fill-opacity="0.72" font-size="21" font-weight="700" letter-spacing="6">HERMES AGENT PLUGIN</text>
+    <text x="68" y="298" fill="#ffffff" font-size="70" font-weight="800" letter-spacing="-1">calendar-agenda</text>
+    <text x="72" y="348" fill="#ffffff" fill-opacity="0.92" font-size="25" font-weight="500">plan → result, recorded in the event</text>
+    <g fill="#ffffff" fill-opacity="0.62" font-size="20" font-weight="600" letter-spacing="1">
+      <text x="72" y="462">v1.3.1</text>
+      <text x="164" y="462">·</text>
+      <text x="188" y="462">MIT License</text>
+      <text x="330" y="462">·</text>
+      <text x="354" y="462">Nous Marketplace</text>
+    </g>
+  </g>
+
+  <!-- カレンダーシート -->
+  <g filter="url(#soft)">
+    <rect x="760" y="120" width="380" height="420" rx="34" fill="#ffffff"/>
+  </g>
+  <rect x="760" y="120" width="380" height="420" rx="34" fill="none" stroke="#ffffff" stroke-opacity="0.5"/>
+  <rect x="784" y="150" width="96" height="12" rx="6" fill="#0000f2" fill-opacity="0.85"/>
+  <rect x="1024" y="150" width="96" height="12" rx="6" fill="#0000f2" fill-opacity="0.25"/>
+
+  <!-- 日付グリッド -->
+  <g>
+    <!-- row 1 -->
+    <rect x="790" y="196" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="834" y="196" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="878" y="196" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="922" y="196" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="966" y="196" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1010" y="196" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1054" y="196" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <!-- row 2 -->
+    <rect x="790" y="240" width="34" height="34" rx="9" fill="#0000f2"/>
+    <rect x="834" y="240" width="34" height="34" rx="9" fill="#0000f2"/>
+    <rect x="878" y="240" width="34" height="34" rx="9" fill="#0000f2"/>
+    <rect x="922" y="240" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="966" y="240" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1010" y="240" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1054" y="240" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <!-- row 3 -->
+    <rect x="790" y="284" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="834" y="284" width="34" height="34" rx="9" fill="#0000f2"/>
+    <rect x="878" y="284" width="34" height="34" rx="9" fill="#0000f2"/>
+    <rect x="922" y="284" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="966" y="284" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1010" y="284" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1054" y="284" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <!-- row 4: 空き枠は破線（枠を残す/解放の対比） -->
+    <rect x="790" y="328" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="834" y="328" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="878" y="328" width="34" height="34" rx="9" fill="#ffffff" stroke="#0000f2" stroke-width="3" stroke-dasharray="7 6"/>
+    <rect x="922" y="328" width="34" height="34" rx="9" fill="#ffffff" stroke="#0000f2" stroke-width="3" stroke-dasharray="7 6"/>
+    <rect x="966" y="328" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1010" y="328" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1054" y="328" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <!-- row 5 -->
+    <rect x="790" y="372" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="834" y="372" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="878" y="372" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="922" y="372" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="966" y="372" width="34" height="34" rx="9" fill="#0000f2"/>
+    <rect x="1010" y="372" width="34" height="34" rx="9" fill="#dfe3ff"/>
+    <rect x="1054" y="372" width="34" height="34" rx="9" fill="#dfe3ff"/>
+  </g>
+
+  <!-- 完了チェック -->
+  <g>
+    <circle cx="1090" cy="470" r="56" fill="#ffffff"/>
+    <circle cx="1090" cy="470" r="44" fill="#0000f2"/>
+    <path d="M1068 470 L1084 486 L1114 452" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
