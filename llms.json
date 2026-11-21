@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-29",
+  "updated": "2026-11-21",
   "site": {
     "url": "https://unotchi.com/",
     "name": "うのっち ポートフォリオ",
@@ -122,6 +122,12 @@
       "type": "BLENDER ADD-ONS",
       "description": "制作と教育の現場で自分が使う道具として開発しているBlenderアドオン群。メッシュの診断と修復、安全に減らすリメッシュ、VRM規格のボーンに沿って立方体を割り当てるブロックマネキン（トルソー）などを、1ボタンで使える形で公開しています。",
       "url": "https://github.com/sanpeita/unotchi-blender-addons"
+    },
+    {
+      "title": "calendar-agenda（Hermes Agent プラグイン）",
+      "type": "HERMES PLUGIN / MARKETPLACE LISTED",
+      "description": "エージェントから今日のGoogleカレンダーの予定を読み、予定の結果（完了・中断・中止・見送り）と枠の保持をイベント自身に記録するHermes Agentプラグイン。作者名 sanpeita、MITライセンスで、公式マーケットプレイスに掲載（v1.3.1 / 2026年11月18日更新）。",
+      "url": "https://hermes-agent.nousresearch.com/marketplace/calendar-agenda"
     }
   ],
   "awards": [
@@ -456,7 +462,8 @@
         "2026年8月4日にMagicaVoxel作品をMinecraftへ取り込む自作Importer Modの動画を公開した",
         "2026年7月29日にUnity版オルディア開発PhaseT2進捗の動画を公開した",
         "2026年7月22日にAIエージェントへインシデントを委任するUnityゲームの動画を公開した",
-        "2026年7月16日にBlenderの透明っぽい素材の入口を紹介する動画を公開した"
+        "2026年7月16日にBlenderの透明っぽい素材の入口を紹介する動画を公開した",
+        "自作のHermes Agentプラグイン「calendar-agenda」が公式マーケットプレイスに掲載されている（MITライセンス）"
       ],
       "links": [
         {
